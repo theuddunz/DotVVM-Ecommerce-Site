@@ -1,0 +1,38 @@
+﻿@viewModel EntityFrameworkCF.ViewModels.MasterpageViewModel, EntityFrameworkCF
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="../Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../Scripts/bootstrap.js"></script>
+    <script src="../Scripts/jquery-1.9.1.js"></script>
+    <script src="../Scripts/jquery-1.9.1.min.js"></script>
+    <dot:AuthenticatedView>
+        <AuthenticatedTemplate>
+            <div style="text-align:right;margin-right:10px" Validation.Enabled="false">
+                <dot:LinkButton Click="{command: SignOut()}" Text="Sign Out" />
+            </div>
+        </AuthenticatedTemplate>
+        <NotAuthenticatedTemplate>
+            <div style="text-align:right;margin-right:10px" Validation.Enabled="false">
+                <dot:RouteLink RouteName="LoginPage" Text="Login" />
+            </div>
+        </NotAuthenticatedTemplate>
+    </dot:AuthenticatedView>
+    <div ID="Top" style="text-align:center">
+        <img src="../Images/50c56179-459a-45e9-aba0-67b6ea05fadf.png" />
+    </div>
+</head>
+<body>
+    <dot:ContentPlaceHolder ID="Main">
+    </dot:ContentPlaceHolder>
+</body>
+</html>
+
+

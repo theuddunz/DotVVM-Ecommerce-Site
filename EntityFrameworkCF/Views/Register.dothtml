@@ -1,0 +1,42 @@
+﻿@viewModel EntityFrameworkCF.ViewModels.RegisterPage, EntityFrameworkCF
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Register</title>
+</head>
+<body Validator.InvalidCssClass="form-group" style="text-align:justify">
+    <div style="text-align:center">
+        <img src="../Images/50c56179-459a-45e9-aba0-67b6ea05fadf.png" />
+    </div>
+    <bs:Form Type="Horizontal" style="text-align:center;background-color:rgb(255, 255, 255);">
+        <h1 style="margin-bottom:5px;" class="text-primary" >{{value: Title}}</h1> <br />
+
+        <bs:Label Text="Username" class="label-primary" style="font-size:medium;margin-right:10px" />
+        <dot:TextBox style="margin-top:5px;margin-bottom:5px" Text="{{value: usn}}" Validator.ValidatedValue="{value: usn}"></dot:TextBox>
+        <br />
+
+        <bs:Label Text="Password" class="label-primary" style="font-size:medium;margin-right:10px" />
+        <dot:TextBox style="margin-top:5px;margin-bottom:5px;text-align:center" Text="{{value: pas}}" Validator.ValidatedValue="{value: pas}" Type="Password"></dot:TextBox> <br />
+
+        <bs:Label Text="Email" class="label-primary" style="font-size:medium;margin-right:43px" />
+        <dot:TextBox style="margin-top:5px;margin-bottom:5px;text-align:center" Text="{{value: email}}" Type="Email" Validator.ValidatedValue="{value: email}"></dot:TextBox> <br />
+
+        <bs:Label Text="Country" class="label-primary" style="font-size:medium;margin-right:23px" />
+        <dot:TextBox style="margin-top:5px;margin-bottom:5px" Text="{{value: country}}"></dot:TextBox> <br />
+
+
+        <div class="form-group" style="text-align:center;color:red">
+            {{value: ErrorMessage}}
+            <dot:ValidationSummary />
+        </div>
+
+        <bs:Button class="btn-primary" Text="Registrati" Click="{command: Register()}" ></bs:Button>
+    </bs:Form>
+
+
+
+</body>
+</html>

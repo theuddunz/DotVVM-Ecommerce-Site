@@ -1,0 +1,24 @@
+﻿@viewModel EntityFrameworkCF.ViewModels.IndexViewModel, EntityFrameworkCF
+@masterPage  Views/masterpage.dotmaster
+
+
+<dot:Content ContentPlaceHolderID="Main">
+<div ID="header" style="text-align:center">
+    <h1 class="h1">E-Commerce</h1>
+</div>
+    <dot:Repeater DataSource="{value: Products}" >
+        <ItemTemplate>
+            <div class="col-md-3" style="padding-bottom:10px;text-align:center;border:solid;border-color:white;border-radius:10px;margin-bottom:5px;"  StyleDecorator.BackgroundColor="Primary">
+               
+                <h2>{{value: Name + "(" + ProductID + ")"}}</h2> <br />
+                <bs:Image Type="Circle" Width="120px" Height="100px" ImageUrl="{value: Image}"/>
+                <p>{{value: Description}}</p>
+                <h4>{{value: "Price: " + "$" +Price }}</h4> <br />
+                <bs:Button Text="Add To Cart" Type="Danger"></bs:Button>
+            </div>
+        </ItemTemplate>
+    </dot:Repeater>
+   
+
+</dot:Content>
+    
