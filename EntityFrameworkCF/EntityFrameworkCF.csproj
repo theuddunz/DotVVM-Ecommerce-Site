@@ -138,11 +138,6 @@
   <ItemGroup>
     <Compile Include="Data\Cart.cs" />
     <Compile Include="Data\UserRole.cs" />
-    <Compile Include="Migrations\201611031500037_InitialCreate.cs" />
-    <Compile Include="Migrations\201611031500037_InitialCreate.Designer.cs">
-      <DependentUpon>201611031500037_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\ProductService.cs" />
     <Compile Include="Service\UserService.cs" />
@@ -177,9 +172,6 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Views\Register.dothtml" />
     <Content Include="packages.config" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
@@ -187,21 +179,10 @@
     <Content Include="Views\masterpage.dotmaster" />
     <Content Include="Views\LoginPage.dothtml" />
     <Content Include="Views\AdminPage.dothtml" />
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611031500037_InitialCreate.resx">
-      <DependentUpon>201611031500037_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>

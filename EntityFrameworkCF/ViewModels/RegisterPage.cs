@@ -47,6 +47,7 @@ namespace EntityFrameworkCF.ViewModels
                     user.Country = country;
                     db.Users.Add(user);
                     db.SaveChanges();
+                    Context.RedirectToRoute("Index");
                 }
                 else
                 {
