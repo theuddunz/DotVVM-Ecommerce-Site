@@ -3,8 +3,9 @@
 
 
 <dot:Content ContentPlaceHolderID="Main">
+    
     <div ID="header" style="text-align:center">
-        <h1 class="h1">E-Commerce</h1>
+        <h1 class="h1" >E-Commerce</h1>
     </div>
     <dot:Repeater DataSource="{value: Products}">
         <ItemTemplate>

@@ -14,7 +14,7 @@ namespace EntityFrameworkCF.ViewModels
         public int UserID { get; set; }
         [Required(ErrorMessage = "The Username is necessary")]
         public string Username { get; set; }
-        public UserRole Userrole { get; set; }
+        public UserRole UserRole { get; set; }
        
         [Required(ErrorMessage = "The Password is necessary")]
 

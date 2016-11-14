@@ -40,7 +40,7 @@ namespace EntityFrameworkCF.ViewModels
         public string uEmail { get; set; }
         public string uCountry { get; set; }
         public int uID { get; set; }
-
+        public UserRole ur { get; set; }
         public bool uVisibleN { get; set; }
         public bool uVisibleE { get; set; }
         public bool uVisibleD { get; set; }
@@ -180,6 +180,7 @@ namespace EntityFrameworkCF.ViewModels
                 user.Password = uPass;
                 user.Email = uEmail;
                 user.Country = uCountry;
+                user.UserRole = ur;
                 db.Users.Add(user);
                 db.SaveChanges();
                 uVisibleN = false;
@@ -229,6 +230,7 @@ namespace EntityFrameworkCF.ViewModels
                         entity.Password = uPass;
                         entity.Email = uEmail;
                         entity.Country = uCountry;
+                        entity.UserRole = ur;
                         db.SaveChanges();
                         uVisibleE = false;
                         Context.RedirectToRoute("Admin");

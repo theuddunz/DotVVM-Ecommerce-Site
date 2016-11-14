@@ -38,6 +38,7 @@
         <bs:Label Text="Password" /> <dot:TextBox Text="{value: uPass}" /><br />
         <bs:Label Text="Email" /> <dot:TextBox Text="{value: uEmail}"  /><br />
         <bs:Label Text="Country" /> <dot:TextBox Text="{value: uCountry}" /><br />
+        <bs:Label Text="UserRole" /> <dot:TextBox Text="{value: ur}" /><br />
         <bs:Button Type="Primary" Text="Add" Click="{command: AddUser()}"></bs:Button>
         <bs:button Validation.Enabled="false" Type="Warning" Text="Cancel" Click="{command: setfalseuN()}"></bs:button>
     </div>
@@ -48,8 +49,10 @@
         <bs:Label Text="Password" /><dot:TextBox Text="{value: uPass}"></dot:TextBox>
         <bs:Label Text="Email" /><dot:TextBox Text="{value: uEmail}"></dot:TextBox>
         <bs:Label Text="Country" /><dot:TextBox Text="{value: uCountry}"></dot:TextBox>
+        <bs:Label Text="UserRole" /><dot:TextBox Text="{value: ur}"></dot:TextBox>
         <bs:Button Text="Edit" Click="{command: EditUser()}" />
         <bs:button Validation.Enabled="false" Type="Warning" Text="Cancel" Click="{command: setfalseuE()}"></bs:button>
+        
     </div>
     <!--DELETEUSER-->
     <div style="text-align:center" Validation.Enabled="false" Visible="{value:uVisibleD}">
@@ -58,7 +61,7 @@
         <bs:button Validation.Enabled="false" Type="Warning" Text="Cancels" Click="{command: setfalseuD()}"></bs:button>
         </div>
 
-
+   
 
         <!--DELETEPRODUCT-->
         <div style="text-align:center" Validation.Enabled="false" Visible="{value:pVisibleD}">
@@ -105,6 +108,7 @@
                     <dot:GridViewTextColumn ValueBinding="{value: Email}" HeaderText="Email" />
                     <dot:GridViewTextColumn ValueBinding="{value: Password}" HeaderText="Password" />
                     <dot:GridViewTextColumn ValueBinding="{value: Country}" HeaderText="Country" />
+                    <dot:GridViewTextColumn ValueBinding="{value: UserRole}" HeaderText="UserRole" />
                 </Columns>
             </bs:GridView>
         </bs:Table>
