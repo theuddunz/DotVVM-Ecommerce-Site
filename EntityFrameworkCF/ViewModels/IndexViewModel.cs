@@ -11,6 +11,7 @@ namespace EntityFrameworkCF.ViewModels
     public class IndexViewModel : MasterpageViewModel
     {
         public Product pr = new Product();
+
         public GridViewDataSet<Product> Products { get; set; } = new GridViewDataSet<Product>
         {
             SortExpression = nameof(Product.ProductID),
@@ -33,7 +34,7 @@ namespace EntityFrameworkCF.ViewModels
 
             return base.PreRender();
         }
-
+      
     }
 }
 

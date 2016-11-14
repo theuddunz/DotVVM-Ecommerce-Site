@@ -49,6 +49,7 @@ namespace EntityFrameworkCF.ViewModels
                         var identity = new ClaimsIdentity(claims, DefaultAuthenticationTypes.ApplicationCookie);
                         Context.OwinContext.Authentication.SignIn(identity);
                         Context.RedirectToRoute("Admin");
+                        
                     }
                     else
                     {

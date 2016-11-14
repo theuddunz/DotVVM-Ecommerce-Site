@@ -136,6 +136,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Cart.cs" />
     <Compile Include="Data\UserRole.cs" />
     <Compile Include="Migrations\201611031500037_InitialCreate.cs" />
     <Compile Include="Migrations\201611031500037_InitialCreate.Designer.cs">

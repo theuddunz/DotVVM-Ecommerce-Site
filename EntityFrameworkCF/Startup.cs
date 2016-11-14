@@ -27,7 +27,7 @@ namespace EntityFrameworkCF
             app.UseCookieAuthentication(new CookieAuthenticationOptions()
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/"),
+                LoginPath = new PathString("/Login"),
             });
 
             // use DotVVM
