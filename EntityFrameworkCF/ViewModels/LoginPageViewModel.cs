@@ -38,18 +38,19 @@ namespace EntityFrameworkCF.ViewModels
                 {
                     var checkdata = from p in db.Users
                                     where (p.Username == Username && p.Password == Password)
-                                    select p;
+                                    select p.UserID;
+                  
                     if (checkdata.Count() != 0)
                     {
                         var claims = new List<Claim>();
 
                         claims.Add(new Claim(ClaimTypes.NameIdentifier, Username));
                         claims.Add(new Claim(ClaimTypes.Name, Username));
-
+                       
                         var identity = new ClaimsIdentity(claims, DefaultAuthenticationTypes.ApplicationCookie);
                         Context.OwinContext.Authentication.SignIn(identity);
                         Context.RedirectToRoute("Admin");
-                        
+
                     }
                     else
                     {
@@ -60,8 +61,8 @@ namespace EntityFrameworkCF.ViewModels
             catch (Exception)
             {
 
-                throw;  
-                                
+                throw;
+
             }
         }
     }

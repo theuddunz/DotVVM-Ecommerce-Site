@@ -8,6 +8,7 @@ using Microsoft.Owin.Security;
 using System.Threading.Tasks;
 using DotVVM.Framework.Controls;
 using System.ComponentModel.DataAnnotations;
+using System.Security.Claims;
 
 
 namespace EntityFrameworkCF.ViewModels
@@ -16,10 +17,10 @@ namespace EntityFrameworkCF.ViewModels
     public class AdminPageViewModel : MasterpageViewModel
     {
         //variables for the New Product
-        [Required]
+        [Required(ErrorMessage = "The name is required")]
         public string pNameN { get; set; }
         public string pDescN { get; set; }
-        [Required]
+        [Required(ErrorMessage = "The price is Required")]
         public double pPriceN { get; set; }
         public string pImgN { get; set; }
 
@@ -35,10 +36,14 @@ namespace EntityFrameworkCF.ViewModels
         public bool pVisibleE { get; set; }
 
         //Variable for UsersCommands
+        [Required(ErrorMessage ="The Username is required.")]
         public string uName { get; set; }
+        [Required]
         public string uPass { get; set; }
+        [Required(ErrorMessage = "The Email is required")]
         public string uEmail { get; set; }
         public string uCountry { get; set; }
+        [Required(ErrorMessage = "The UserID is required." )]
         public int uID { get; set; }
         public UserRole ur { get; set; }
         public bool uVisibleN { get; set; }
@@ -181,6 +186,7 @@ namespace EntityFrameworkCF.ViewModels
                 user.Email = uEmail;
                 user.Country = uCountry;
                 user.UserRole = ur;
+                
                 db.Users.Add(user);
                 db.SaveChanges();
                 uVisibleN = false;
