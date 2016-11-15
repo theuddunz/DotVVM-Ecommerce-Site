@@ -42,7 +42,7 @@
         <bs:Button Type="Primary" Text="Add" Click="{command: AddUser()}"></bs:Button>
         <bs:button Validation.Enabled="false" Type="Warning" Text="Cancel" Click="{command: setfalseuN()}"></bs:button>
     </div>
-    <!--EDITUSER-->
+    <!--EDITUSER--->
     <div style="text-align:center" Validation.Enabled="false" Visible="{value:uVisibleE}">
         <bs:Label Text="Insert the UserID" /> <dot:TextBox Text="{value: uID}"></dot:TextBox>
         <bs:Label Text="Name" /> <dot:TextBox Text="{value: uName}"></dot:TextBox>

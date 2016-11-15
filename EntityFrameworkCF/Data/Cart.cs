@@ -12,6 +12,6 @@ namespace EntityFrameworkCF.ViewModels
         [Key]
         public int CartID { get; set; }
         public double Total { get; set; }
-        public int count { get; set; }
+        public int Count { get; set; }
     }
 }

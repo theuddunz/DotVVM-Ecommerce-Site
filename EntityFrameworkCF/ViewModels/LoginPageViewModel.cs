@@ -38,7 +38,9 @@ namespace EntityFrameworkCF.ViewModels
                 {
                     var checkdata = from p in db.Users
                                     where (p.Username == Username && p.Password == Password)
-                                    select p.UserID;
+                                    select p;
+                    
+                    
                     
                    /* Test Code for the new Authentication
                     Set the Email as the PrimaryKey
