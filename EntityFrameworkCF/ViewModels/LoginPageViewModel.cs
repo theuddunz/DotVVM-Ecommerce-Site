@@ -47,7 +47,7 @@ namespace EntityFrameworkCF.ViewModels
                     {
                         var claims = new List<Claim>();
 
-                        claims.Add(new Claim(ClaimTypes.NameIdentifier, result.Email));
+                        claims.Add(new Claim(ClaimTypes.NameIdentifier, result.UserID.ToString()));
                         claims.Add(new Claim(ClaimTypes.Name, Username));
                         claims.Add(new Claim(ClaimTypes.Role, Convert.ToString(result.UserRole)));
 
@@ -62,7 +62,7 @@ namespace EntityFrameworkCF.ViewModels
                         {
                             Context.RedirectToRoute("Index");
                         }
-
+                       
                     }
                     else
                     {
