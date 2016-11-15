@@ -13,17 +13,14 @@ namespace EntityFrameworkCF.ViewModels
     {
         public Product pr = new Product();
 
-        public void AddProduct()
-        {
-            
-        }
+        
 
         public GridViewDataSet<Product> Products { get; set; } = new GridViewDataSet<Product>
         {
             SortExpression = nameof(Product.ProductID),
             SortDescending= false,
             PageSize = 1000
-
+            
         };
 
         public List<Product> ListP { get; set; } = new List<Product>
@@ -35,7 +32,7 @@ namespace EntityFrameworkCF.ViewModels
             using (var db = new Database())
             {
                 ProductService.LoadProduct(Products);
- 
+                
             }
 
             return base.PreRender();

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using DotVVM.Framework.Controls;
+using DotVVM.Framework.Hosting;
+using System.Security.Claims;
+
 namespace EntityFrameworkCF.ViewModels
 {
     public class UserService
@@ -15,6 +18,18 @@ namespace EntityFrameworkCF.ViewModels
                             select p;
                 dataset.LoadFromQueryable(query);
             }
+        }
+
+        public static int? GetCurrentUserId()
+        {
+            var identity = HttpContext.Current.GetOwinContext().Authentication.User.Identity as ClaimsIdentity;
+            if (identity.IsAuthenticated)
+            {
+                var id = identity.FindFirst(ClaimTypes.NameIdentifier).Value;
+                return Convert.ToInt32(id);
+            }
+
+            return null;
         }
     }
 }

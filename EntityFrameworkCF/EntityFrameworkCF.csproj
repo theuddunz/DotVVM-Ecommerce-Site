@@ -138,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Cart.cs" />
+    <Compile Include="Data\CartItem.cs" />
     <Compile Include="Data\UserRole.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
