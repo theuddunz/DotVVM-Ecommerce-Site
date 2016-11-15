@@ -13,7 +13,7 @@ using System.Security.Claims;
 
 namespace EntityFrameworkCF.ViewModels
 {
-    [Authorize]
+    [Authorize(roles: "Admin")]
     public class AdminPageViewModel : MasterpageViewModel
     {
         //variables for the New Product -
@@ -23,7 +23,6 @@ namespace EntityFrameworkCF.ViewModels
         [Required(ErrorMessage = "The price is Required")]
         public double pPriceN { get; set; }
         public string pImgN { get; set; }
-
         public string pMessageN { get; set; }
         public bool pVisibileN { get; set; }
         [Bind(Direction.ServerToClient)]
