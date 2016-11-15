@@ -30,12 +30,12 @@
 
         <div style="text-align:center">
             <img src="../Images/50c56179-459a-45e9-aba0-67b6ea05fadf.png" />
-            <h1 class="h1" style="color: rgb(68, 68, 68);padding-bottom:5px">E-Commerce</h1>
+            <h1 class="h1" style="color:lightgray;padding-bottom:15px;font-family:'Lucida Console';font-size:50px">E-Commerce</h1>
         </div>
     </header>
     <dot:ContentPlaceHolder ID="Main">
     </dot:ContentPlaceHolder>
-    <footer>ciao icsdi</footer>
+    
 </body>
 </html>
 
