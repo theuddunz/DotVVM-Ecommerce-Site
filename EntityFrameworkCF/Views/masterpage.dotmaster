@@ -33,8 +33,23 @@
             <h1 class="h1" style="color:lightgray;padding-bottom:15px;font-family:'Lucida Console';font-size:50px">E-Commerce</h1>
         </div>
     </header>
-    <dot:ContentPlaceHolder ID="Main">
-    </dot:ContentPlaceHolder>
+
+    <div class="content">
+        <dot:ContentPlaceHolder ID="Main">
+        </dot:ContentPlaceHolder>
+    </div>
+
+    <footer class="panel-footer" ID="footer">
+        <p>
+            Marco Moi
+        </p>
+        <p>
+            Aurelio D'Urso
+        </p>
+        <p>
+            Riganti S.r.o., 2016
+        </p>
+    </footer>
     
 </body>
 </html>
