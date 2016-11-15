@@ -5,12 +5,18 @@ using System.Text;
 using DotVVM.Framework.ViewModel;
 using DotVVM.Framework.Controls;
 using System.Threading.Tasks;
+using Microsoft.AspNet.Identity;
 
 namespace EntityFrameworkCF.ViewModels
 {
     public class IndexViewModel : MasterpageViewModel
     {
         public Product pr = new Product();
+
+        public void AddProduct()
+        {
+            
+        }
 
         public GridViewDataSet<Product> Products { get; set; } = new GridViewDataSet<Product>
         {
