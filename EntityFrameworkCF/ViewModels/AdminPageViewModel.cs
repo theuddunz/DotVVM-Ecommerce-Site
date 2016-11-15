@@ -16,7 +16,7 @@ namespace EntityFrameworkCF.ViewModels
     [Authorize]
     public class AdminPageViewModel : MasterpageViewModel
     {
-        //variables for the New Product
+        //variables for the New Product -
         [Required(ErrorMessage = "The name is required")]
         public string pNameN { get; set; }
         public string pDescN { get; set; }
