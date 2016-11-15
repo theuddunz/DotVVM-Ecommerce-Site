@@ -40,8 +40,8 @@ namespace EntityFrameworkCF.ViewModels
                                     where (p.Username == Username && p.Password == Password)
                                     select p;
 
-                    var result = checkdata.First();
-
+                    var result = checkdata.SingleOrDefault();
+                    string Role = Convert.ToString(result.UserRole);
 
                     if (checkdata.Count() != 0)
                     {
@@ -53,7 +53,15 @@ namespace EntityFrameworkCF.ViewModels
 
                         var identity = new ClaimsIdentity(claims, DefaultAuthenticationTypes.ApplicationCookie);
                         Context.OwinContext.Authentication.SignIn(identity);
-                        Context.RedirectToRoute("Admin");
+
+                        if (Role == "Admin")
+                        {
+                            Context.RedirectToRoute("Admin");
+                        }
+                        else
+                        {
+                            Context.RedirectToRoute("Index");
+                        }
 
                     }
                     else
@@ -65,7 +73,7 @@ namespace EntityFrameworkCF.ViewModels
             catch (Exception)
             {
 
-                throw;
+                throw ;
 
             }
         }
