@@ -29,15 +29,13 @@
         </div>
 
         <div style="text-align:center">
-            <a href="/" ><img src="../Images/50c56179-459a-45e9-aba0-67b6ea05fadf.png" /></a>
+            <a href="/"><img src="../Images/50c56179-459a-45e9-aba0-67b6ea05fadf.png" /></a>
             <h1 class="h1" style="color:lightgray;padding-bottom:15px;font-family:'Lucida Console';font-size:50px">E-Commerce</h1>
         </div>
     </header>
 
-    <div class="content">
-        <dot:ContentPlaceHolder ID="Main">
-        </dot:ContentPlaceHolder>
-    </div>
+    <dot:ContentPlaceHolder ID="Main">
+    </dot:ContentPlaceHolder>
 
     <footer class="panel-footer" ID="footer">
         <p>
@@ -50,7 +48,6 @@
             Riganti S.r.o., 2016
         </p>
     </footer>
-    
 </body>
 </html>
 

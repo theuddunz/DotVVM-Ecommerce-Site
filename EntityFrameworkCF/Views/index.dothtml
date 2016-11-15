@@ -3,19 +3,30 @@
 
 
 <dot:Content ContentPlaceHolderID="Main">
+    <div>
+        <bs:Jumbotron ID="jumbo">
+            <p>
+                Welcome to the DotVVM E-Commerce website!
+            </p>
+            <p>
+                This website has been created with the aim of demonstrating the possibilities that DotVVM offers.
+            </p>
+        </bs:Jumbotron>
+    </div>
 
-    <bs:Container style="width:100%;">
-        <dot:Repeater DataSource="{value: Products}">
-            <ItemTemplate>
-                <div class="col-md-3" style="padding-bottom:10px;text-align:center;border:solid;border-color:lightgrey;border-radius:10px; margin-bottom:2.5px; margin-top:2.5px">
-                    <h2>{{value: Name + "(" + ProductID + ")"}}</h2> <br />
-                    <bs:Image Type="Circle" Width="120px" Height="100px" ImageUrl="{value: Image}" />
-                    <p>{{value: Description}}</p>
-                    <h4>{{value: "Price: " + "$" +Price }}</h4> <br />
-                    <bs:Button Text="Add To Cart" Type="Primary"></bs:Button>
-                </div>
-            </ItemTemplate>
-        </dot:Repeater>
-    </bs:Container>
-
+    <div class="content">
+        <bs:Container style="width:100%;">
+            <dot:Repeater DataSource="{value: Products}">
+                <ItemTemplate>
+                    <div class="col-md-3" style="padding-bottom:10px;text-align:center;border:solid;border-color:lightgrey;border-radius:10px; margin-bottom:2.5px; margin-top:5px">
+                        <h2>{{value: Name + "(" + ProductID + ")"}}</h2> <br />
+                        <bs:Image Type="Circle" Width="120px" Height="100px" ImageUrl="{value: Image}" />
+                        <p>{{value: Description}}</p>
+                        <h4>{{value: "Price: " + "$" +Price }}</h4> <br />
+                        <bs:Button Text="Add To Cart" Type="Primary"></bs:Button>
+                    </div>
+                </ItemTemplate>
+            </dot:Repeater>
+        </bs:Container>
+    </div>
 </dot:Content>
