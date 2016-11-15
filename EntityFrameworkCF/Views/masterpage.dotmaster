@@ -23,13 +23,13 @@
                     <dot:LinkButton Click="{command: SignOut()}" Text="Sign Out" />
                 </AuthenticatedTemplate>
                 <NotAuthenticatedTemplate>
-                    <dot:RouteLink RouteName="LoginPage" Text="Login" />
+                    <dot:RouteLink RouteName="LoginPage" Text="Register now or login" />
                 </NotAuthenticatedTemplate>
             </dot:AuthenticatedView>
         </div>
 
         <div style="text-align:center">
-            <img src="../Images/50c56179-459a-45e9-aba0-67b6ea05fadf.png" />
+            <a href="/" ><img src="../Images/50c56179-459a-45e9-aba0-67b6ea05fadf.png" /></a>
             <h1 class="h1" style="color:lightgray;padding-bottom:15px;font-family:'Lucida Console';font-size:50px">E-Commerce</h1>
         </div>
     </header>

@@ -4,10 +4,10 @@
 
 <dot:Content ContentPlaceHolderID="Main">
 
-    <bs:Container style="width:100%">
+    <bs:Container style="width:100%;">
         <dot:Repeater DataSource="{value: Products}">
             <ItemTemplate>
-                <div class="col-md-3" style="padding-bottom:10px;text-align:center;border:solid;border-color:lightgrey;border-radius:10px;margin-bottom:5px;background-color:darkgrey">
+                <div class="col-md-3" style="padding-bottom:10px;text-align:center;border:solid;border-color:lightgrey;border-radius:10px">
                     <h2>{{value: Name + "(" + ProductID + ")"}}</h2> <br />
                     <bs:Image Type="Circle" Width="120px" Height="100px" ImageUrl="{value: Image}" />
                     <p>{{value: Description}}</p>
