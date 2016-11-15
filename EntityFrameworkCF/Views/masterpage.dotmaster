@@ -13,25 +13,29 @@
     <script src="../Scripts/bootstrap.js"></script>
     <script src="../Scripts/jquery-1.9.1.js"></script>
     <script src="../Scripts/jquery-1.9.1.min.js"></script>
-    <dot:AuthenticatedView>
-        <AuthenticatedTemplate>
-            <div style="text-align:right;margin-right:10px" Validation.Enabled="false">
-                <dot:LinkButton Click="{command: SignOut()}" Text="Sign Out" />
-            </div>
-        </AuthenticatedTemplate>
-        <NotAuthenticatedTemplate>
-            <div style="text-align:right;margin-right:10px" Validation.Enabled="false">
-                <dot:RouteLink RouteName="LoginPage" Text="Login" />
-            </div>
-        </NotAuthenticatedTemplate>
-    </dot:AuthenticatedView>
-    <div ID="Top" style="text-align:center">
-        <img src="../Images/50c56179-459a-45e9-aba0-67b6ea05fadf.png" />
-    </div>
+    <link href="../Content/CSS.css" rel="stylesheet" />
 </head>
 <body>
+    <header style="background-color: rgb(144,142,136)">
+        <div Validation.Enabled="false" ID="login">
+            <dot:AuthenticatedView>
+                <AuthenticatedTemplate>
+                    <dot:LinkButton Click="{command: SignOut()}" Text="Sign Out" />
+                </AuthenticatedTemplate>
+                <NotAuthenticatedTemplate>
+                    <dot:RouteLink RouteName="LoginPage" Text="Login" />
+                </NotAuthenticatedTemplate>
+            </dot:AuthenticatedView>
+        </div>
+
+        <div style="text-align:center">
+            <img src="../Images/50c56179-459a-45e9-aba0-67b6ea05fadf.png" />
+            <h1 class="h1" style="color: rgb(68, 68, 68);padding-bottom:5px">E-Commerce</h1>
+        </div>
+    </header>
     <dot:ContentPlaceHolder ID="Main">
     </dot:ContentPlaceHolder>
+    <footer>ciao icsdi</footer>
 </body>
 </html>
 

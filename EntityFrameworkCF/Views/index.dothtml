@@ -4,9 +4,7 @@
 
 <dot:Content ContentPlaceHolderID="Main">
     
-    <div ID="header" style="text-align:center">
-        <h1 class="h1" >E-Commerce</h1>
-    </div>
+    
     <dot:Repeater DataSource="{value: Products}">
         <ItemTemplate>
             <div class="col-md-3" style="padding-bottom:10px;text-align:center;border:solid;border-color:lightgrey;border-radius:10px;margin-bottom:5px;background-color:darkgrey" >
