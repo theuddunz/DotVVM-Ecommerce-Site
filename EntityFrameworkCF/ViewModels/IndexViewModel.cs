@@ -13,31 +13,31 @@ namespace EntityFrameworkCF.ViewModels
     {
         public Product pr = new Product();
 
-        
+        public string Username { get; set; } = UserService.GetUsername();
 
         public GridViewDataSet<Product> Products { get; set; } = new GridViewDataSet<Product>
         {
             SortExpression = nameof(Product.ProductID),
-            SortDescending= false,
+            SortDescending = false,
             PageSize = 1000
-            
+
         };
 
         public List<Product> ListP { get; set; } = new List<Product>
         {
-            
+
         };
         public override Task PreRender()
         {
             using (var db = new Database())
             {
                 ProductService.LoadProduct(Products);
-                
+
             }
 
             return base.PreRender();
         }
-      
+
     }
 }
 

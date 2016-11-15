@@ -27,9 +27,31 @@ namespace EntityFrameworkCF.ViewModels
             {
                 var id = identity.FindFirst(ClaimTypes.NameIdentifier).Value;
                 return Convert.ToInt32(id);
+
+            }
+            else
+            {
+                return null;
             }
 
-            return null;
+
+        }
+        public static string GetUsername()
+        {
+            using (var db = new Database())
+            {
+                var userid = db.Users.Find(UserService.GetCurrentUserId());
+                if (userid != null)
+                {
+                    return userid.Username.ToString();
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+
         }
     }
 }
