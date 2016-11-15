@@ -17,10 +17,10 @@ namespace EntityFrameworkCF.ViewModels
     public class AdminPageViewModel : MasterpageViewModel
     {
         //variables for the New Product -
-        [Required(ErrorMessage = "The name is required")]
+        [Required(ErrorMessage = "Name is required")]
         public string pNameN { get; set; }
         public string pDescN { get; set; }
-        [Required(ErrorMessage = "The price is Required")]
+        [Required(ErrorMessage = "Price is Required")]
         public double pPriceN { get; set; }
         public string pImgN { get; set; }
         public string pMessageN { get; set; }
@@ -35,14 +35,14 @@ namespace EntityFrameworkCF.ViewModels
         public bool pVisibleE { get; set; }
 
         //Variable for UsersCommands
-        [Required(ErrorMessage ="The Username is required.")]
+        [Required(ErrorMessage ="Username is required.")]
         public string uName { get; set; }
         [Required]
         public string uPass { get; set; }
-        [Required(ErrorMessage = "The Email is required")]
+        [Required(ErrorMessage = "Email is required")]
         public string uEmail { get; set; }
         public string uCountry { get; set; }
-        [Required(ErrorMessage = "The UserID is required." )]
+        [Required(ErrorMessage = "UserID is required." )]
         public int uID { get; set; }
         public UserRole ur { get; set; }
         public bool uVisibleN { get; set; }
@@ -111,7 +111,7 @@ namespace EntityFrameworkCF.ViewModels
                 pr.Image = pImgN;
                 db.Products.Add(pr);
                 db.SaveChanges();
-                pMessageN = "The Product" + pNameN + "has been inserted Correctly ";
+                pMessageN = "The Product" + pNameN + "has been insered Correctly ";
                 pVisibileN = false;
                 Context.RedirectToRoute("Admin");
             }
@@ -132,7 +132,7 @@ namespace EntityFrameworkCF.ViewModels
                     }
                     else
                     {
-                        ErrorMessage = "The ProductID you insert does not exist.";
+                        ErrorMessage = "The ProductID you insered does not exist.";
                     }
                 }
                 catch (Exception)
@@ -163,7 +163,7 @@ namespace EntityFrameworkCF.ViewModels
                     }
                     else
                     {
-                        ErrorMessage = "The ProductID you insert does not exist.";
+                        ErrorMessage = "The ProductID you insered does not exist.";
                     }
                 }
                 catch (Exception)
@@ -209,7 +209,7 @@ namespace EntityFrameworkCF.ViewModels
                     }
                     else
                     {
-                        ErrorMessage = "The User with this ID does not exist.";
+                        ErrorMessage = "No User found with this ID.";
                     }
                 }
             }
@@ -242,7 +242,7 @@ namespace EntityFrameworkCF.ViewModels
                     }
                     else
                     {
-                        ErrorMessage = "The User with this id does not exist.";
+                        ErrorMessage = "No User found with this ID.";
                     }
 
                 }

@@ -2,9 +2,8 @@
 @masterPage  Views/masterpage.dotmaster
 
 <dot:Content ContentPlaceHolderID="Main">
-
-    <content Validator.InvalidCssClass="form-group" Validator.SetToolTipText="true" style="text-align:center">
-        <div Type="Horizontal" style="text-align:center;background-color:rgb(255, 255, 255)">
+    <content Validator.InvalidCssClass="form-group" Validator.SetToolTipText="true" style="text-align:center;">
+        <div Type="Horizontal" style="text-align:center;background-color:rgb(255, 255, 255); vertical-align:central">
             <bs:label Text="Username" class="label-primary" style="font-size:medium;margin-right:10px"/><dot:TextBox Text="{{value: Username}}" Validator.ValidatedValue="{value: Username}" style="margin-bottom:10px"> </dot:TextBox>
             <br />
             <bs:label Text="Password" class="label-primary" style="font-size:medium;margin-right:10px" /><dot:TextBox Type="Password" Text="{{value: Password}}" Validator.ValidatedValue="{value: Password}" style="margin-bottom:10px"> </dot:TextBox>
@@ -18,11 +17,9 @@
         </div>
 
         <div ID="RedirectREG" style="text-align:center">
-            <p class="text-info">You don't have an account Click Here For make It</p>
+            <p class="text-info">You don't have an account? Click here to make one</p>
             <bs:Button Validation.Enabled="false" class="btn-primary" Click="{command:Redirect()}">Sign In</bs:Button>
         </div>
-
-
     </content>
 </dot:Content>
 

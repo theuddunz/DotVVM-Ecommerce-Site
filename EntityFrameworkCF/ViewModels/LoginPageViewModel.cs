@@ -21,9 +21,9 @@ namespace EntityFrameworkCF.ViewModels
             Context.RedirectToRoute("Register");
         }
 
-        [Required(ErrorMessage = "The Username is required")]
+        [Required(ErrorMessage = "Username is required")]
         public string Username { get; set; }
-        [Required(ErrorMessage = "The password is required")]
+        [Required(ErrorMessage = "Password is required")]
         public string Password { get; set; }
 
         [Bind(Direction.ServerToClient)]
@@ -58,7 +58,7 @@ namespace EntityFrameworkCF.ViewModels
                     }
                     else
                     {
-                        ErrorMessage = "The Email or The Password are incorrect";
+                        ErrorMessage = "Email or Password are incorrect";
                     }
                 }
             }

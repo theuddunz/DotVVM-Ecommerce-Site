@@ -13,11 +13,11 @@ namespace EntityFrameworkCF.ViewModels
     {
 
         public string Title { get; set; }
-        [Required(ErrorMessage ="The Username is required")]
+        [Required(ErrorMessage ="Username is required")]
         public string usn { get; set; }
-        [Required(ErrorMessage ="The Password is required")]
+        [Required(ErrorMessage ="Password is required")]
         public string pas { get; set; }
-        [Required(ErrorMessage ="The Email is required")]
+        [Required(ErrorMessage ="Email is required")]
         [EmailAddress(ErrorMessage="This is not a valid E-mail")]
         public string email { get; set; }
         public string country { get; set; }

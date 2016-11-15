@@ -35,7 +35,7 @@
     </header>
     <dot:ContentPlaceHolder ID="Main">
     </dot:ContentPlaceHolder>
-    <footer>ciao icsdi</footer>
+
 </body>
 </html>
 
