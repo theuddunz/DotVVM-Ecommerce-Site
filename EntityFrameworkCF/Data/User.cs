@@ -15,16 +15,17 @@ namespace EntityFrameworkCF.ViewModels
         [Required(ErrorMessage = "The Username is necessary")]
         public string Username { get; set; }
         public UserRole UserRole { get; set; }
-       
+
         [Required(ErrorMessage = "The Password is necessary")]
 
         public string Password { get; set; }
         [Required(ErrorMessage = "The Email is necessary")]
-        [DataType(DataType.EmailAddress,ErrorMessage ="This email it's not valid")]
+        [DataType(DataType.EmailAddress, ErrorMessage = "This email it's not valid")]
 
-        
+
         public string Email { get; set; }
         public string Country { get; set; }
-       
+        
+        
     }
 }

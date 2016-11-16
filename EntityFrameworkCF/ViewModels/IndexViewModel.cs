@@ -15,6 +15,7 @@ namespace EntityFrameworkCF.ViewModels
 
         public string Username { get; set; } = UserService.GetUsername();
 
+
         public GridViewDataSet<Product> Products { get; set; } = new GridViewDataSet<Product>
         {
             SortExpression = nameof(Product.ProductID),
@@ -37,7 +38,20 @@ namespace EntityFrameworkCF.ViewModels
 
             return base.PreRender();
         }
-
+        public void AddToCart(int productid)
+        {
+            using (var db = new Database())
+            {
+                var userid = UserService.GetCurrentUserId();
+                var cart = new CartItem();
+                var product = db.Products.Find(productid);
+                cart.ProductID = productid;
+                cart.CartID = Convert.ToInt32(userid);
+                cart.CartItemID = productid;
+               
+                
+            }
+        }
     }
 }
 

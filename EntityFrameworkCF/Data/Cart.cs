@@ -14,9 +14,13 @@ namespace EntityFrameworkCF.ViewModels
         public double Total { get; set; }
         public int Count { get; set; }
 
-        public virtual ICollection<CartItem> CartItems { get; } = new List<CartItem>();
 
+
+        public virtual ICollection<CartItem> CartItems { get; } = new List<CartItem>();
+        
+        public int UserID { get; set; }
+        public virtual User User { get; set; }
     }
 
-   
+
 }
