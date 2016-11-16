@@ -41,7 +41,7 @@ namespace EntityFrameworkCF.ViewModels
                                     select p;
 
                     var result = checkdata.SingleOrDefault();
-                    string Role = Convert.ToString(result.UserRole);
+
 
                     if (checkdata.Count() != 0)
                     {
@@ -54,7 +54,7 @@ namespace EntityFrameworkCF.ViewModels
                         var identity = new ClaimsIdentity(claims, DefaultAuthenticationTypes.ApplicationCookie);
                         Context.OwinContext.Authentication.SignIn(identity);
 
-                        if (Role == "Admin")
+                        if (result.UserRole.ToString() == "Admin")
                         {
                             Context.RedirectToRoute("Admin");
                         }
@@ -62,23 +62,27 @@ namespace EntityFrameworkCF.ViewModels
                         {
                             Context.RedirectToRoute("Index");
                         }
-                       
+
                     }
                     else
                     {
+
                         ErrorMessage = "Email or Password are incorrect";
                     }
                 }
+
             }
             catch (Exception)
             {
 
-                throw ;
-
+                throw;
             }
+
         }
+
     }
 }
+
 
 
 /* Test Code for the new Authentication
