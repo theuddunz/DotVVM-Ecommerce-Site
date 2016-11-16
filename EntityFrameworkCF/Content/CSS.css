@@ -19,8 +19,12 @@ font-size:30px;
     height: 25px;
 
 }
-.content {
+.content 1{
     min-height: calc(100vh - 255px - 100px);
+}
+
+.content {
+    min-height: 350px;
 }
 
 #footer {

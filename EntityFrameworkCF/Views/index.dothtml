@@ -4,13 +4,26 @@
 
 <dot:Content ContentPlaceHolderID="Main">
     <div class="container" style="margin-top:35px">
-        <bs:Jumbotron ID="jumbo" class="jumbotron" style="position:relative">
+        <bs:Jumbotron ID="jumbo" class="jumbotron">
             <p style="font-size:30px">
                 <b>Welcome to the DotVVM E-Commerce website!</b>
             </p>
-            <p>
-                This website has been created with the aim of demonstrating the possibilities that DotVVM offers.
+            <p style="text-align:left">
+                This website has been created with the aim of demonstrating the possibilities that DotVVM offers. We have included:
+
+                <a href="https://github.com/theuddunz/banana" target="blank"><img src="http://www.pngall.com/wp-content/uploads/2016/04/Github-Free-PNG-Image.png" style="float:right; margin-right: 120px" /></a>
             </p>
+            <div >
+                <ul style="text-align:left; margin-left:50px; font-size:20px">
+                    <li>Owin security</li>
+                    <li>Users management</li>
+                    <li>Products management</li>
+                    <li>Entity framework</li>
+                    <li>Code first</li>
+                    <li>LINQ</li>
+                </ul>
+            </div>
+            <p style="font-size: 20px">Click the Github icon to have access our project! --> <!--<span class="glyphicons glyphicon-arrow-right" ></span>--></p>
         </bs:Jumbotron>
     </div>
 
@@ -31,13 +44,13 @@
     </div>
     <footer class="panel-footer" ID="footer">
         <p>
-            <b>Marco Moi</b>
+            <span class="glyphicon glyphicon glyphicon-user" aria-hidden="true" style="color:#286090"></span><b> Marco Moi</b>
         </p>
         <p>
-            <b>Aurelio D'Urso</b>
+            <span class="glyphicon glyphicon glyphicon-user" aria-hidden="true" style="color:#286090"></span><b> Aurelio D'Urso</b>
         </p>
         <p>
-            <b> Riganti S.r.o., 2016</b>
+            <span class="glyphicon glyphicon glyphicon glyphicon-home" aria-hidden="true" style="color:#286090"></span><b> Riganti S.r.o., 2016</b>
         </p>
     </footer>
 </dot:Content>
