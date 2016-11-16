@@ -3,10 +3,10 @@
 
 
 <dot:Content ContentPlaceHolderID="Main">
-    <div>
-        <bs:Jumbotron ID="jumbo">
-            <p>
-                Welcome to the DotVVM E-Commerce website!
+    <div class="container" style="margin-top:35px">
+        <bs:Jumbotron ID="jumbo" class="jumbotron" style="position:relative">
+            <p style="font-size:30px">
+                <b>Welcome to the DotVVM E-Commerce website!</b>
             </p>
             <p>
                 This website has been created with the aim of demonstrating the possibilities that DotVVM offers.
@@ -15,7 +15,7 @@
     </div>
 
     <div class="content">
-        <bs:Container style="width:100%;">
+        <bs:Container style="width:100%">
             <dot:Repeater DataSource="{value: Products}">
                 <ItemTemplate>
                     <div class="col-md-3" style="padding-bottom:10px;text-align:center;border:solid;border-color:lightgrey;border-radius:10px; margin-bottom:2.5px; margin-top:5px">
@@ -29,4 +29,15 @@
             </dot:Repeater>
         </bs:Container>
     </div>
+    <footer class="panel-footer" ID="footer">
+        <p>
+            <b>Marco Moi</b>
+        </p>
+        <p>
+            <b>Aurelio D'Urso</b>
+        </p>
+        <p>
+            <b> Riganti S.r.o., 2016</b>
+        </p>
+    </footer>
 </dot:Content>
