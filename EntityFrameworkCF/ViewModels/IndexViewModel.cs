@@ -46,10 +46,12 @@ namespace EntityFrameworkCF.ViewModels
                 var cart = new CartItem();
                 var product = db.Products.Find(productid);
                 cart.ProductID = productid;
-                cart.CartID = Convert.ToInt32(userid);
-                cart.CartItemID = productid;
-               
+                cart.Price = product.Price;
                 
+                db.CartItems.Add(cart);
+                db.SaveChanges();
+                //bisogna mettere questo item sul carrello
+                //Controlla su youtube le Foreign Key
             }
         }
     }

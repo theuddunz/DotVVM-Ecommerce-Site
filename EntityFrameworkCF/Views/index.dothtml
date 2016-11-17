@@ -36,7 +36,7 @@
                         <bs:Image Type="Circle" Width="120px" Height="100px" ImageUrl="{value: Image}" />
                         <p>{{value: Description}}</p>
                         <h4>{{value: "Price: " + "$" +Price }}</h4> <br />
-                        <bs:Button Text="Add To Cart" Type="Primary"></bs:Button>
+                        <bs:Button Text="Add To Cart" Type="Primary" Click="{command: _root.AddToCart(ProductID)}"></bs:Button>
                     </div>
                 </ItemTemplate>
             </dot:Repeater>
