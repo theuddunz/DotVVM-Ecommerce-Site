@@ -9,7 +9,7 @@ namespace EntityFrameworkCF.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "EntityFrameworkCF.ViewModels.Database";
         }
 

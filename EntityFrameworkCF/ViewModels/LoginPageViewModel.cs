@@ -54,6 +54,18 @@ namespace EntityFrameworkCF.ViewModels
                         var identity = new ClaimsIdentity(claims, DefaultAuthenticationTypes.ApplicationCookie);
                         Context.OwinContext.Authentication.SignIn(identity);
 
+                        var findcart = from p in db.Carts
+                                       where p.CartID == result.UserID
+                                       select p;
+
+                        if (findcart.Count() == 0)
+                        {
+                            var cart = new Cart();
+                            cart.CartID = result.UserID;
+                            db.Carts.Add(cart);
+                            db.SaveChanges();
+                        }
+
                         if (result.UserRole.ToString() == "Admin")
                         {
                             Context.RedirectToRoute("Admin");

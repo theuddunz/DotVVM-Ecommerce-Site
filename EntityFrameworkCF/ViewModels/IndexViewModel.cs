@@ -11,7 +11,7 @@ namespace EntityFrameworkCF.ViewModels
 {
     public class IndexViewModel : MasterpageViewModel
     {
-        public Product pr = new Product();
+
 
         public string Username { get; set; } = UserService.GetUsername();
 
@@ -43,15 +43,16 @@ namespace EntityFrameworkCF.ViewModels
             using (var db = new Database())
             {
                 var userid = UserService.GetCurrentUserId();
-                var cart = new CartItem();
                 var product = db.Products.Find(productid);
-                cart.ProductID = productid;
-                cart.Price = product.Price;
-                
-                db.CartItems.Add(cart);
+                Cart cart = db.Carts.Find(userid);
+                var citem = new CartItem();
+                citem.Price = product.Price;
+                citem.Name = product.Name;
+                citem.ProductID = product.ProductID;
+                db.CartItems.Add(citem);
+                cart.CartItems.Add(citem);
                 db.SaveChanges();
-                //bisogna mettere questo item sul carrello
-                //Controlla su youtube le Foreign Key
+
             }
         }
     }
