@@ -9,10 +9,16 @@
     <div class="content" style="margin-top:20px">
         <content Validator.InvalidCssClass="form-group" Validator.SetToolTipText="true" style="text-align:center">
             <div Type="Horizontal" style="text-align:center;background-color:rgb(255, 255, 255)">
-                <bs:label Text="Username" class="label-primary" style="font-size:medium;margin-right:10px" /><dot:TextBox Text="{{value: Username}}" Validator.ValidatedValue="{value: Username}" style="margin-bottom:10px"> </dot:TextBox>
-                <br />
-                <bs:label Text="Password" class="label-primary" style="font-size:medium;margin-right:10px" /><dot:TextBox Type="Password" Text="{{value: Password}}" Validator.ValidatedValue="{value: Password}" style="margin-bottom:10px"> </dot:TextBox>
-                <br />
+                <table style="text-align:center; margin: 0 auto">
+                    <tr>
+                        <td><bs:label Text="Username" class="label-primary" style="font-size:medium"/></td>
+                        <td><dot:TextBox class="form-control" Text="{{value: Username}}" Validator.ValidatedValue="{value: Username}" style="margin:4px"> </dot:TextBox></td>
+                    </tr>
+                    <tr>
+                        <td><bs:label Text="Password" class="label-primary" style="font-size:medium"  /></td>
+                        <td><dot:TextBox class="form-control" Type="Password" Text="{{value: Password}}" Validator.ValidatedValue="{value: Password}" style="margin:4px"> </dot:TextBox></td>
+                    </tr>
+                </table>
                 <div class="form-group" style="text-align:center;color:red">
                     {{value: ErrorMessage}}
                     <dot:ValidationSummary />

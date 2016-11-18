@@ -1,0 +1,9 @@
+﻿@viewModel EntityFrameworkCF.ViewModels.ProfilePageViewModel, EntityFrameworkCF
+@masterPage Views/masterpage.dotmaster
+
+<dot:Content ContentPlaceHolderID="Main">
+
+
+    
+</dot:Content>
+

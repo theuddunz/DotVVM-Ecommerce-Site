@@ -38,7 +38,7 @@
         <bs:Container style="width:70%">
             <dot:Repeater DataSource="{value: Products}">
                 <ItemTemplate>
-                    <div class="col-md-3" style="padding-bottom:10px;text-align:center;border:solid;border-color:lightgrey;border-radius:10px; margin-bottom:2.5px; margin-top:5px">
+                    <div class="col-md-3" style="padding-bottom:10px;text-align:center;border:solid;border-color:lightgrey;border-radius:10px; margin-bottom:2.5px; margin-top:5px; max-height:310px">
                         <h2>{{value: Name + "(" + ProductID + ")"}}</h2> <br />
                         <bs:Image Type="Circle" Width="120px" Height="100px" ImageUrl="{value: Image}" />
                         <p>{{value: Description}}</p>
@@ -54,26 +54,26 @@
                     </div>
                 </ItemTemplate>
             </dot:Repeater>
-            <%--Modal Dialog For Edit the Item--%>
+            <%--Modal Dialog For Editing the Item--%>
             <bs:ModalDialog IsDisplayed="{value: _root.Displayed}">
                 <HeaderTemplate>Edit Product</HeaderTemplate>
                 <ContentTemplate>
-                    <table>
+                    <table style="margin:0 auto; text-align:center">
                         <tr>
                             <td><bs:Label Text="Name" /></td>
-                            <td><dot:TextBox Text="{value: _root.pName}" /></td>
+                            <td><dot:TextBox class="form-control" style="margin:3px" Text="{value: _root.pName}" /></td>
                         </tr>
                         <tr>
                             <td><bs:Label Text="Price" /></td>
-                            <td><dot:TextBox Text="{value: _root.pPrice}" /></td>
+                            <td><dot:TextBox class="form-control" style="margin:3px" Text="{value: _root.pPrice}" /></td>
                         </tr>
                         <tr>
                             <td><bs:Label Text="Description" /></td>
-                            <td><dot:TextBox Text="{value: _root.pDesc}" /></td>
+                            <td><dot:TextBox class="form-control" style="margin:3px" Text="{value: _root.pDesc}" /></td>
                         </tr>
                         <tr>
                             <td><bs:Label Text="Img url" /></td>
-                            <td><dot:TextBox Text="{value: _root.pIMG}" /></td>
+                            <td><dot:TextBox class="form-control" style="margin:3px" Text="{value: _root.pIMG}" /></td>
                         </tr>
                     </table>
                 </ContentTemplate>
@@ -82,13 +82,10 @@
                 </FooterTemplate>
             </bs:ModalDialog>
             <%--AddProduct Button--%>
-            <bs:Container>
-                <div class="col-md-3" style="text-align:center;margin-top:100px">
-                    <bs:GlyphIcon Icon="Plus" style="font-size:100px;border:solid;border-color:lightgray;border-radius:50%;width:110px;height:110px;padding-left:6px;" StyleDecorator.TextColor="Primary" Events.Click="{command: AddProduct()}">
+                <div class="col-md-3" style="text-align:center; margin-top:90px; height:310px" >
+                    <bs:GlyphIcon Icon="Plus" style="font-size:100px;border:solid;border-color:lightgray;border-radius:50%;width:110px;height:110px;padding-left:6px" StyleDecorator.TextColor="Primary" Events.Click="{command: AddProduct()}">
                     </bs:GlyphIcon>
-                    <h4>Add Product</h4>
                 </div>
-            </bs:Container>
             <%--End AddProductButton--%>
         </bs:Container>
     </div>

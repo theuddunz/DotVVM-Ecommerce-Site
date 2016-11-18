@@ -150,6 +150,7 @@
     <Compile Include="Data\Database.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="Data\Product.cs" />
+    <Compile Include="ViewModels\ProfilePageViewModel.cs" />
     <Compile Include="ViewModels\RegisterPage.cs" />
     <Compile Include="ViewModels\IndexViewModel.cs" />
     <Compile Include="ViewModels\MasterpageViewModel.cs" />
@@ -186,6 +187,7 @@
     <Content Include="Views\masterpage.dotmaster" />
     <Content Include="Views\LoginPage.dothtml" />
     <Content Include="Views\AdminPage.dothtml" />
+    <Content Include="Views\ProfilePage.dothtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
