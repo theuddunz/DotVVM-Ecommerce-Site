@@ -82,13 +82,17 @@
                 </FooterTemplate>
             </bs:ModalDialog>
             <%--AddProduct Button--%>
-            <bs:Container>
-                <div class="col-md-3" style="text-align:center;margin-top:100px">
-                    <bs:GlyphIcon Icon="Plus" style="font-size:100px;border:solid;border-color:lightgray;border-radius:50%;width:110px;height:110px;padding-left:6px;" StyleDecorator.TextColor="Primary" Events.Click="{command: AddProduct()}">
-                    </bs:GlyphIcon>
-                    <h4>Add Product</h4>
-                </div>
-            </bs:Container>
+            <dot:RoleView Roles="Admin">
+                <IsMemberTemplate>
+                    <bs:Container>
+                        <div class="col-md-3" style="text-align:center;margin-top:100px">
+                            <bs:GlyphIcon Icon="Plus" style="font-size:100px;border:solid;border-color:lightgray;border-radius:50%;width:110px;height:110px;padding-left:6px;" StyleDecorator.TextColor="Primary" Events.Click="{command: AddProduct()}">
+                            </bs:GlyphIcon>
+                            <h4>Add Product</h4>
+                        </div>
+                    </bs:Container>
+                </IsMemberTemplate>
+            </dot:RoleView>
             <%--End AddProductButton--%>
         </bs:Container>
     </div>
