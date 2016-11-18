@@ -17,15 +17,15 @@
                 </bs:DropDownButtonHeader>
 
                 <bs:DropDownButtonItem Text="Add User" Click="{command: CallUN()}" />
-                <bs:DropDownButtonItem Text="Edit User" Click="{command: CallUE()}"/>
-                <bs:DropDownButtonItem Text="Delete User" Click="{command: CallUD()}"/>
+                <bs:DropDownButtonItem Text="Edit User" Click="{command: CallUE()}" />
+                <bs:DropDownButtonItem Text="Delete User" Click="{command: CallUD()}" />
                 <bs:DropDownButtonHeader>
                     Product Commands
                 </bs:DropDownButtonHeader>
 
                 <bs:DropDownButtonItem Text="Add Product" Click="{command: CallPN()}" />
-                <bs:DropDownButtonItem Text="Edit Product" Click="{command: CallPE()}"/>
-                <bs:DropDownButtonItem Text="Delete Product" Click="{command: CallPD()}"/>
+                <bs:DropDownButtonItem Text="Edit Product" Click="{command: CallPE()}" />
+                <bs:DropDownButtonItem Text="Delete Product" Click="{command: CallPD()}" />
             </Items>
         </bs:DropDownButton>
     </bs:Form>
@@ -33,97 +33,162 @@
 
     <!--ADDUSER-->
     <div Visible="{value:uVisibleN}" style="text-align:center" Validation.Enabled="false">
-        <h2 StyleDecorator.TextColor="Warning">Add new User</h2>
-        <bs:Label Text="Name" /> <dot:TextBox Text="{value: uName}" /> <br />
-        <bs:Label Text="Password" /> <dot:TextBox Text="{value: uPass}" /><br />
-        <bs:Label Text="Email" /> <dot:TextBox Text="{value: uEmail}"  /><br />
-        <bs:Label Text="Country" /> <dot:TextBox Text="{value: uCountry}" /><br />
-        <bs:Label Text="UserRole" /> <dot:TextBox Text="{value: ur}" /><br />
-        <bs:Button Type="Primary" Text="Add" Click="{command: AddUser()}"></bs:Button>
-        <bs:button Validation.Enabled="false" Type="Warning" Text="Cancel" Click="{command: setfalseuN()}"></bs:button>
+
+        <table style="text-align:center; margin: 0 auto">
+            <tr>
+                <td colspan="2"><h2 StyleDecorator.TextColor="Warning">Add new User:</h2></td>
+            </tr>
+            <tr>
+                <td><bs:Label Text="Name" /></td>
+                <td><dot:TextBox style="margin:2.5px" Text="{value: uName}" /></td>
+            </tr>
+            <tr>
+                <td><bs:Label Text="Password" /> </td>
+                <td><dot:TextBox style="margin:2.5px" Text="{value: uPass}" /></td>
+            </tr>
+            <tr>
+                <td><bs:Label Text="Email" /></td>
+                <td><dot:TextBox style="margin:2.5px" Text="{value: uEmail}" /></td>
+            </tr>
+            <tr>
+                <td><bs:Label Text="Country" /></td>
+                <td><dot:TextBox style="margin:2.5px" Text="{value: uCountry}" /></td>
+            </tr>
+            <tr>
+                <td><bs:Label Text="UserRole" /></td>
+                <td><dot:TextBox style="margin:2.5px" Text="{value: ur}" /></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <bs:Button style="margin-top:5px" Type="Primary" Text="Add" Click="{command: AddUser()}"></bs:Button>
+                    <bs:button style="margin-top:5px" Validation.Enabled="false" Type="Warning" Text="Cancel" Click="{command: setfalseuN()}"></bs:button>
+                </td>
+            </tr>
+
+        </table>
     </div>
+
     <!--EDITUSER--->
     <div style="text-align:center" Validation.Enabled="false" Visible="{value:uVisibleE}">
-        <bs:Label Text="Insert the UserID" /> <dot:TextBox Text="{value: uID}"></dot:TextBox>
-        <bs:Label Text="Name" /> <dot:TextBox Text="{value: uName}"></dot:TextBox>
-        <bs:Label Text="Password" /><dot:TextBox Text="{value: uPass}"></dot:TextBox>
-        <bs:Label Text="Email" /><dot:TextBox Text="{value: uEmail}"></dot:TextBox>
-        <bs:Label Text="Country" /><dot:TextBox Text="{value: uCountry}"></dot:TextBox>
-        <bs:Label Text="UserRole" /><dot:TextBox Text="{value: ur}"></dot:TextBox>
-        <bs:Button Text="Edit" Click="{command: EditUser()}" />
-        <bs:button Validation.Enabled="false" Type="Warning" Text="Cancel" Click="{command: setfalseuE()}"></bs:button>
-        
+
+        <table style="text-align:center; margin: 0 auto">
+            <tr>
+                <td colspan="2"><h2 StyleDecorator.TextColor="Warning">Edit User:</h2></td>
+            </tr>
+            <tr>
+                <td><bs:Label Text="UserID" /></td>
+                <td><dot:TextBox style="margin:2.5px" Text="{value: uID}"></dot:TextBox></td>
+            </tr>
+            <tr>
+                <td><bs:Label Text="Name" /></td>
+                <td><dot:TextBox style="margin:2.5px" Text="{value: uName}"></dot:TextBox></td>
+            </tr>
+            <tr>
+                <td><bs:Label Text="Password" /></td>
+                <td><dot:TextBox style="margin:2.5px" Text="{value: uPass}"></dot:TextBox></td>
+            </tr>
+            <tr>
+                <td><bs:Label Text="Email" /></td>
+                <td><dot:TextBox style="margin:2.5px" Text="{value: uEmail}"></dot:TextBox></td>
+            </tr>
+            <tr>
+                <td><bs:Label Text="Country" /></td>
+                <td><dot:TextBox style="margin:2.5px" Text="{value: uCountry}"></dot:TextBox></td>
+            </tr>
+            <tr>
+                <td><bs:Label Text="UserRole" /></td>
+                <td><dot:TextBox style="margin:2.5px" Text="{value: ur}"></dot:TextBox></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <bs:Button style="margin-top:5px" Text="Confirm" Click="{command: EditUser()}" />
+                    <bs:button style="margin-top:5px" Validation.Enabled="false" Type="Warning" Text="Cancel" Click="{command: setfalseuE()}"></bs:button>
+                </td>
+            </tr>
+        </table>
     </div>
     <!--DELETEUSER-->
     <div style="text-align:center" Validation.Enabled="false" Visible="{value:uVisibleD}">
-        <bs:Label Text="ProductID" /> <dot:TextBox Text="{value: uID}"></dot:TextBox>
-        <bs:Button Text="Delete" Click="{command: DeleteUser()}" />
-        <bs:button Validation.Enabled="false" Type="Warning" Text="Cancels" Click="{command: setfalseuD()}"></bs:button>
-        </div>
-
-   
-
-        <!--DELETEPRODUCT-->
-        <div style="text-align:center" Validation.Enabled="false" Visible="{value:pVisibleD}">
-            <bs:Label Text="ProductID" /> <dot:TextBox Text="{value: pIDD}"></dot:TextBox>
-            <bs:Button Text="Delete" Click="{command: DeleteProduct()}" />
-            <bs:button Validation.Enabled="false" Type="Warning" Text="Cancel" Click="{command: setfalseD()}"></bs:button>
-
-        </div>
-        <!--EDITPRODUCT-->
-        <div style="text-align:center" Validation.Enabled="false" Visible="{value:pVisibleE}">
-            <bs:Label Text="Insert the ProductID" /> <dot:TextBox Text="{value: pIDD}"></dot:TextBox>
-            <bs:Label Text="Name" /> <dot:TextBox Text="{value: pNameN}"></dot:TextBox>
-            <bs:Label Text="Description" /><dot:TextBox Text="{value: pDescN}"></dot:TextBox>
-            <bs:Label Text="Price" /><dot:TextBox Text="{value: pPriceN}"></dot:TextBox>
-            <bs:Label Text="Image url" /><dot:TextBox Text="{value: pImgN}"></dot:TextBox>
-            <bs:Button Text="Edit" Click="{command: EditProduct()}" />
-            <bs:button Validation.Enabled="false" Type="Warning" Text="Cancel" Click="{command: setfalseE()}"></bs:button>
-        </div>
-        <!--ADDNEWPRODUCT-->
-        <div Visible="{value:pVisibileN}" style="text-align:center" Validation.Enabled="false">
-            <h2 StyleDecorator.TextColor="Warning">Add new product</h2>
-            <bs:Label Text="Name" /> <dot:TextBox Text="{value: pNameN}" /> <br />
-            <bs:Label Text="Price" /> <dot:TextBox Text="{value: pPriceN}" /><br />
-            <bs:Label Text="Description" /> <dot:TextBox Text="{value: pDescN}" Type="MultiLine" /><br />
-            <bs:Label Text="IMG Url" /> <dot:TextBox Text="{value: pImgN}" /><br />
-            <bs:Button Type="Primary" Text="Add" Click="{command: addpr()}"></bs:Button>
-            <bs:button Validation.Enabled="false" Type="Warning" Text="Cancel" Click="{command: setfalseN()}"></bs:button>
-        </div>
+        <table style="text-align:center; margin: 0 auto">
+            <tr>
+                <td colspan="2"><h2 StyleDecorator.TextColor="Warning">Delete User:</h2></td>
+            </tr>
+            <tr>
+                <td><bs:Label Text="ProductID" /></td>
+                <td><dot:TextBox style="margin:2.5px" Text="{value: uID}"></dot:TextBox></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <bs:Button  style="margin-top:5px" Text="Delete" Click="{command: DeleteUser()}" />
+                    <bs:button style="margin-top:5px" Validation.Enabled="false" Type="Warning" Text="Cancels" Click="{command: setfalseuD()}"></bs:button>
+                </td>
+            </tr>
+        </table>
+    </div>
 
 
-        <!--VALIDATOR-->
-        <div>
-            {{value: ErrorMessage}}
-            <dot:ValidationSummary />
-        </div>
 
-        <!--USERSLIST-->
-        <bs:Table Validation.Enabled="false">
-            <h2 style="text-align:center">User List</h2>
-            <bs:GridView DataSource="{value: Users}" ShowHeaderWhenNoData="true" class="table-bordered">
-                <Columns>
-                    <dot:GridViewTextColumn ValueBinding="{value: UserID}" HeaderText="UserID" />
-                    <dot:GridViewTextColumn ValueBinding="{value: Username}" HeaderText="Username" />
-                    <dot:GridViewTextColumn ValueBinding="{value: Email}" HeaderText="Email" />
-                    <dot:GridViewTextColumn ValueBinding="{value: Password}" HeaderText="Password" />
-                    <dot:GridViewTextColumn ValueBinding="{value: Country}" HeaderText="Country" />
-                    <dot:GridViewTextColumn ValueBinding="{value: UserRole}" HeaderText="UserRole" />
-                </Columns>
-            </bs:GridView>
-        </bs:Table>
-        <!--PRODUCTLIST-->
-        <bs:Table Type="Bordered" Validation.Enabled="false">
-            <h2 style="text-align:center">Product List</h2>
-            <bs:GridView DataSource="{value: Products}" ShowHeaderWhenNoData="true" class="table-bordered">
-                <Columns>
-                    <dot:GridViewTextColumn ValueBinding="{value: ProductID}" HeaderText="ProductID" />
-                    <dot:GridViewTextColumn ValueBinding="{value: Name}" HeaderText="Name" />
-                    <dot:GridViewTextColumn ValueBinding="{value: Description}" HeaderText="Description" />
-                    <dot:GridViewTextColumn ValueBinding="{value: Price}" HeaderText="Price" />
+    <!--DELETEPRODUCT-->
+    <div style="text-align:center" Validation.Enabled="false" Visible="{value:pVisibleD}">
+        <bs:Label Text="ProductID" /> <dot:TextBox Text="{value: pIDD}"></dot:TextBox>
+        <bs:Button Text="Delete" Click="{command: DeleteProduct()}" />
+        <bs:button Validation.Enabled="false" Type="Warning" Text="Cancel" Click="{command: setfalseD()}"></bs:button>
 
-                </Columns>
-            </bs:GridView>
-        </bs:Table>
+    </div>
+    <!--EDITPRODUCT-->
+    <div style="text-align:center" Validation.Enabled="false" Visible="{value:pVisibleE}">
+        <bs:Label Text="Insert the ProductID" /> <dot:TextBox Text="{value: pIDD}"></dot:TextBox>
+        <bs:Label Text="Name" /> <dot:TextBox Text="{value: pNameN}"></dot:TextBox>
+        <bs:Label Text="Description" /><dot:TextBox Text="{value: pDescN}"></dot:TextBox>
+        <bs:Label Text="Price" /><dot:TextBox Text="{value: pPriceN}"></dot:TextBox>
+        <bs:Label Text="Image url" /><dot:TextBox Text="{value: pImgN}"></dot:TextBox>
+        <bs:Button Text="Edit" Click="{command: EditProduct()}" />
+        <bs:button Validation.Enabled="false" Type="Warning" Text="Cancel" Click="{command: setfalseE()}"></bs:button>
+    </div>
+    <!--ADDNEWPRODUCT-->
+    <div Visible="{value:pVisibileN}" style="text-align:center" Validation.Enabled="false">
+        <h2 StyleDecorator.TextColor="Warning">Add new product</h2>
+        <bs:Label Text="Name" /> <dot:TextBox Text="{value: pNameN}" /> <br />
+        <bs:Label Text="Price" /> <dot:TextBox Text="{value: pPriceN}" /><br />
+        <bs:Label Text="Description" /> <dot:TextBox Text="{value: pDescN}" Type="MultiLine" /><br />
+        <bs:Label Text="IMG Url" /> <dot:TextBox Text="{value: pImgN}" /><br />
+        <bs:Button Type="Primary" Text="Add" Click="{command: addpr()}"></bs:Button>
+        <bs:button Validation.Enabled="false" Type="Warning" Text="Cancel" Click="{command: setfalseN()}"></bs:button>
+    </div>
+
+
+    <!--VALIDATOR-->
+    <div>
+        {{value: ErrorMessage}}
+        <dot:ValidationSummary />
+    </div>
+
+    <!--USERSLIST-->
+    <bs:Table Validation.Enabled="false">
+        <h2 style="text-align:center">User List</h2>
+        <bs:GridView DataSource="{value: Users}" ShowHeaderWhenNoData="true" class="table-bordered">
+            <Columns>
+                <dot:GridViewTextColumn ValueBinding="{value: UserID}" HeaderText="UserID" />
+                <dot:GridViewTextColumn ValueBinding="{value: Username}" HeaderText="Username" />
+                <dot:GridViewTextColumn ValueBinding="{value: Email}" HeaderText="Email" />
+                <dot:GridViewTextColumn ValueBinding="{value: Password}" HeaderText="Password" />
+                <dot:GridViewTextColumn ValueBinding="{value: Country}" HeaderText="Country" />
+                <dot:GridViewTextColumn ValueBinding="{value: UserRole}" HeaderText="UserRole" />
+            </Columns>
+        </bs:GridView>
+    </bs:Table>
+    <!--PRODUCTLIST-->
+    <bs:Table Type="Bordered" Validation.Enabled="false">
+        <h2 style="text-align:center">Product List</h2>
+        <bs:GridView DataSource="{value: Products}" ShowHeaderWhenNoData="true" class="table-bordered">
+            <Columns>
+                <dot:GridViewTextColumn ValueBinding="{value: ProductID}" HeaderText="ProductID" />
+                <dot:GridViewTextColumn ValueBinding="{value: Name}" HeaderText="Name" />
+                <dot:GridViewTextColumn ValueBinding="{value: Description}" HeaderText="Description" />
+                <dot:GridViewTextColumn ValueBinding="{value: Price}" HeaderText="Price" />
+
+            </Columns>
+        </bs:GridView>
+    </bs:Table>
 
 </dot:Content>

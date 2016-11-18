@@ -37,3 +37,7 @@ font-size:30px;
 .body {
 	font-family: 'Open Sans', sans-serif;
 }
+
+.cell {
+    margin:5px;
+}
