@@ -17,245 +17,85 @@ namespace EntityFrameworkCF.ViewModels
     public class AdminPageViewModel : MasterpageViewModel
     {
         //variables for the New Product -
-        [Required(ErrorMessage = "Name is required")]
-        public string pNameN { get; set; }
-        public string pDescN { get; set; }
-        [Required(ErrorMessage = "Price is Required")]
-        public double pPriceN { get; set; }
-        public string pImgN { get; set; }
-        public string pMessageN { get; set; }
-        public bool pVisibileN { get; set; }
-        [Bind(Direction.ServerToClient)]
-        public string ErrorMessage { get; set; }
+        public bool Displayed { get; set; } = false;
+        public bool eDisplayed { get; set; } = false;
 
-        //Variable for DeleteProduct
-        public int pIDD { get; set; }
-        public bool pVisibleD { get; set; }
-        //Variable For EditProduct
-        public bool pVisibleE { get; set; }
-
-        //Variable for UsersCommands
-        [Required(ErrorMessage ="Username is required.")]
         public string uName { get; set; }
-        [Required]
         public string uPass { get; set; }
-        [Required(ErrorMessage = "Email is required")]
         public string uEmail { get; set; }
         public string uCountry { get; set; }
-        [Required(ErrorMessage = "UserID is required." )]
-        public int uID { get; set; }
-        public UserRole ur { get; set; }
-        public bool uVisibleN { get; set; }
-        public bool uVisibleE { get; set; }
-        public bool uVisibleD { get; set; }
+        public UserRole us { get; set; }
 
-        //FUNCTION FOR SET TRUE AND FALSE IN THE BOOLEAN VARIABLE
-        public void CallUN()
-        {
-            uVisibleN = true;
-        }
-        public void CallUD()
-        {
-            uVisibleD = true;
-        }
-        public void CallUE()
-        {
-            uVisibleE = true;
-        }
+        public int uid { get; set; }
 
-        public void CallPN()
-        {
-            pVisibileN = true;
-        }
-        public void CallPD()
-        {
-            pVisibleD = true;
-        }
-        public void CallPE()
-        {
-            pVisibleE = true;
-        }
-        public void setfalseN()
-        {
-            pVisibileN = false;
-        }
-        public void setfalseD()
-        {
-            pVisibleD = false;
-        }
-        public void setfalseE()
-        {
-            pVisibleE = false;
-        }
-        public void setfalseuN()
-        {
-            uVisibleN = false;
-        }
-        public void setfalseuD()
-        {
-            uVisibleD = false;
-        }
-        public void setfalseuE()
-        {
-            uVisibleE = false;
-        }
-        public void addpr()
-        {
-            using (Database db = new Database())
-            {
-                var pr = new Product();
 
-                pr.Name = pNameN;
-                pr.Description = pDescN;
-                pr.Price = pPriceN;
-                pr.Image = pImgN;
-                db.Products.Add(pr);
-                db.SaveChanges();
-                pMessageN = "The Product" + pNameN + "has been insered Correctly ";
-                pVisibileN = false;
-                Context.RedirectToRoute("Admin");
-            }
-        }
-        public void DeleteProduct()
+        public void ShowEditUser(int id)
         {
             using (var db = new Database())
             {
-                try
-                {
-                    var entity = db.Products.Find(pIDD);
-                    if (entity != null)
-                    {
-                        db.Products.Remove(entity);
-                        db.SaveChanges();
-                        Context.RedirectToRoute("Admin");
-                        pVisibleD = false;
-                    }
-                    else
-                    {
-                        ErrorMessage = "The ProductID you insered does not exist.";
-                    }
-                }
-                catch (Exception)
-                {
+                var user = db.Users.Find(id);
+                uName = user.Username;
+                uPass = user.Password;
+                uEmail = user.Email;
+                uCountry = user.Country;
+                us = user.UserRole;
+                uid = id;
 
-                    throw;
-                }
             }
-
+            eDisplayed = true;
         }
-        public void EditProduct()
+        public void ShowAddUser()
         {
-            using (var db = new Database())
-            {
-
-                try
-                {
-                    var entity = db.Products.Find(pIDD);
-                    if (entity != null)
-                    {
-                        entity.Name = pNameN;
-                        entity.Price = pPriceN;
-                        entity.Description = pDescN;
-                        entity.Image = pImgN;
-                        db.SaveChanges();
-                        pVisibleE = false;
-                        Context.RedirectToRoute("Admin");
-                    }
-                    else
-                    {
-                        ErrorMessage = "The ProductID you insered does not exist.";
-                    }
-                }
-                catch (Exception)
-                {
-
-                    throw;
-                }
-            }
-
+           
+           uName = "NewUser";
+            uPass = "newuserpassword";
+            uEmail = "-";
+            uCountry = "-";
+            Displayed = true;
         }
-
         public void AddUser()
         {
+            
             using (var db = new Database())
             {
                 var user = new User();
                 user.Username = uName;
+                user.Email = uEmail;
+                user.Password = uPass;
+                user.Country = uCountry;
+                user.UserRole = us;
+                db.Users.Add(user);
+                db.SaveChanges();
+                Displayed = false;
+                UserService.LoadUser(Users);
+            }
+        }
+
+        public void EditUser(int id)
+        {
+            using (var db = new Database())
+            {
+                var user = db.Users.Find(id);
+                user.Username = uName;
                 user.Password = uPass;
                 user.Email = uEmail;
                 user.Country = uCountry;
-                user.UserRole = ur;
-                
-                db.Users.Add(user);
+                user.UserRole = us;
                 db.SaveChanges();
-                uVisibleN = false;
-                Context.RedirectToRoute("Admin");
+                eDisplayed = false;
+                UserService.LoadUser(Users);
             }
         }
-
-        public void DeleteUser()
+        public void DeleteUser(int id)
         {
-            try
+            using (var db = new Database())
             {
-                using (var db = new Database())
-                {
-                    var entity = db.Users.Find(uID);
-                    if (entity != null)
-                    {
-                        db.Users.Remove(entity);
-                        uVisibleD = false;
-                        db.SaveChanges();
-                        Context.RedirectToRoute("Admin");
-                    }
-                    else
-                    {
-                        ErrorMessage = "No User found with this ID.";
-                    }
-                }
+                var user = db.Users.Find(id);
+                db.Users.Remove(user);
+                db.SaveChanges();
+                UserService.LoadUser(Users);
             }
-            catch (Exception)
-            {
-
-                throw;
-            }
-
-
         }
-
-        public void EditUser()
-        {
-            try
-            {
-                using (var db = new Database())
-                {
-                    var entity = db.Users.Find(uID);
-                    if (entity != null)
-                    {
-                        entity.Username = uName;
-                        entity.Password = uPass;
-                        entity.Email = uEmail;
-                        entity.Country = uCountry;
-                        entity.UserRole = ur;
-                        db.SaveChanges();
-                        uVisibleE = false;
-                        Context.RedirectToRoute("Admin");
-                    }
-                    else
-                    {
-                        ErrorMessage = "No User found with this ID.";
-                    }
-
-                }
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-
-        }
-
-
 
         public GridViewDataSet<User> Users { get; set; } = new GridViewDataSet<User>
         {
