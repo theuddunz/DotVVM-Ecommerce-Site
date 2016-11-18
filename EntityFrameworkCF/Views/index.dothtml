@@ -47,8 +47,8 @@
                         <%--Edit Product And Delete Icon --%>
                         <dot:RoleView Roles="Admin">
                             <IsMemberTemplate>
-                                <dot:LinkButton class="glyphicon glyphicon-trash" Click="{command: _root.DeleteProduct(ProductID)}" style="margin-right:2px"></dot:LinkButton>
-                                <dot:LinkButton class="glyphicon glyphicon-pencil" Click="{command: _root.ShowEditProduct(ProductID)}"></dot:LinkButton>
+                                <dot:LinkButton class="glyphicon glyphicon-trash"  StyleDecorator.TextColor="Danger" Click="{command: _root.DeleteProduct(ProductID)}" style="margin-right:2px"></dot:LinkButton>
+                                <dot:LinkButton class="glyphicon glyphicon-edit" Click="{command: _root.ShowEditProduct(ProductID)}"></dot:LinkButton>
                             </IsMemberTemplate>
                         </dot:RoleView>
                     </div>

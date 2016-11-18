@@ -46,7 +46,7 @@
     <!--PRODUCTLIST-->
     <h2 style="text-align:center">Product List</h2>
     <%--CommandADD--%>
-    <dot:LinkButton Click="{command: ShowAddUser()}">
+    <dot:LinkButton Click="{command: ShowAddProduct()}">
         <bs:GlyphIcon Icon="Plus" StyleDecorator.TextColor="Primary" style="font-size:20px;margin-left:3px" /> New Product
     </dot:LinkButton>
     <bs:Table Type="Bordered">
@@ -58,10 +58,10 @@
                 <dot:GridViewTextColumn ValueBinding="{value: Price}" HeaderText="Price" />
                 <dot:GridViewTemplateColumn>
                     <dot:LinkButton>
-                        <bs:GlyphIcon Icon="Edit" />
+                        <bs:GlyphIcon Icon="Edit" Events.Click="{command: _root.ShowEditProduct(ProductID)}"/>
                     </dot:LinkButton>
                     <dot:LinkButton>
-                        <bs:GlyphIcon Icon="Trash" StyleDecorator.TextColor="Danger" />
+                        <bs:GlyphIcon Icon="Trash" StyleDecorator.TextColor="Danger" Events.Click="{command:_root.DeleteProduct(ProductID)}"/>
                     </dot:LinkButton>
                 </dot:GridViewTemplateColumn>
             </Columns>
@@ -144,4 +144,70 @@
         </FooterTemplate>
     </bs:ModalDialog>
 
+    <%--MODAL DIALOG FOR THE EDIT BUTTON PRODUCT --%>
+    <bs:ModalDialog IsDisplayed="{value: peDisplayed}">
+        <HeaderTemplate><h2>Edit Product</h2></HeaderTemplate>
+        <ContentTemplate>
+            <div style="text-align:center">
+
+                <table style="text-align:center; margin: 0 auto">
+                    <tr>
+                        <td colspan="2"><h2 StyleDecorator.TextColor="Warning">Edit Product:</h2></td>
+                    </tr>
+                    <tr>
+                        <td><bs:Label Text="Name" /></td>
+                        <td><dot:TextBox style="margin:2.5px" Text="{value: pName}"></dot:TextBox></td>
+                    </tr>
+                    <tr>
+                        <td><bs:Label Text="Price" /></td>
+                        <td><dot:TextBox style="margin:2.5px" Text="{value: pPrice}"></dot:TextBox></td>
+                    </tr>
+                    <tr>
+                        <td><bs:Label Text="Description" /></td>
+                        <td><dot:TextBox style="margin:2.5px" Text="{value: pDesc}" Type="MultiLine"></dot:TextBox></td>
+                    </tr>
+                    <tr>
+                        <td><bs:Label Text="Image URL" /></td>
+                        <td><dot:TextBox style="margin:2.5px" Text="{value: imgUrl}"></dot:TextBox></td>
+                    </tr>                  
+                </table>
+            </div>
+        </ContentTemplate>
+        <FooterTemplate>
+            <bs:Button style="margin-top:5px" Text="Confirm" Click="{command: EditProduct(pid)}" />
+        </FooterTemplate>
+    </bs:ModalDialog>
+    <%--MODAL DIALOG FOR THE ADD PRODUCT --%>
+    <bs:ModalDialog IsDisplayed="{value: pDisplayed}">
+        <HeaderTemplate><h2>Add Product</h2></HeaderTemplate>
+        <ContentTemplate>
+            <div style="text-align:center">
+
+                <table style="text-align:center; margin: 0 auto">
+                    <tr>
+                        <td colspan="2"><h2 StyleDecorator.TextColor="Warning">Add USer:</h2></td>
+                    </tr>
+                    <tr>
+                        <td><bs:Label Text="Name" /></td>
+                        <td><dot:TextBox style="margin:2.5px" Text="{value: pName}"></dot:TextBox></td>
+                    </tr>
+                    <tr>
+                        <td><bs:Label Text="Price" /></td>
+                        <td><dot:TextBox style="margin:2.5px" Text="{value: pPrice}"></dot:TextBox></td>
+                    </tr>
+                    <tr>
+                        <td><bs:Label Text="Description" /></td>
+                        <td><dot:TextBox style="margin:2.5px" Type="MultiLine" Text="{value: pDesc}"></dot:TextBox></td>
+                    </tr>
+                    <tr>
+                        <td><bs:Label Text="Image URL" /></td>
+                        <td><dot:TextBox style="margin:2.5px" Text="{value: imgUrl}"></dot:TextBox></td>
+                    </tr>
+                </table>
+            </div>
+        </ContentTemplate>
+        <FooterTemplate>
+            <bs:Button style="margin-top:5px" Text="Confirm" Click="{command: AddProduct()}" />
+        </FooterTemplate>
+    </bs:ModalDialog>
 </dot:Content>

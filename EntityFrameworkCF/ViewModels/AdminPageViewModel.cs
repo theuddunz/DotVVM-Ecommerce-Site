@@ -16,19 +16,92 @@ namespace EntityFrameworkCF.ViewModels
     [Authorize(roles: "Admin")]
     public class AdminPageViewModel : MasterpageViewModel
     {
-        //variables for the New Product -
+        //variables for Display
         public bool Displayed { get; set; } = false;
         public bool eDisplayed { get; set; } = false;
-
+        public bool pDisplayed { get; set; } = false;
+        public bool peDisplayed { get; set; } = false;
+        //varibles for User
         public string uName { get; set; }
         public string uPass { get; set; }
         public string uEmail { get; set; }
         public string uCountry { get; set; }
         public UserRole us { get; set; }
 
+        //Varibles for pass the ID
+        public int pid { get; set; }
         public int uid { get; set; }
 
+        //Variables for the Product
+        public string pName { get; set; }
+        public double pPrice { get; set; }
+        public string pDesc { get; set; }
+        public string imgUrl { get; set; }
 
+        //Show metodh Products
+        public void ShowEditProduct(int id)
+        {
+            using (var db = new Database())
+            {
+                var product = db.Products.Find(id);
+                pName = product.Name;
+                pPrice = product.Price;
+                pDesc = product.Description;
+                imgUrl = product.Image;
+                peDisplayed = true;
+                pid = id;
+            }
+        }
+        public void ShowAddProduct()
+        {
+            pName = "New Product";
+            pPrice = 999;
+            imgUrl = "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg";
+            pDesc = "-";
+            pDisplayed = true;
+        }
+        //Metodh for The Product
+        public void AddProduct()
+        {
+            using (var db = new Database())
+            {
+                var product = new Product();
+                product.Name = pName;
+                product.Price = pPrice;
+                product.Image = imgUrl;
+                product.Description = pDesc;
+                db.Products.Add(product);
+                db.SaveChanges();
+                pDisplayed = false;
+                ProductService.LoadProduct(Products);
+            }
+        }
+        public void EditProduct(int id)
+        {
+            using (var db = new Database())
+            {
+                var product = db.Products.Find(id);
+                product.Name = pName;
+                product.Price = pPrice;
+                product.Image = imgUrl;
+                product.Description = pDesc;
+                db.SaveChanges();
+                peDisplayed = false;
+                ProductService.LoadProduct(Products);
+            }
+        }
+        public void DeleteProduct(int id)
+        {
+            using (var db = new Database())
+            {
+                var product = db.Products.Find(id);
+                db.Products.Remove(product);
+                db.SaveChanges();
+                ProductService.LoadProduct(Products);
+            }
+        }
+
+        //Show metodh Users
         public void ShowEditUser(int id)
         {
             using (var db = new Database())
@@ -46,16 +119,17 @@ namespace EntityFrameworkCF.ViewModels
         }
         public void ShowAddUser()
         {
-           
-           uName = "NewUser";
+
+            uName = "NewUser";
             uPass = "newuserpassword";
             uEmail = "-";
             uCountry = "-";
             Displayed = true;
         }
+        //metodh for the users
         public void AddUser()
         {
-            
+
             using (var db = new Database())
             {
                 var user = new User();
