@@ -12,8 +12,12 @@ namespace EntityFrameworkCF.ViewModels
     public class IndexViewModel : MasterpageViewModel
     {
 
-
+        public string  pName { get; set; }
+        public double  pPrice { get; set; }
+        public string pDesc { get; set; }
+        public string pIMG { get; set; }
         public string Username { get; set; } = UserService.GetUsername();
+        public bool Displayed { get; set; } = false;
 
 
         public GridViewDataSet<Product> Products { get; set; } = new GridViewDataSet<Product>
@@ -53,6 +57,46 @@ namespace EntityFrameworkCF.ViewModels
                 cart.CartItems.Add(citem);
                 db.SaveChanges();
 
+            }
+        }
+
+        public void DeleteProduct(int productid)
+        {
+            using (var db = new Database())
+            {
+                var product = db.Products.Find(productid);
+                db.Products.Remove(product);
+                db.SaveChanges();
+            }
+            
+        }
+        public void EditProduct(int productid)
+        {
+            
+            using (var db = new Database())
+            {
+                
+                var product = db.Products.Find(productid);
+                product.Name = pName;
+                product.Price = pPrice;
+                product.Image = pIMG;
+                product.Description = pDesc;
+                db.SaveChanges();
+                Displayed = false;
+
+            }
+        }
+
+        public void ShowEditProduct(int productid)
+        {
+            using (var db = new Database())
+            {
+              var product = db.Products.Find(productid);
+                pName = product.Name;
+                pPrice = product.Price;
+                pDesc = product.Description;
+                pIMG = product.Image;
+                Displayed = true;
             }
         }
     }
