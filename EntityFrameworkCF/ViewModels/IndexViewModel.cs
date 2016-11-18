@@ -12,12 +12,13 @@ namespace EntityFrameworkCF.ViewModels
     public class IndexViewModel : MasterpageViewModel
     {
 
-        public string  pName { get; set; }
-        public double  pPrice { get; set; }
+        public string pName { get; set; }
+        public double pPrice { get; set; }
         public string pDesc { get; set; }
         public string pIMG { get; set; }
         public string Username { get; set; } = UserService.GetUsername();
         public bool Displayed { get; set; } = false;
+        public int pid { get; set; }
 
 
         public GridViewDataSet<Product> Products { get; set; } = new GridViewDataSet<Product>
@@ -68,14 +69,14 @@ namespace EntityFrameworkCF.ViewModels
                 db.Products.Remove(product);
                 db.SaveChanges();
             }
-            
+
         }
         public void EditProduct(int productid)
         {
-            
+
             using (var db = new Database())
             {
-                
+
                 var product = db.Products.Find(productid);
                 product.Name = pName;
                 product.Price = pPrice;
@@ -91,12 +92,27 @@ namespace EntityFrameworkCF.ViewModels
         {
             using (var db = new Database())
             {
-              var product = db.Products.Find(productid);
+                var product = db.Products.Find(productid);
                 pName = product.Name;
                 pPrice = product.Price;
                 pDesc = product.Description;
                 pIMG = product.Image;
+                pid = productid;
                 Displayed = true;
+            }
+        }
+
+        public void AddProduct()
+        {
+            using (var db = new Database())
+            {
+                var product = new Product();
+                product.Name = "New Product";
+                product.Price = 999;
+                product.Image = "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg";
+                product.Description = "No Description Available";
+                db.Products.Add(product);
+                db.SaveChanges();
             }
         }
     }

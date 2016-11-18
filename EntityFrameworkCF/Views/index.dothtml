@@ -34,9 +34,9 @@
             <p style="font-size: 20px">Click the Github icon to have access our project! --> <!--<span class="glyphicons glyphicon-arrow-right" ></span>--></p>
         </bs:Jumbotron>
     </div>
-    
+
     <div class="content">
-        <bs:Container style="width:100%">
+        <bs:Container style="width:70%">
             <dot:Repeater DataSource="{value: Products}">
                 <ItemTemplate>
                     <div class="col-md-3" style="padding-bottom:10px;text-align:center;border:solid;border-color:lightgrey;border-radius:10px; margin-bottom:2.5px; margin-top:5px">
@@ -45,45 +45,56 @@
                         <p>{{value: Description}}</p>
                         <h4>{{value: "Price: " + "$" +Price }}</h4> <br />
                         <bs:Button Text="Add To Cart" Type="Primary" Click="{command: _root.AddToCart(ProductID)}"></bs:Button>
+                        <%--Edit Product And Delete Icon --%>
                         <dot:RoleView Roles="Admin">
                             <IsMemberTemplate>
                                 <dot:LinkButton class="glyphicon glyphicon-trash" Click="{command: _root.DeleteProduct(ProductID)}" style="margin-right:2px"></dot:LinkButton>
                                 <dot:LinkButton class="glyphicon glyphicon-pencil" Click="{command: _root.ShowEditProduct(ProductID)}"></dot:LinkButton>
-                                <bs:ModalDialog IsDisplayed="{value: _root.Displayed}">
-                                    <HeaderTemplate>Edit Product</HeaderTemplate>
-                                    <ContentTemplate>
-                                        <table>
-                                            <tr>
-                                                <td><bs:Label Text="Name" /></td>
-                                                <td><dot:TextBox Text="{value: _root.pName}" /></td>
-                                            </tr>
-                                            <tr>
-                                                <td><bs:Label Text="Price" /></td>
-                                                <td><dot:TextBox Text="{value: _root.pPrice}" /></td>
-                                            </tr>
-                                            <tr>
-                                                <td><bs:Label Text="Description" /></td>
-                                                <td><dot:TextBox Text="{value: _root.pDesc}" /></td>
-                                            </tr>
-                                            <tr>
-                                                <td><bs:Label Text="Img url" /></td>
-                                                <td><dot:TextBox Text="{value: _root.pIMG}" /></td>
-                                            </tr>
-                                        </table>
-                                    </ContentTemplate>
-                                    <FooterTemplate>
-                                        <bs:Button Text="Save Changes" Click="{command: _root.EditProduct(ProductID)}"></bs:Button>
-                                    </FooterTemplate>
-                                </bs:ModalDialog>
                             </IsMemberTemplate>
                         </dot:RoleView>
                     </div>
                 </ItemTemplate>
             </dot:Repeater>
+            <bs:ModalDialog IsDisplayed="{value: _root.Displayed}">
+                <HeaderTemplate>Edit Product</HeaderTemplate>
+                <ContentTemplate>
+                    <table>
+                        <tr>
+                            <td><bs:Label Text="Name" /></td>
+                            <td><dot:TextBox Text="{value: _root.pName}" /></td>
+                        </tr>
+                        <tr>
+                            <td><bs:Label Text="Price" /></td>
+                            <td><dot:TextBox Text="{value: _root.pPrice}" /></td>
+                        </tr>
+                        <tr>
+                            <td><bs:Label Text="Description" /></td>
+                            <td><dot:TextBox Text="{value: _root.pDesc}" /></td>
+                        </tr>
+                        <tr>
+                            <td><bs:Label Text="Img url" /></td>
+                            <td><dot:TextBox Text="{value: _root.pIMG}" /></td>
+                        </tr>
+                    </table>
+                </ContentTemplate>
+                <FooterTemplate>
+                    <bs:Button Text="Save Changes" Click="{command: EditProduct(pid)}"></bs:Button>
+                </FooterTemplate>
+            </bs:ModalDialog>
+            <%--AddProduct Button --%>
+            <bs:Container>
+                <div class="col-md-3" style="text-align:center;margin-top:100px">
+                    <bs:GlyphIcon Icon="Plus" style="font-size:100px;border:solid;border-color:lightgray;border-radius:50%;width:110px;height:110px;padding-left:6px;" StyleDecorator.TextColor="Primary" Events.Click="{command: AddProduct()}">
+                    </bs:GlyphIcon>
+                    <h4>Add Product</h4>
+                </div>
+            </bs:Container>
+            <%--End AddProductButton --%>
         </bs:Container>
     </div>
 
-    <%--Insert The Div For + For Add new Product Instantly--%>
+    <%--Footer--%>
+
 
     <footer class="panel-footer" ID="footer">
         <p>
