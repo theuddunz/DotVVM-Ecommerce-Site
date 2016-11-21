@@ -41,7 +41,7 @@ namespace EntityFrameworkCF.ViewModels
                                     select p;
 
                     var result = checkdata.SingleOrDefault();
-
+                    
 
                     if (checkdata.Count() != 0)
                     {
@@ -53,6 +53,7 @@ namespace EntityFrameworkCF.ViewModels
 
                         var identity = new ClaimsIdentity(claims, DefaultAuthenticationTypes.ApplicationCookie);
                         Context.OwinContext.Authentication.SignIn(identity);
+                        
 
                         var findcart = from p in db.Carts
                                        where p.CartID == result.UserID

@@ -185,7 +185,7 @@
 
                 <table style="text-align:center; margin: 0 auto">
                     <tr>
-                        <td colspan="2"><h2 StyleDecorator.TextColor="Warning">Add USer:</h2></td>
+                        <td colspan="2"><h2 StyleDecorator.TextColor="Warning">Add Product:</h2></td>
                     </tr>
                     <tr>
                         <td><bs:Label Text="Name" /></td>
