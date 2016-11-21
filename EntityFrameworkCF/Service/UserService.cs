@@ -32,10 +32,9 @@ namespace EntityFrameworkCF.ViewModels
             else
             {
                 return null;
-            }
-
-
+            } 
         }
+
         public static string GetUsername()
         {
             using (var db = new Database())
@@ -52,6 +51,42 @@ namespace EntityFrameworkCF.ViewModels
 
             }
 
+        }
+        
+        public static string UserName()
+        {
+            var identity = HttpContext.Current.GetOwinContext().Authentication.User.Identity as ClaimsIdentity;
+            if (identity.IsAuthenticated)
+            {
+                var username = identity.FindFirst(ClaimTypes.Name).Value;
+                return username;
+            }
+            return "Guest";
+        }
+
+        public static string GetEmail()
+        {
+            using (var db = new Database())
+            {
+                var user = db.Users.Find(GetCurrentUserId());
+                return user.Email;
+            }
+        }
+        public static string GetPassword()
+        {
+            using (var db = new Database())
+            {
+                var user = db.Users.Find(GetCurrentUserId());
+                return user.Password;
+            }
+        }
+        public static string GetCountry()
+        {
+            using (var db = new Database())
+            {
+                var user = db.Users.Find(GetCurrentUserId());
+                return user.Country;
+            }
         }
     }
 }

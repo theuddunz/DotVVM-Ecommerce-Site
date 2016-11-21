@@ -38,6 +38,7 @@ namespace EntityFrameworkCF.ViewModels
         public string pDesc { get; set; }
         public string imgUrl { get; set; }
 
+        
         //Show metodh Products
         public void ShowEditProduct(int id)
         {

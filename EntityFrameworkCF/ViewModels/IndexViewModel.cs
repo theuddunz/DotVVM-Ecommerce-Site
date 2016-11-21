@@ -47,16 +47,45 @@ namespace EntityFrameworkCF.ViewModels
         {
             using (var db = new Database())
             {
-                var userid = UserService.GetCurrentUserId();
+                //var userid = UserService.GetCurrentUserId();
+                //var product = db.Products.Find(productid);
+                //Cart cart = db.Carts.Find(userid);
+                //var citem = new CartItem();
+                //citem.Price = product.Price;
+                //citem.Name = product.Name;
+                //citem.ProductID = product.ProductID;                
+                //cart.CartItems.Add(citem);
+                //db.SaveChanges();
+
+                var user = db.Users.Find(UserService.GetCurrentUserId());
+                var id = user.UserID;
                 var product = db.Products.Find(productid);
-                Cart cart = db.Carts.Find(userid);
                 var citem = new CartItem();
+                var query = from p in db.Carts
+                            where p.UserID == id
+                            select p;
                 citem.Price = product.Price;
                 citem.Name = product.Name;
                 citem.ProductID = product.ProductID;
-                db.CartItems.Add(citem);
-                cart.CartItems.Add(citem);
-                db.SaveChanges();
+                var cart = query.FirstOrDefault();
+
+                if (query.Count() != 0)
+                {
+                    cart.Count++;
+                    cart.CartItems.Add(citem);
+                    db.SaveChanges();
+                }
+                else
+                {
+                    var newcart = new Cart();
+                    newcart.Count++;
+                    newcart.UserID = id;
+                    newcart.CartItems.Add(citem);
+                    db.Carts.Add(newcart);
+                    db.SaveChanges();
+
+                }
+
 
             }
         }
