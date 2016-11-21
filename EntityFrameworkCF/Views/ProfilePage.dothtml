@@ -2,8 +2,33 @@
 @masterPage Views/masterpage.dotmaster
 
 <dot:Content ContentPlaceHolderID="Main">
+    <div style="max-width: 1000px">
+        <bs:table class="table-bordered" style="margin:0 auto;text-align:center; max-width: 900px">
+            <tr >
+                <th colspan="2"><h1><bs:GlyphIcon Icon="User" StyleDecorator.TextColor="Primary"></bs:GlyphIcon>Your informations:</h1></th>
+            </tr>
+            <tr>
+                <td> Username</td>
+                <td><dot:TextBox  class="form-control" Text=""Enabled="false"/></td>
+            </tr>
+            <tr>
+                <td>e-mail</td>
+                <td><dot:TextBox class="form-control" Text="" Enabled="false" /></td>
+            </tr>
+            <tr>
+                <td> Password</td>
+                <td><dot:TextBox class="form-control" Text="" Enabled="false" /></td>
+            </tr>
+            <tr>
+                <td> Country</td>
+                <td><dot:TextBox class="form-control" Text="" Enabled="false" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><bs:Button Type="Primary">Modify</bs:Button><bs:Button>Cancel</bs:Button><bs:Button>Save Changes</bs:Button></td>
+            </tr>
 
+        </bs:table>
+    </div>
 
-    
 </dot:Content>
 

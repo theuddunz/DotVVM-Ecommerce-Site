@@ -41,3 +41,8 @@ font-size:30px;
 .cell {
     margin:5px;
 }
+
+#usercell {
+    margin-top:20px;
+    margin-bottom:20px;
+}
