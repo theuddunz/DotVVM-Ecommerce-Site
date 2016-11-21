@@ -3,28 +3,28 @@
 
 <dot:Content ContentPlaceHolderID="Main">
     <div style="max-width: 1000px">
-        <bs:table class="table-bordered" style="margin:0 auto;text-align:center; max-width: 900px">
+        <bs:table class="table-bordered" style="margin:0 auto;text-align:center; max-width: 900px; margin:0 auto">
             <tr >
-                <th colspan="2"><h1><bs:GlyphIcon Icon="User" StyleDecorator.TextColor="Primary"></bs:GlyphIcon>Your informations:</h1></th>
+                <th colspan="2"><h1 style="text-align:center"><bs:GlyphIcon Icon="User" StyleDecorator.TextColor="Primary"></bs:GlyphIcon>Your informations</h1></th>
             </tr>
             <tr>
-                <td> Username</td>
+                <td><b><h3 style="margin-top:1px" > Username</h3></b></td>
                 <td><dot:TextBox  class="form-control" Text=""Enabled="false"/></td>
             </tr>
             <tr>
-                <td>e-mail</td>
+                <td><b><h3 style="margin-top:1px"> E-Mail</h3></b></td>
                 <td><dot:TextBox class="form-control" Text="" Enabled="false" /></td>
             </tr>
             <tr>
-                <td> Password</td>
+                <td> <b><h3 style="margin-top:1px"> Password</h3></b></td>
                 <td><dot:TextBox class="form-control" Text="" Enabled="false" /></td>
             </tr>
             <tr>
-                <td> Country</td>
+                <td> <b><h3 style="margin-top:1px"> Country</h3></b></td>
                 <td><dot:TextBox class="form-control" Text="" Enabled="false" /></td>
             </tr>
             <tr>
-                <td colspan="2"><bs:Button Type="Primary">Modify</bs:Button><bs:Button>Cancel</bs:Button><bs:Button>Save Changes</bs:Button></td>
+                <td colspan="2"><bs:Button Type="Primary"> Modify </bs:Button><bs:Button>Cancel</bs:Button><bs:Button>Save Changes</bs:Button></td>
             </tr>
 
         </bs:table>
