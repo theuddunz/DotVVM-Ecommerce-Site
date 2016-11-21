@@ -19,11 +19,11 @@ namespace EntityFrameworkCF.ViewModels
         public double pPrice { get; set; }
         public string pDesc { get; set; }
         public string pIMG { get; set; }
-        public string Username { get; set; } = UserService.GetUsername();
+        public string Username { get; set; } = UserService.GetUsername() ?? "Guest";
         public bool Displayed { get; set; } = false;
         public int pid { get; set; }
         public int CartItem { get; set; } = Convert.ToInt32(CartService.GetCartCountItem());
-        public bool GoLogin { get; set; } = false;
+        public bool GoLogin { get; set; } = false; //Implementa la ModalView Per Ricordarti di Accedere
 
         public GridViewDataSet<Cart> Carts { get; set; } = new GridViewDataSet<Cart>
         {
@@ -57,8 +57,7 @@ namespace EntityFrameworkCF.ViewModels
 
         public void AddToCart(int productid)
         {
-            var identity = HttpContext.Current.GetOwinContext().Authentication.User.Identity as ClaimsIdentity;
-            if (identity.IsAuthenticated)
+            if (UserService.GetCurrentUserId() != null)
             {
                 using (var db = new Database())
                 {
@@ -156,7 +155,15 @@ namespace EntityFrameworkCF.ViewModels
         }
         public void Redirect()
         {
-            Context.RedirectToRoute("ProfilePage");
+            if (UserService.GetCurrentUserId() == null)
+            {
+                Context.RedirectToRoute("LoginPage");
+            }
+            else
+            {
+                Context.RedirectToRoute("ProfilePage");
+            }
+
         }
     }
 }
