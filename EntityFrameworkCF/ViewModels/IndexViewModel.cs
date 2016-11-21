@@ -6,6 +6,9 @@ using DotVVM.Framework.ViewModel;
 using DotVVM.Framework.Controls;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
+using DotVVM.Framework.Runtime.Filters;
+using System.Web;
+using System.Security.Claims;
 
 namespace EntityFrameworkCF.ViewModels
 {
@@ -19,8 +22,15 @@ namespace EntityFrameworkCF.ViewModels
         public string Username { get; set; } = UserService.GetUsername();
         public bool Displayed { get; set; } = false;
         public int pid { get; set; }
+        public int CartItem { get; set; } = Convert.ToInt32(CartService.GetCartCountItem());
+        public bool GoLogin { get; set; } = false;
 
-
+        public GridViewDataSet<Cart> Carts { get; set; } = new GridViewDataSet<Cart>
+        {
+            SortExpression = nameof(Cart.CartItems),
+            PageSize = 1000,
+            SortDescending = false
+        };
         public GridViewDataSet<Product> Products { get; set; } = new GridViewDataSet<Product>
         {
             SortExpression = nameof(Product.ProductID),
@@ -38,56 +48,56 @@ namespace EntityFrameworkCF.ViewModels
             using (var db = new Database())
             {
                 ProductService.LoadProduct(Products);
-
+                //CartService.LoadDataCart(Carts);
             }
 
             return base.PreRender();
         }
+
+
         public void AddToCart(int productid)
         {
-            using (var db = new Database())
+            var identity = HttpContext.Current.GetOwinContext().Authentication.User.Identity as ClaimsIdentity;
+            if (identity.IsAuthenticated)
             {
-                //var userid = UserService.GetCurrentUserId();
-                //var product = db.Products.Find(productid);
-                //Cart cart = db.Carts.Find(userid);
-                //var citem = new CartItem();
-                //citem.Price = product.Price;
-                //citem.Name = product.Name;
-                //citem.ProductID = product.ProductID;                
-                //cart.CartItems.Add(citem);
-                //db.SaveChanges();
-
-                var user = db.Users.Find(UserService.GetCurrentUserId());
-                var id = user.UserID;
-                var product = db.Products.Find(productid);
-                var citem = new CartItem();
-                var query = from p in db.Carts
-                            where p.UserID == id
-                            select p;
-                citem.Price = product.Price;
-                citem.Name = product.Name;
-                citem.ProductID = product.ProductID;
-                var cart = query.FirstOrDefault();
-
-                if (query.Count() != 0)
+                using (var db = new Database())
                 {
-                    cart.Count++;
-                    cart.CartItems.Add(citem);
-                    db.SaveChanges();
+                    var user = db.Users.Find(UserService.GetCurrentUserId());
+                    var id = user.UserID;
+                    var product = db.Products.Find(productid);
+                    var citem = new CartItem();
+                    var query = from p in db.Carts
+                                where p.UserID == id
+                                select p;
+                    citem.Price = product.Price;
+                    citem.Name = product.Name;
+                    citem.ProductID = product.ProductID;
+                    var cart = query.FirstOrDefault();
+
+                    if (query.Count() != 0)
+                    {
+                        cart.Count++;
+                        cart.CartItems.Add(citem);
+                        CartItem = Convert.ToInt32(CartService.GetCartCountItem());
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        var newcart = new Cart();
+                        newcart.Count++;
+                        newcart.UserID = id;
+                        newcart.CartItems.Add(citem);
+                        db.Carts.Add(newcart);
+                        CartItem = Convert.ToInt32(CartService.GetCartCountItem());
+                        db.SaveChanges();
+                    }
                 }
-                else
-                {
-                    var newcart = new Cart();
-                    newcart.Count++;
-                    newcart.UserID = id;
-                    newcart.CartItems.Add(citem);
-                    db.Carts.Add(newcart);
-                    db.SaveChanges();
-
-                }
-
-
             }
+            else
+            {
+                GoLogin = true;
+            }
+
         }
 
         public void DeleteProduct(int productid)
@@ -143,6 +153,10 @@ namespace EntityFrameworkCF.ViewModels
                 db.Products.Add(product);
                 db.SaveChanges();
             }
+        }
+        public void Redirect()
+        {
+            Context.RedirectToRoute("ProfilePage");
         }
     }
 }

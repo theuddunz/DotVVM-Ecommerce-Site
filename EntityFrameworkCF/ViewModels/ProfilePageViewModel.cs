@@ -4,8 +4,13 @@ using System.Linq;
 using System.Text;
 using DotVVM.Framework.ViewModel;
 using System.ComponentModel.DataAnnotations;
+using DotVVM.Framework.Runtime.Filters;
+using Microsoft.Owin.Security;
+using System.Threading.Tasks;
+using DotVVM.Framework.Controls;
 namespace EntityFrameworkCF.ViewModels
 {
+    [Authorize]
     public class ProfilePageViewModel : MasterpageViewModel
     {
         [Required(ErrorMessage = "The email is required")]

@@ -6,11 +6,11 @@
     <%-- fixed user information and cart --%>
     <div StyleDecorator.BackgroundColor="Info" style="border:solid; border-color:rgb(0,94,173) ;min-width:200px; height:60px; top:3px; left:5px; position:fixed; border-radius:15px; text-align:center; font-size:15px">
         <div style="margin-top:7.8%">
-            <dot:LinkButton style="margin-left:15px">
+            <dot:LinkButton  style="margin-left:15px" Click="{command: Redirect()}"> 
                 <bs:GlyphIcon Icon="User">
-                </bs:GlyphIcon>  faccia di merda </dot:LinkButton>
+                </bs:GlyphIcon>  {{value: Username+"'s Profile"}} </dot:LinkButton>
     | <dot:LinkButton style="margin-right:15px">
-        <bs:GlyphIcon Icon="Shopping_cart"> </bs:GlyphIcon> Items
+        <bs:GlyphIcon Icon="Shopping_cart"> </bs:GlyphIcon> Items: {{value: CartItem}}
     </dot:LinkButton>
 </div>
     </div>

@@ -9,22 +9,26 @@
             </tr>
             <tr>
                 <td><b><h3 style="margin-top:1px" > Username</h3></b></td>
-                <td><dot:TextBox  class="form-control" Text=""Enabled="false"/></td>
+                <td><dot:TextBox  class="form-control" Text="{value: Username}"Enabled="false"/></td>
             </tr>
             <tr>
                 <td><b><h3 style="margin-top:1px"> E-Mail</h3></b></td>
-                <td><dot:TextBox class="form-control" Text="" Enabled="false" /></td>
+                <td><dot:TextBox class="form-control" Text="{value: email}" Enabled="true" /></td>
             </tr>
             <tr>
                 <td> <b><h3 style="margin-top:1px"> Password</h3></b></td>
-                <td><dot:TextBox class="form-control" Text="" Enabled="false" /></td>
+                <td><dot:TextBox class="form-control" Text="{value: password}" Enabled="true" /></td>
             </tr>
             <tr>
                 <td> <b><h3 style="margin-top:1px"> Country</h3></b></td>
-                <td><dot:TextBox class="form-control" Text="" Enabled="false" /></td>
+                <td><dot:TextBox class="form-control" Text="{value: country}" Enabled="true" /></td>
             </tr>
             <tr>
-                <td colspan="2"><bs:Button Type="Primary"> Modify </bs:Button><bs:Button>Cancel</bs:Button><bs:Button>Save Changes</bs:Button></td>
+                <td colspan="2">
+                    <bs:Button Type="Primary" Click="{command: SetTrue()}"> Modify </bs:Button>
+                    <bs:Button Visible="{value: Enabled}" Click="{command: SetFalse()}">Cancel</bs:Button>
+                    <bs:Button Visible="{value:  Enabled}" Click="{command: SaveChanges()}">Save Changes</bs:Button>
+                </td>
             </tr>
 
         </bs:table>
