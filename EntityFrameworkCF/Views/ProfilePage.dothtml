@@ -13,21 +13,21 @@
             </tr>
             <tr>
                 <td><b><h3 style="margin-top:1px"> E-Mail</h3></b></td>
-                <td><dot:TextBox class="form-control" Text="{value: email}" Enabled="true" /></td>
+                <td><dot:TextBox class="form-control" Text="{value: email}" Enabled="{value: Enabled}" /></td>
             </tr>
             <tr>
                 <td> <b><h3 style="margin-top:1px"> Password</h3></b></td>
-                <td><dot:TextBox class="form-control" Text="{value: password}" Enabled="true" /></td>
+                <td><dot:TextBox class="form-control" Text="{value: password}" Enabled="{value: Enabled}" /></td>
             </tr>
             <tr>
                 <td> <b><h3 style="margin-top:1px"> Country</h3></b></td>
-                <td><dot:TextBox class="form-control" Text="{value: country}" Enabled="true" /></td>
+                <td><dot:TextBox class="form-control" Text="{value: country}" Enabled="{value: Enabled}" /></td>
             </tr>
             <tr>
                 <td colspan="2">
-                    <bs:Button Type="Primary" Click="{command: SetTrue()}"> Modify </bs:Button>
-                    <bs:Button Visible="{value: Enabled}" Click="{command: SetFalse()}">Cancel</bs:Button>
-                    <bs:Button Visible="{value:  Enabled}" Click="{command: SaveChanges()}">Save Changes</bs:Button>
+                    <bs:Button Type="Primary" Click="{command: SetTrue()}" Visible="{value: mEnabled}"> Modify </bs:Button>
+                    <bs:Button Visible="{value: Enabled}" Click="{command: SetFalse()}" Type="Danger">Cancel</bs:Button>
+                    <bs:Button Visible="{value:  Enabled}" Click="{command: SaveChanges()}" Type="Primary">Save Changes</bs:Button>
                 </td>
             </tr>
 

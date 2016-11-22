@@ -22,14 +22,17 @@ namespace EntityFrameworkCF.ViewModels
         public string Username { get; set; }
 
         public bool Enabled { get; set; } = false;
+        public bool mEnabled { get; set; } = true;
 
         public void SetTrue()
         {
             Enabled = true;
+            mEnabled = false;
         }
         public void SetFalse()
         {
             Enabled = false;
+            mEnabled = true;
         }
 
         public void SaveChanges()

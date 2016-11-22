@@ -173,6 +173,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Images\e-commercelogo.png" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
