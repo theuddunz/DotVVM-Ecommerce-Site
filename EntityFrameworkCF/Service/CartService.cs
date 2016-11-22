@@ -64,17 +64,18 @@ namespace EntityFrameworkCF.ViewModels
 
         }
 
-        public static void LoadDataCart(GridViewDataSet<Cart> dataset)
+        public static void LoadDataCart(GridViewDataSet<CartItem> dataset)
         {
 
-            var userid = UserService.GetCurrentUserId();
+            var cartid = CartService.GetCartID();
             using (var db = new Database())
             {
-                var load = from p in db.Carts
-                           where p.UserID == userid
+                var load = from p in db.CartItems
+                           where p.CartID == cartid
                            select p;
                 dataset.LoadFromQueryable(load);
-            }
+           
+           }
         }
     }
 }

@@ -2,9 +2,9 @@
 @masterPage Views/masterpage.dotmaster
 
 <dot:Content ContentPlaceHolderID="Main">
-   <bs:GridView DataSource="{value: Carts}">
+   <bs:GridView DataSource="{value: CartItems}">
        <Columns>
-           <dot:GridViewTextColumn ValueBinding="{value: CartItems}"></dot:GridViewTextColumn>
+           <dot:GridViewTextColumn ValueBinding="{value: Name}"></dot:GridViewTextColumn>
        </Columns>
    </bs:GridView>
 </dot:Content>

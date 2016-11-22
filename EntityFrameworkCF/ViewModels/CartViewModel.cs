@@ -12,16 +12,16 @@ namespace EntityFrameworkCF.ViewModels
     [Authorize]
 	public class CartViewModel : MasterpageViewModel
 	{
-        public GridViewDataSet<Cart> Carts { get; set; } = new GridViewDataSet<Cart>
+        public GridViewDataSet<CartItem> CartItems { get; set; } = new GridViewDataSet<CartItem>
         {
-            SortExpression = nameof(Cart.CartID),
+            SortExpression = nameof(CartItem.CartItemID),
             PageSize= 20,
             SortDescending = false
         };
 
         public override Task PreRender()
         {
-            CartService.LoadDataCart(Carts);
+            CartService.LoadDataCart(CartItems);
             return base.PreRender();
         }
     }
