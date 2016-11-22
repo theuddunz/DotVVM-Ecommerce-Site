@@ -16,7 +16,7 @@
             </Columns>
         </bs:GridView>
     <div style="text-align:right;margin-right:20px">
-        <h1>TOTAL: </h1>
+        <h1>TOTAL: $ {{value: total}}</h1>
         <bs:Button Text="CheckOut" Type="Primary"></bs:Button>
     </div>
 </dot:Content>

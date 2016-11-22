@@ -12,6 +12,7 @@ namespace EntityFrameworkCF.ViewModels
     [Authorize]
 	public class CartViewModel : MasterpageViewModel
 	{
+        public double total { get; set; } = CartService.GetTotal();
         public GridViewDataSet<CartItem> CartItems { get; set; } = new GridViewDataSet<CartItem>
         {
             SortExpression = nameof(CartItem.CartItemID),
