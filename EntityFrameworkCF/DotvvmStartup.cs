@@ -29,6 +29,7 @@ namespace EntityFrameworkCF
             config.RouteTable.Add("Index","","Views/index.dothtml");
             config.RouteTable.Add("LoginPage", "login","Views/LoginPage.dothtml");
             config.RouteTable.Add("ProfilePage", "user", "Views/ProfilePage.dothtml");
+            config.RouteTable.Add("Cart", "cart", "Views/Cart.dothtml");
             // Uncomment the following line to auto-register all dothtml files in the Views folder
             // config.RouteTable.AutoDiscoverRoutes(new DefaultRouteStrategy(config));    
         }

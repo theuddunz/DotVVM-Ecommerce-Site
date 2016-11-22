@@ -11,8 +11,7 @@ namespace EntityFrameworkCF.ViewModels
     {
         public static int? GetCartID()
         {
-            var identity = HttpContext.Current.GetOwinContext().Authentication.User.Identity as ClaimsIdentity;
-            if (identity.IsAuthenticated)
+            if (UserService.GetCurrentUserId() != null)
             {
                 using (var db = new Database())
                 {
@@ -34,8 +33,7 @@ namespace EntityFrameworkCF.ViewModels
         }
         public static int? GetCartCountItem()
         {
-            var identity = HttpContext.Current.GetOwinContext().Authentication.User.Identity as ClaimsIdentity;
-            if (identity.IsAuthenticated)
+            if (UserService.GetCurrentUserId() != null)
             {
                 using (var db = new Database())
                 {
@@ -43,7 +41,7 @@ namespace EntityFrameworkCF.ViewModels
                     var querycart = from p in db.Carts
                                     where p.UserID == userid
                                     select p;
-                    
+
                     if (querycart.Count() != 0)
                     {
                         var cartid = db.Carts.Find(GetCartID());
@@ -68,6 +66,7 @@ namespace EntityFrameworkCF.ViewModels
 
         public static void LoadDataCart(GridViewDataSet<Cart> dataset)
         {
+
             var userid = UserService.GetCurrentUserId();
             using (var db = new Database())
             {

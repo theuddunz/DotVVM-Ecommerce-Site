@@ -24,13 +24,9 @@ namespace EntityFrameworkCF.ViewModels
         public int pid { get; set; }
         public int CartItem { get; set; } = Convert.ToInt32(CartService.GetCartCountItem());
         public bool GoLogin { get; set; } = false; //Implementa la ModalView Per Ricordarti di Accedere
+        public bool PreviewCart { get; set; } = false;
 
-        public GridViewDataSet<Cart> Carts { get; set; } = new GridViewDataSet<Cart>
-        {
-            SortExpression = nameof(Cart.CartItems),
-            PageSize = 1000,
-            SortDescending = false
-        };
+       
         public GridViewDataSet<Product> Products { get; set; } = new GridViewDataSet<Product>
         {
             SortExpression = nameof(Product.ProductID),
@@ -48,7 +44,7 @@ namespace EntityFrameworkCF.ViewModels
             using (var db = new Database())
             {
                 ProductService.LoadProduct(Products);
-                //CartService.LoadDataCart(Carts);
+                
             }
 
             return base.PreRender();
@@ -83,6 +79,7 @@ namespace EntityFrameworkCF.ViewModels
                     else
                     {
                         var newcart = new Cart();
+                        newcart.Count = 1;
                         newcart.Count++;
                         newcart.UserID = id;
                         newcart.CartItems.Add(citem);
