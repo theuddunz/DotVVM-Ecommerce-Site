@@ -10,6 +10,7 @@ using DotVVM.Framework.Runtime.Filters;
 using System.Web;
 using System.Security.Claims;
 using System.ComponentModel.DataAnnotations;
+using System.Threading;
 
 namespace EntityFrameworkCF.ViewModels
 {
@@ -186,6 +187,7 @@ namespace EntityFrameworkCF.ViewModels
         }
         public void Login()
         {
+            Thread.Sleep(3500);
             var identity = UserService.Login(UserNameLogin, PasswordLogin);
             
             if (identity == null)

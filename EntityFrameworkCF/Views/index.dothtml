@@ -73,15 +73,20 @@
                 <HeaderTemplate>
                     <h1>Remember:</h1>
                 </HeaderTemplate>
-                <ContentTemplate>                    
-                        <p>For use the Cart You need to Login!</p>
-                        <bs:Label Text="username" /><dot:TextBox Text="{value: UserNameLogin}" />
-                        <br />
-                        <bs:Label Text="password" /><dot:TextBox Text="{value: PasswordLogin}" />
-                        <br />
-                        <div StyleDecorator.TextColor="Danger">
-                            {{value: MessageError}}
-                        </div>                   
+                <ContentTemplate>
+                    <p>For use the Cart You need to Login!</p>
+                    <bs:Label Text="username" /><dot:TextBox Text="{value: UserNameLogin}" />
+                    <br />
+                    <bs:Label Text="password" /><dot:TextBox Text="{value: PasswordLogin}" />
+                    <br />
+                    <div StyleDecorator.TextColor="Danger">
+                        {{value: MessageError}}
+                    </div>
+                    <div>
+                        <dot:UpdateProgress>
+                            <bs:Image ImageUrl="../Images/LoadCircle.gif" style="height:40px"/>
+                        </dot:UpdateProgress>
+                    </div>
                 </ContentTemplate>
                 <FooterTemplate>
                     <bs:Button style="text-align:right" Type="Primary" Click="{command: Login()}" Text="Login"></bs:Button>
