@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using DotVVM.Framework.ViewModel;
 using DotVVM.Framework.Controls;
 using DotVVM.Framework.Hosting;
 using System.Security.Claims;
+using Microsoft.AspNet.Identity;
+using System.Threading.Tasks;
 
 namespace EntityFrameworkCF.ViewModels
 {
-    public class UserService
+    public class UserService : DotvvmViewModelBase
     {
         public static void LoadUser(GridViewDataSet<User> dataset)
         {
@@ -32,7 +35,7 @@ namespace EntityFrameworkCF.ViewModels
             else
             {
                 return null;
-            } 
+            }
         }
 
         public static string GetUsername()
@@ -52,7 +55,7 @@ namespace EntityFrameworkCF.ViewModels
             }
 
         }
-        
+
         public static string UserName()
         {
             var identity = HttpContext.Current.GetOwinContext().Authentication.User.Identity as ClaimsIdentity;
@@ -86,6 +89,30 @@ namespace EntityFrameworkCF.ViewModels
             {
                 var user = db.Users.Find(GetCurrentUserId());
                 return user.Country;
+            }
+        }
+        public static void Login(string Usern, string pass, string mess)
+        {
+            using (var db = new Database())
+            {
+                var query = from p in db.Users
+                            where p.Username == Usern && p.Password == pass
+                            select p;
+                var user = query.SingleOrDefault();
+                if (query.Count() != 0)
+                {
+                    var claims = new List<Claim>();
+
+                    claims.Add(new Claim(ClaimTypes.NameIdentifier, user.UserID.ToString()));
+                    claims.Add(new Claim(ClaimTypes.Name, user.Username));
+                    claims.Add(new Claim(ClaimTypes.Role, Convert.ToString(user.UserRole)));
+                    var identity = new ClaimsIdentity(claims, DefaultAuthenticationTypes.ApplicationCookie);
+                    HttpContext.Current.GetOwinContext().GetDotvvmContext().OwinContext.Authentication.SignIn(identity);                   
+                }
+                else
+                {
+                    mess = "Invalid Email or Password.";
+                }
             }
         }
     }
