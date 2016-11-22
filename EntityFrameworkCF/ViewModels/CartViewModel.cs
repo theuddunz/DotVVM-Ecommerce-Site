@@ -12,7 +12,7 @@ namespace EntityFrameworkCF.ViewModels
     [Authorize]
     public class CartViewModel : MasterpageViewModel
     {
-        public double total { get; set; } = Convert.ToDouble(CartService.GetTotal());
+        public double total { get; set; }
         public string Message { get; set; } = "Your Cart Is Empty.";
         public bool Enabled { get; set; } = false;
 
@@ -38,13 +38,15 @@ namespace EntityFrameworkCF.ViewModels
         }
 
         public override Task PreRender()
-        {
+        { 
             if (CartService.GetTotal() == 0)
             {
                 Enabled = true;
             }
+            total = Convert.ToDouble(CartService.GetTotal());
             CartService.LoadDataCart(CartItems);
             return base.PreRender();
+
         }
     }
 }

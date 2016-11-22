@@ -15,14 +15,14 @@ namespace EntityFrameworkCF.ViewModels
     {
         [Required(ErrorMessage = "The email is required")]
         [EmailAddress(ErrorMessage = "The Email is Not Valid.")]
-        public string email { get; set; } = UserService.GetEmail();
+        public string email { get; set; } 
         [Required(ErrorMessage = "The Password is Required.")]
-        public string password { get; set; } = UserService.GetPassword();
-        public string country { get; set; } = UserService.GetCountry();
-        public string Username { get; set; } = UserService.GetUsername();
+        public string password { get; set; } 
+        public string country { get; set; } 
+        public string Username { get; set; }
 
         public bool Enabled { get; set; } = false;
-        
+
         public void SetTrue()
         {
             Enabled = true;
@@ -41,11 +41,19 @@ namespace EntityFrameworkCF.ViewModels
                 user.Email = email;
                 user.Country = country;
                 user.Password = password;
-                db.SaveChanges();               
+                db.SaveChanges();
                 Context.RedirectToRoute("ProfilePage");
             }
         }
 
+        public override Task PreRender()
+        {
+            email = UserService.GetEmail();
+            password = UserService.GetPassword();
+            country = UserService.GetCountry();
+            Username = UserService.GetUsername();
+            return base.PreRender();
+        }
     }
 }
 
