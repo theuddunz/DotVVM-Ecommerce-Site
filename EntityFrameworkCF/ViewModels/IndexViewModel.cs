@@ -167,6 +167,17 @@ namespace EntityFrameworkCF.ViewModels
             }
 
         }
+        public void RedirectCart()
+        {
+            if (UserService.GetCurrentUserId() == null)
+            {
+                Context.RedirectToRoute("LoginPage");
+            }
+            else
+            {
+                Context.RedirectToRoute("Cart");
+            }
+        }
     }
 }
 

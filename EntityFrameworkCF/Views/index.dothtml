@@ -9,7 +9,7 @@
             <dot:LinkButton  style="margin-left:15px" Click="{command: Redirect()}"> 
                 <bs:GlyphIcon Icon="User">
                 </bs:GlyphIcon>  {{value: Username+"'s Profile"}} </dot:LinkButton>
-    | <dot:LinkButton style="margin-right:15px">
+    | <dot:LinkButton style="margin-right:15px" Click="{command: RedirectCart()}">
         <bs:GlyphIcon Icon="Shopping_cart"> </bs:GlyphIcon> Items: {{value: CartItem}}
     </dot:LinkButton>
 </div>
