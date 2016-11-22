@@ -67,11 +67,13 @@ namespace EntityFrameworkCF.ViewModels
                     citem.Price = product.Price;
                     citem.Name = product.Name;
                     citem.ProductID = product.ProductID;
+                    
                     var cart = query.FirstOrDefault();
 
                     if (query.Count() != 0)
                     {
                         cart.Count++;
+                        citem.CartID = cart.CartID;
                         cart.CartItems.Add(citem);
                         CartItem = Convert.ToInt32(CartService.GetCartCountItem());
                         db.SaveChanges();
@@ -80,8 +82,8 @@ namespace EntityFrameworkCF.ViewModels
                     {
                         var newcart = new Cart();
                         newcart.Count = 1;
-                        newcart.Count++;
                         newcart.UserID = id;
+                        citem.CartID = newcart.CartID;
                         newcart.CartItems.Add(citem);
                         db.Carts.Add(newcart);
                         CartItem = Convert.ToInt32(CartService.GetCartCountItem());
