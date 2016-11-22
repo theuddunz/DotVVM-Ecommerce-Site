@@ -10,16 +10,16 @@
     font-size: 20px;
 }
 
-#jumbo{
-text-align:center;
-font-size:30px;
+#jumbo {
+    text-align: center;
+    font-size: 30px;
 }
 
 .header {
     height: 25px;
-
 }
-.content 1{
+
+.content 1 {
     min-height: calc(100vh - 255px - 100px);
 }
 
@@ -31,18 +31,18 @@ font-size:30px;
     background: #ffab62;
     background-color: rgb(144,142,136);
     width: 100%;
-    height: 100px;
+    height: 101px;
 }
 
 .body {
-	font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .cell {
-    margin:5px;
+    margin: 5px;
 }
 
 #usercell {
-    margin-top:20px;
-    margin-bottom:20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }

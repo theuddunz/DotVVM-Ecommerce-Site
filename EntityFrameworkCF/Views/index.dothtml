@@ -4,6 +4,7 @@
 
 <dot:Content ContentPlaceHolderID="Main">
     <%-- fixed user information and cart --%>
+    <div style="width:100%;height:20px" StyleDecorator.BackgroundColor="Primary"></div>
     <div StyleDecorator.BackgroundColor="Info" style="border:solid; border-color:rgb(0,94,173) ;min-width:200px; height:60px; top:3px; left:5px; position:fixed; border-radius:15px; text-align:center; font-size:15px">
         <div style="margin-top:7.8%">
             <dot:LinkButton  style="margin-left:15px" Click="{command: Redirect()}"> 
@@ -118,7 +119,7 @@
             <%--End AddProductButton--%>
         </bs:Container>
     </div>
-
+    <div style="width:100%;height:20px" StyleDecorator.BackgroundColor="Primary"></div>
     <%--Footer--%>
 
 
