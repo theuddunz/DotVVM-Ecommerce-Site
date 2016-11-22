@@ -2,22 +2,28 @@
 @masterPage Views/masterpage.dotmaster
 
 <dot:Content ContentPlaceHolderID="Main">
-    <div class="container" style="width:50vw">
-        <bs:GridView DataSource="{value: CartItems}" Type="Bordered">
+    <div class="container" style="min-width:10vw">
+        <bs:GridView DataSource="{value: CartItems}" style="font-size:30px;font-weight:bolder">
             <Columns>
                 <dot:GridViewTemplateColumn>
-                    <ContentTemplate>
-                        <bs:Image Type="Rounded" Width="120px" Height="100px" ImageUrl="{value: image}">
+                    <ContentTemplate >
+                        <bs:Image Type="Rounded" Width="100px" Height="80px" ImageUrl="{value: image}">
                         </bs:Image>
                     </ContentTemplate>
                 </dot:GridViewTemplateColumn>
-                <dot:GridViewTextColumn ValueBinding="{value: ProductID}" HeaderText="Product ID" />
+                <!--<dot:GridViewTextColumn ValueBinding="{value: ProductID}" HeaderText="Product ID" />-->
                 <dot:GridViewTextColumn ValueBinding="{value: Name}" HeaderText="Product Name" />
-                <dot:GridViewTextColumn ValueBinding="{value: Price}" HeaderText="Price" />
+                <dot:GridViewTextColumn ValueBinding="{value: "$"+ Price}" HeaderText="Price" />
+                <dot:GridViewTemplateColumn>
+                    <ContentTemplate>
+                        <bs:Button Text="Remove" Type="Danger"></bs:Button>
+                    </ContentTemplate>
+                </dot:GridViewTemplateColumn>
             </Columns>
         </bs:GridView>
+
         <div style="text-align:right;margin-right:20px">
-            <h1>TOTAL: </h1>
+            <h1>TOTAL: $ {{value: total}} </h1>
             <bs:Button Text="CheckOut" Type="Primary"></bs:Button>
         </div>
     </div>
