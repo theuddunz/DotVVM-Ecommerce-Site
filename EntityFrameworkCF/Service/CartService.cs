@@ -15,9 +15,9 @@ namespace EntityFrameworkCF.ViewModels
             {
                 using (var db = new Database())
                 {
-                    var id = UserService.GetCurrentUserId();
+                    var user = db.Users.Find(UserService.GetCurrentUserId());
                     var cartquery = from p in db.Carts
-                                    where p.UserID == id
+                                    where p.UserID == user.UserID
                                     select p;
                     var cartid = cartquery.FirstOrDefault();
                     return cartid.CartID;
@@ -37,9 +37,10 @@ namespace EntityFrameworkCF.ViewModels
             {
                 using (var db = new Database())
                 {
-                    var userid = UserService.GetCurrentUserId();
+                    var userid = db.Users.Find(UserService.GetCurrentUserId());
+
                     var querycart = from p in db.Carts
-                                    where p.UserID == userid
+                                    where p.UserID == userid.UserID
                                     select p;
 
                     if (querycart.Count() != 0)
@@ -66,16 +67,15 @@ namespace EntityFrameworkCF.ViewModels
 
         public static void LoadDataCart(GridViewDataSet<CartItem> dataset)
         {
-
-            var cartid = CartService.GetCartID();
             using (var db = new Database())
             {
+                var user = db.Users.Find(Convert.ToInt32(UserService.GetCurrentUserId()));
                 var load = from p in db.CartItems
-                           where p.CartID == cartid
+                           where p.CartID == user.CartID
                            select p;
                 dataset.LoadFromQueryable(load);
-           
-           }
+
+            }
         }
     }
 }

@@ -13,11 +13,12 @@ namespace EntityFrameworkCF.ViewModels
 
         public int ProductID { get; set; }
 
-        public virtual Product Product { get; set; }
+        //public virtual Product Product { get; set; }
         public string Name { get; set; }
         public int Quantity { get; set; }
         public double Price { get; set; }
 
+        public string image { get; set; }
         public int CartID { get; set; }
     }
 }
