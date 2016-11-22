@@ -86,7 +86,7 @@ namespace EntityFrameworkCF.ViewModels
                            where p.CartID == user.CartID
                            select p.Price;                
                 double total = load.Sum();
-                return total;
+                return total ;
             }
             
         }

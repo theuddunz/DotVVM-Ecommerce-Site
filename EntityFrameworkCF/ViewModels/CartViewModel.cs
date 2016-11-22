@@ -20,6 +20,16 @@ namespace EntityFrameworkCF.ViewModels
             SortDescending = false
         };
 
+        public void Remove(int itemid)
+        {
+            using (var db = new Database())
+            {
+                db.CartItems.Remove(itemid);
+                db.SaveChanges();
+                CartService.LoadDataCart(CartItems);
+            }
+        }
+
         public override Task PreRender()
         {
             CartService.LoadDataCart(CartItems);

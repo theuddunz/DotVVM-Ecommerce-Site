@@ -66,7 +66,17 @@
                 </ItemTemplate>
             </dot:Repeater>
             <%--Modal Dialog For GoLog() or PreviewCart()--%>
-             
+             <bs:ModalDialog IsDisplayed="{value: GoLogin}">
+                 <HeaderTemplate>
+                     <h1>Remember:</h1>
+                 </HeaderTemplate>
+                 <ContentTemplate>
+                     <p>For use the Cart You need to Login!</p>
+                 </ContentTemplate>
+                 <FooterTemplate>
+                     <bs:Button style="text-align:right" Type="Primary" Click="{command: Redirect()}" Text="Login"></bs:Button>
+                 </FooterTemplate>
+             </bs:ModalDialog>
             <%--Modal Dialog For Editing the Item--%>
             <bs:ModalDialog IsDisplayed="{value: _root.Displayed}">
                 <HeaderTemplate>Edit Product</HeaderTemplate>
