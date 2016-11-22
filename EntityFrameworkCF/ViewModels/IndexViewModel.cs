@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using DotVVM.Framework.Runtime.Filters;
 using System.Web;
 using System.Security.Claims;
+using System.ComponentModel.DataAnnotations;
 
 namespace EntityFrameworkCF.ViewModels
 {
@@ -26,7 +27,12 @@ namespace EntityFrameworkCF.ViewModels
         public bool GoLogin { get; set; } = false; //Implementa la ModalView Per Ricordarti di Accedere
         public bool PreviewCart { get; set; } = false;
 
-       
+        //Variables for Login on the ModelView
+        
+        public string UserNameLogin { get; set; }
+        public string PasswordLogin { get; set; }
+        public string MessageError { get; set; }
+
         public GridViewDataSet<Product> Products { get; set; } = new GridViewDataSet<Product>
         {
             SortExpression = nameof(Product.ProductID),
@@ -178,7 +184,22 @@ namespace EntityFrameworkCF.ViewModels
                 Context.RedirectToRoute("Cart");
             }
         }
-        
+        public void Login()
+        {
+            var identity = UserService.Login(UserNameLogin, PasswordLogin);
+            
+            if (identity == null)
+            {
+                MessageError = "Email or Password are incorrect.";
+            }
+            else
+            {
+                //Claim identity And Redirect to Identity
+                Context.OwinContext.Authentication.SignIn(identity);
+                Context.RedirectToRoute("Index");
+            }
+
+        }
     }
 }
 

@@ -91,7 +91,7 @@ namespace EntityFrameworkCF.ViewModels
                 return user.Country;
             }
         }
-        public static void Login(string Usern, string pass, string mess)
+        public static ClaimsIdentity Login(string Usern, string pass)
         {
             using (var db = new Database())
             {
@@ -107,12 +107,9 @@ namespace EntityFrameworkCF.ViewModels
                     claims.Add(new Claim(ClaimTypes.Name, user.Username));
                     claims.Add(new Claim(ClaimTypes.Role, Convert.ToString(user.UserRole)));
                     var identity = new ClaimsIdentity(claims, DefaultAuthenticationTypes.ApplicationCookie);
-                    HttpContext.Current.GetOwinContext().GetDotvvmContext().OwinContext.Authentication.SignIn(identity);                   
+                    return identity;                  
                 }
-                else
-                {
-                    mess = "Invalid Email or Password.";
-                }
+                return null;
             }
         }
     }
