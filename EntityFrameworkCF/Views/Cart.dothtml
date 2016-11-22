@@ -2,12 +2,13 @@
 @masterPage Views/masterpage.dotmaster
 
 <dot:Content ContentPlaceHolderID="Main">
-    
-        <bs:GridView DataSource="{value: CartItems}" Type="Striped">
+    <div class="container" style="width:50vw">
+        <bs:GridView DataSource="{value: CartItems}" Type="Bordered">
             <Columns>
                 <dot:GridViewTemplateColumn>
                     <ContentTemplate>
-                        <bs:Image ImageUrl="{value: image}"></bs:Image>
+                        <bs:Image Type="Rounded" Width="120px" Height="100px" ImageUrl="{value: image}">
+                        </bs:Image>
                     </ContentTemplate>
                 </dot:GridViewTemplateColumn>
                 <dot:GridViewTextColumn ValueBinding="{value: ProductID}" HeaderText="Product ID" />
@@ -15,8 +16,9 @@
                 <dot:GridViewTextColumn ValueBinding="{value: Price}" HeaderText="Price" />
             </Columns>
         </bs:GridView>
-    <div style="text-align:right;margin-right:20px">
-        <h1>TOTAL: </h1>
-        <bs:Button Text="CheckOut" Type="Primary"></bs:Button>
+        <div style="text-align:right;margin-right:20px">
+            <h1>TOTAL: </h1>
+            <bs:Button Text="CheckOut" Type="Primary"></bs:Button>
+        </div>
     </div>
 </dot:Content>
