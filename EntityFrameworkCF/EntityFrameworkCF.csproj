@@ -149,6 +149,7 @@
     <Compile Include="DotvvmStartup.cs" />
     <Compile Include="ViewModels\AdminPageViewModel.cs" />
     <Compile Include="Data\Database.cs" />
+    <Compile Include="ViewModels\CartViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="Data\Product.cs" />
     <Compile Include="ViewModels\ProfilePageViewModel.cs" />
@@ -189,6 +190,7 @@
     <Content Include="Views\LoginPage.dothtml" />
     <Content Include="Views\AdminPage.dothtml" />
     <Content Include="Views\ProfilePage.dothtml" />
+    <Content Include="Views\Cart.dothtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
