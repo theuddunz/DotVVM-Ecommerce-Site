@@ -10,13 +10,16 @@ using System.Threading.Tasks;
 namespace EntityFrameworkCF.ViewModels
 {
     [Authorize]
-	public class CartViewModel : MasterpageViewModel
-	{
-        public double total { get; set; } = CartService.GetTotal();
+    public class CartViewModel : MasterpageViewModel
+    {
+        public double total { get; set; } = Convert.ToDouble(CartService.GetTotal());
+        public string Message { get; set; } = "Your Cart Is Empty.";
+        public bool Enabled { get; set; } = false;
+
         public GridViewDataSet<CartItem> CartItems { get; set; } = new GridViewDataSet<CartItem>
         {
             SortExpression = nameof(CartItem.CartItemID),
-            PageSize= 20,
+            PageSize = 20,
             SortDescending = false
         };
 
@@ -24,14 +27,22 @@ namespace EntityFrameworkCF.ViewModels
         {
             using (var db = new Database())
             {
-                db.CartItems.Remove(itemid);
+                var cartitem = db.CartItems.Find(itemid);
+                var cart = db.Carts.Find(cartitem.CartID);
+                cart.Count--;
+                db.CartItems.Remove(cartitem);
                 db.SaveChanges();
                 CartService.LoadDataCart(CartItems);
+                total = Convert.ToDouble(CartService.GetTotal());
             }
         }
 
         public override Task PreRender()
         {
+            if (CartService.GetTotal() == 0)
+            {
+                Enabled = true;
+            }
             CartService.LoadDataCart(CartItems);
             return base.PreRender();
         }

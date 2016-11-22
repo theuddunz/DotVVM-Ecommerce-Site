@@ -8,7 +8,7 @@ using System.Web;
 namespace EntityFrameworkCF.ViewModels
 {
     public class CartService
-    {
+    {       
         public static int? GetCartID()
         {
             if (UserService.GetCurrentUserId() != null)
@@ -77,18 +77,17 @@ namespace EntityFrameworkCF.ViewModels
 
             }
         }
-        public static double GetTotal()
+        public static double? GetTotal()
         {
             using (var db = new Database())
             {
                 var user = db.Users.Find(Convert.ToInt32(UserService.GetCurrentUserId()));
                 var load = from p in db.CartItems
-                           where p.CartID == user.CartID
-                           select p.Price;                
-                double total = load.Sum();
-                return total ;
+                           where (p.CartID == user.CartID)
+                           select p.Price;
+                var total = load.DefaultIfEmpty(0).Sum();               
+                return total;
             }
-            
         }
     }
 }

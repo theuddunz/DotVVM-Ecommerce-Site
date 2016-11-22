@@ -16,12 +16,14 @@
                 <dot:GridViewTextColumn ValueBinding="{value: "$"+ Price}" HeaderText="Price" />
                 <dot:GridViewTemplateColumn>
                     <ContentTemplate>
-                        <bs:Button Text="Remove" Type="Danger"></bs:Button>
+                        <bs:Button Text="Remove" Type="Danger" Click="{command: _root.Remove(CartItemID)}"></bs:Button>
                     </ContentTemplate>
                 </dot:GridViewTemplateColumn>
             </Columns>
         </bs:GridView>
-
+        <div Visible="{value: Enabled}" style="text-align:center;font-size:50px">
+            <h1>{{value: Message}}</h1>
+        </div>
         <div style="text-align:right;margin-right:20px">
             <h1>TOTAL: $ {{value: total}} </h1>
             <bs:Button Text="CheckOut" Type="Primary"></bs:Button>
