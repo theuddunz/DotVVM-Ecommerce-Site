@@ -6,7 +6,7 @@ using DotVVM.Framework.ViewModel;
 
 namespace EntityFrameworkCF.ViewModels
 {
-	public class CartViewModel : DotvvmViewModelBase
+	public class CartViewModel : MasterpageViewModel
 	{
 	}
 }
