@@ -29,8 +29,7 @@
             </dot:AuthenticatedView>
         </div>
         <div style="text-align:center">
-            <a href="/"><img src="../Images/50c56179-459a-45e9-aba0-67b6ea05fadf.png" /></a>
-            <h1 class="h1" style="color:#286090;padding-bottom:15px;font-family:'Lucida Console';font-size:50px;margin-top:-15px">E-COMMERCE</h1>
+            <a href="/"><img src="../Images/e-commercelogo.png" style="height:200px;margin-top:20px;margin-bottom:10px"/></a>
         </div>
     </header>
 
