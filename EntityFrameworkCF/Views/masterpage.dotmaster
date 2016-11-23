@@ -40,7 +40,6 @@
     <header style="background-color: rgb(144,142,136)">
         <div Validation.Enabled="false" ID="login" style="border-color:#286090">
             <dot:AuthenticatedView>
-                <AuthenticatedTemplate>
                     <AuthenticatedTemplate>
                         <dot:LinkButton Click="{command: SignOut()}" Text="Sign Out" style="color:lightgray" />
                     </AuthenticatedTemplate>
