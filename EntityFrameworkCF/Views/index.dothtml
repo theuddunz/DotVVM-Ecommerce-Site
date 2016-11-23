@@ -14,10 +14,14 @@
             | <dot:LinkButton style="margin-right:15px" Click="{command: RedirectCart()}">
                 <bs:GlyphIcon Icon="Shopping_cart">
                 </bs:GlyphIcon> Items: {{value: CartItem}}
-            </dot:LinkButton> 
-            <dot:RoleView Roles="Admin">|
-                <dot:LinkButton style="margin-right:15px" Click="{command: RedirectAdminPanel()}"><bs:GlyphIcon Icon="Stats"></bs:GlyphIcon>Admin Panel</dot:LinkButton>
-            </dot:RoleView>           
+            </dot:LinkButton>
+            <dot:RoleView Roles="Admin">
+                |
+                <dot:LinkButton style="margin-right:15px" Click="{command: RedirectAdminPanel()}">
+                    <bs:GlyphIcon Icon="Stats">
+                    </bs:GlyphIcon>Admin Panel
+                </dot:LinkButton>
+            </dot:RoleView>
         </div>
     </div>
     <%--Jumbotron and Conteiner for a Small Description About the Site--%>
@@ -73,23 +77,30 @@
             </dot:Repeater>
             <%--Modal Dialog For GoLog() or PreviewCart()--%>
             <bs:ModalDialog IsDisplayed="{value: GoLogin}">
-                <HeaderTemplate>
-                    <h1>Remember:</h1>
+                <HeaderTemplate >
+                    <div style="text-align:center">
+                        <bs:GlyphIcon style="font-size:xx-large" Icon="User" StyleDecorator.TextColor="Primary"></bs:GlyphIcon>
+                    </div>
                 </HeaderTemplate>
                 <ContentTemplate>
-                    <p>For use the Cart You need to Login!</p>
-                    <bs:Label Text="username" /><dot:TextBox Text="{value: UserNameLogin}" />
-                    <br />
-                    <bs:Label Text="password" /><dot:TextBox Text="{value: PasswordLogin}" Type="Password"/>
-                    <br />
-                    <div StyleDecorator.TextColor="Danger">
-                        {{value: MessageError}}
-                    </div>
-                    <div>
-                        <dot:UpdateProgress>
-                            <bs:Image ImageUrl="../Images/LoadCircle.gif" style="height:40px"/>
-                        </dot:UpdateProgress>
-                    </div>
+                    <p>Before using the cart, you need to login!</p>
+                    <table style="width:250px; text-align:center; margin: 0 AUTO">
+                        <tr>
+                            <td><bs:Label class="label-primary" Text="Username:" /></td>
+                            <td><dot:TextBox class="form-control" Text="{value: UserNameLogin}" style="margin-left:10px"/></td>
+                        </tr>
+                        <tr>
+                            <td><bs:Label class="label-primary" Text="Password:" /></td>
+                            <td><dot:TextBox class="form-control" Text="{value: PasswordLogin}" Type="Password" style="margin-left:10px;margin-top:5px" /></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                            <dot:UpdateProgress>
+                                <bs:Image ImageUrl="../Images/LoadCircle.gif" style="height:40px; margin-top:20px" />
+                            </dot:UpdateProgress></td>
+                        </tr>
+                    </table>
+                    <div StyleDecorator.TextColor="Danger" style="text-align:center">{{value: MessageError}}</div>
                 </ContentTemplate>
                 <FooterTemplate>
                     <bs:Button style="text-align:right" Type="Primary" Click="{command: Login()}" Text="Login"></bs:Button>
