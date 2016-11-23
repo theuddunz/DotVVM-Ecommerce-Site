@@ -19,7 +19,7 @@
     height: 25px;
 }
 
-.content 1 {
+.content1 {
     min-height: calc(100vh - 255px - 100px);
 }
 
@@ -43,3 +43,6 @@
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+
+
