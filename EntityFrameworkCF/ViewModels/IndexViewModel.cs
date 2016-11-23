@@ -202,6 +202,10 @@ namespace EntityFrameworkCF.ViewModels
             }
 
         }
+        public void RedirectAdminPanel()
+        {
+            Context.RedirectToRoute("Admin");
+        }
     }
 }
 

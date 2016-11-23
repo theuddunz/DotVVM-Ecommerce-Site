@@ -32,51 +32,15 @@ namespace EntityFrameworkCF.ViewModels
 
         public void Login()
         {
-            try
+            var identity = UserService.Login(Username, Password);
+            if (identity == null)
             {
-                using (Database db = new Database())
-                {
-                    var checkdata = from p in db.Users
-                                    where (p.Username == Username && p.Password == Password)
-                                    select p;
-
-                    var result = checkdata.SingleOrDefault();
-                    
-
-                    if (checkdata.Count() != 0)
-                    {
-                        var claims = new List<Claim>();
-
-                        claims.Add(new Claim(ClaimTypes.NameIdentifier, result.UserID.ToString()));
-                        claims.Add(new Claim(ClaimTypes.Name, Username));
-                        claims.Add(new Claim(ClaimTypes.Role, Convert.ToString(result.UserRole)));
-
-                        var identity = new ClaimsIdentity(claims, DefaultAuthenticationTypes.ApplicationCookie);
-                        Context.OwinContext.Authentication.SignIn(identity);
-                                                                                            
-
-                        if (result.UserRole.ToString() == "Admin")
-                        {
-                            Context.RedirectToRoute("Admin");
-                        }
-                        else
-                        {
-                            Context.RedirectToRoute("Index");
-                        }
-
-                    }
-                    else
-                    {
-
-                        ErrorMessage = "Email or Password are incorrect";
-                    }
-                }
-
+                ErrorMessage = "Your Email or Password Are incorrect.";
             }
-            catch (Exception)
+            else
             {
-
-                throw;
+                Context.OwinContext.Authentication.SignIn(identity);
+                Context.RedirectToRoute("Index");
             }
 
         }
@@ -84,30 +48,3 @@ namespace EntityFrameworkCF.ViewModels
     }
 }
 
-
-
-/* Test Code for the new Authentication
- Set the Email as the PrimaryKey
- var email = db.users.find(Email);
- if (email.password == Password && email.Email == InputEmail)
- {
- var claims = new list<Claim>
- claims.Add(()) NameIdentifier - Email
- claims.Add(()) Name - Username
- claims.add(()) UserRole - User and Admin
-
- var identity = new ClaimsIdentity(claims,DefaultAuthenticationTypes.ApplicationCookie);
- Context.OwinContext.Authentication.SignIn(identity);
- if(email.UserRole == Admin)
- {
- Context.RedirectToRoute("Admin");
-
- }else (Else for redirect the user checking the UserRole)
- {
- Context.RedirectToRoute("Index");
- }
- }else(Else for The first condition)
- {
- ErrorMessage = "Your Email or Password are incorrect";
- }
-*/
