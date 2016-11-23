@@ -38,7 +38,7 @@ namespace EntityFrameworkCF.ViewModels
         {
             SortExpression = nameof(Product.ProductID),
             SortDescending = false,
-            PageSize = 1000
+            PageSize = 8
 
         };
 

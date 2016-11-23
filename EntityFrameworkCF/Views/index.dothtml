@@ -75,6 +75,7 @@
                     </div>
                 </ItemTemplate>
             </dot:Repeater>
+           
             <%--Modal Dialog For GoLog() or PreviewCart()--%>
             <bs:ModalDialog IsDisplayed="{value: GoLogin}">
                 <HeaderTemplate >
@@ -146,6 +147,9 @@
             </dot:RoleView>
             <%--End AddProductButton--%>
         </bs:Container>
+    </div>
+    <div style="text-align:center">
+        <bs:DataPager class="pager" DataSet="{value: Products}" HideWhenOnlyOnePage="false" style="font-size:20px"/>
     </div>
     <div style="width:100%;height:20px" StyleDecorator.BackgroundColor="Primary"></div>
     <%--Footer--%>
