@@ -24,7 +24,7 @@ namespace EntityFrameworkCF.ViewModels
         public string Username { get; set; } = UserService.GetUsername() ?? "Guest";
         public bool Displayed { get; set; } = false;
         public int pid { get; set; }
-        public int CartItem { get; set; } = Convert.ToInt32(CartService.GetCartCountItem());
+        public int CartItem { get; set; } 
         public bool GoLogin { get; set; } = false; //Implementa la ModalView Per Ricordarti di Accedere
         public bool PreviewCart { get; set; } = false;
 
@@ -50,7 +50,13 @@ namespace EntityFrameworkCF.ViewModels
         {
             using (var db = new Database())
             {
+                CartItem = Convert.ToInt32(CartService.GetCartCountItem());
                 ProductService.LoadProduct(Products);
+                if (CartItem < 0)
+                {
+                    CartItem = 0;
+                }
+                
                 
             }
 
