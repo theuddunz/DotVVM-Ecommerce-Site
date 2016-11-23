@@ -174,7 +174,7 @@ namespace EntityFrameworkCF.ViewModels
 
         public GridViewDataSet<User> Users { get; set; } = new GridViewDataSet<User>
         {
-            PageSize = 1000,
+            PageSize = 10,
             SortExpression = nameof(User.UserID),
             SortDescending = true
         };
@@ -183,7 +183,7 @@ namespace EntityFrameworkCF.ViewModels
         {
             SortExpression = nameof(Product.ProductID),
             SortDescending = true,
-            PageSize = 1000
+            PageSize = 10
         };
         public override Task Load()
         {

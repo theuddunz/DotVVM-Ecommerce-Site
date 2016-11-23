@@ -19,7 +19,7 @@ namespace EntityFrameworkCF.ViewModels
         public GridViewDataSet<CartItem> CartItems { get; set; } = new GridViewDataSet<CartItem>
         {
             SortExpression = nameof(CartItem.CartItemID),
-            PageSize = 20,
+            PageSize = 5,
             SortDescending = false
         };
 

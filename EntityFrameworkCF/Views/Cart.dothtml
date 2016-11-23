@@ -21,6 +21,7 @@
                 </dot:GridViewTemplateColumn>
             </Columns>
         </bs:GridView>
+        <dot:DataPager DataSet="{value: CartItems}" class="pager" HideWhenOnlyOnePage="false" style="font-size:15px" />
         <div Visible="{value: Enabled}" style="text-align:center;font-size:50px">
             <h1>{{value: Message}}</h1>
         </div>

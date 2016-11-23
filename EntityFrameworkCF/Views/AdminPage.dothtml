@@ -39,6 +39,7 @@
             </Columns>
         </bs:GridView>
     </bs:Table>
+    <dot:DataPager DataSet="{value: Products}" class="pager" HideWhenOnlyOnePage="false" style="font-size:20px"/>
 
 
 
@@ -67,6 +68,7 @@
             </Columns>
         </bs:GridView>
     </bs:Table>
+    <dot:DataPager DataSet="{value: Products}" class="pager" HideWhenOnlyOnePage="false" style="font-size:20px" />
 
     <%--MODAL DIALOG FOR THE EDIT BUTTON --%>
     <bs:ModalDialog IsDisplayed="{value: eDisplayed}">
