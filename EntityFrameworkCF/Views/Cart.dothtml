@@ -6,7 +6,7 @@
         <bs:GridView DataSource="{value: CartItems}" style="font-size:30px;font-weight:bolder">
             <Columns>
                 <dot:GridViewTemplateColumn>
-                    <ContentTemplate >
+                    <ContentTemplate>
                         <bs:Image Type="Rounded" Width="100px" Height="80px" ImageUrl="{value: image}">
                         </bs:Image>
                     </ContentTemplate>
@@ -27,7 +27,24 @@
         </div>
         <div style="text-align:right;margin-right:20px">
             <h1>TOTAL: $ {{value: total}} </h1>
-            <bs:Button Text="CheckOut" Type="Primary"></bs:Button>
+            <!--<bs:Button Text="CheckOut" Type="Primary"></bs:Button>-->
+            <bs:StyleDecorator TextColor="Danger">
+                <p>Type 4242424242424242 in the CardNumber</p>
+            </bs:StyleDecorator>
+            <%--The Payment Model from stripe--%>
+            <script src="https://checkout.stripe.com/checkout.js"></script>
+            <form method="post">
+                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                        data-key="pk_test_SpsxntotmFyohW6cgvd2lPPe"
+                        data-image="../Images/e-commercelogo.png"
+                        data-name="Dotvvm CheckOut"
+                        data-description="DEMO PAYMENT"
+                        data-amount="{value: total}"
+                        data-billingAddress="true"
+                        data-shippingAddress="true">
+                </script>
+            </form>
         </div>
     </div>
+
 </dot:Content>
