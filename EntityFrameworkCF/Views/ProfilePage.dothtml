@@ -2,14 +2,19 @@
 @masterPage Views/masterpage.dotmaster
 
 <dot:Content ContentPlaceHolderID="Main">
-    <div style="max-width: 1000px">
-        <bs:table class="table-bordered" style="margin:0 auto;text-align:center; max-width: 900px; margin:0 auto">
-            <tr >
-                <th colspan="2"><h1 style="text-align:center"><bs:GlyphIcon Icon="User" StyleDecorator.TextColor="Primary"></bs:GlyphIcon>Your informations</h1></th>
+    <div style="max-width: 1000px;margin-top:10px;border:solid;border-radius:20px;background-color:aliceblue;border-color:dodgerblue" class="container">
+        <bs:table class="table" style="text-align:center; max-width: 900px; margin:0 auto">
+            <tr>
+                <th colspan="2">
+                    <h1 style="text-align:left">
+                        <bs:GlyphIcon Icon="User" StyleDecorator.TextColor="Primary">
+                        </bs:GlyphIcon>Your informations
+                    </h1>
+                </th>
             </tr>
             <tr>
-                <td><b><h3 style="margin-top:1px" > Username</h3></b></td>
-                <td><dot:TextBox  class="form-control" Text="{value: Username}"Enabled="false"/></td>
+                <td><b><h3 style="margin-top:1px"> Username</h3></b></td>
+                <td><dot:TextBox class="form-control" Text="{value: Username}" Enabled="false" /></td>
             </tr>
             <tr>
                 <td><b><h3 style="margin-top:1px"> E-Mail</h3></b></td>
@@ -32,6 +37,29 @@
             </tr>
 
         </bs:table>
+    </div>
+
+    <div class="container" style="min-width:10vw;background-color:aliceblue;margin-top:10px;border-radius:20px;border:solid;border-color:dodgerblue">
+        <h2 style="text-align:center">
+            <bs:GlyphIcon Icon="Gift" /> My Orders
+        </h2>
+        <bs:GridView DataSource="{value: Orders}">
+            <Columns>
+                <dot:GridViewTextColumn ValueBinding="{value: OrderID}" />
+                <dot:GridViewTextColumn HeaderText="Date Order" ValueBinding="{value: OrderDate}" />
+                <dot:GridViewTextColumn HeaderText="Total" ValueBinding="{value: "$"+Total}" />
+                <dot:GridViewTextColumn HeaderText="Status" StyleDecorator.TextColor="Success" ValueBinding="{value: Status}" />
+                <dot:GridViewTemplateColumn>
+                    <ContentTemplate>
+                        <bs:GlyphIcon Icon="Ok" />
+                    </ContentTemplate>
+                </dot:GridViewTemplateColumn>
+            </Columns>
+        </bs:GridView>
+        <div style="text-align:center">
+            <bs:DataPager  HideWhenOnlyOnePage="true" DataSet="{value: Orders}">
+            </bs:DataPager>
+        </div>
     </div>
 
 </dot:Content>

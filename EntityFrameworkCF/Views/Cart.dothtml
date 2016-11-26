@@ -16,7 +16,7 @@
                 <dot:GridViewTextColumn ValueBinding="{value: "$"+ Price}" HeaderText="Price" />
                 <dot:GridViewTemplateColumn>
                     <ContentTemplate>
-                        <bs:Button Text="Remove" Type="Danger" Click="{command: _root.Remove(CartItemID)}"></bs:Button>
+                        <bs:Button Text="Remove" Type="Danger" Click="{command: _root.Remove(CartItemID)}" Validation.Enabled="false"></bs:Button>
                     </ContentTemplate>
                 </dot:GridViewTemplateColumn>
             </Columns>
@@ -27,24 +27,90 @@
         </div>
         <div style="text-align:right;margin-right:20px">
             <h1>TOTAL: $ {{value: total}} </h1>
-            <!--<bs:Button Text="CheckOut" Type="Primary"></bs:Button>-->
-            <bs:StyleDecorator TextColor="Danger">
-                <p>Type 4242424242424242 in the CardNumber</p>
-            </bs:StyleDecorator>
-            <%--The Payment Model from stripe--%>
-            <script src="https://checkout.stripe.com/checkout.js"></script>
-            <form method="post">
-                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                        data-key="pk_test_SpsxntotmFyohW6cgvd2lPPe"
-                        data-image="../Images/e-commercelogo.png"
-                        data-name="Dotvvm CheckOut"
-                        data-description="DEMO PAYMENT"
-                        data-amount="{value: total}"
-                        data-billingAddress="true"
-                        data-shippingAddress="true">
-                </script>
-            </form>
+            <bs:Button Text="CheckOut" Click="{command:CallModal()}" Visible="{value: CheckOutVisible}" Type="Primary" Validation.Enabled="false"/>
+
         </div>
     </div>
 
+    <bs:ModalDialog IsDisplayed="{value: Modal}">
+        <HeaderTemplate>
+            <h2>{{value: HeadText}}</h2>
+        </HeaderTemplate>
+
+        <ContentTemplate>
+            <%--Shipping Address DIV --%>
+            <div Visible="{value: EnabledAddress}">
+                <table>
+                    <tr>
+                        <td><bs:Label Text="AddressLine1"/></td>
+                        <td><dot:TextBox Text="{value: AddressL1}"/></td>
+                    </tr>
+                    <tr>
+                        <td><bs:Label Text="AddressLine2"></td>
+                        <td><dot:TextBox Text="{value: AddressL2}"/></td>
+                    </tr>
+                    <tr>
+                        <td><bs:Label Text="City"></td>
+                        <td><dot:TextBox Text="{value: City}" /></td>
+                    </tr>
+                    <tr>
+                        <td><bs:Label Text="State"></td>
+                        <td><dot:TextBox Text="{value: State}" /></td>
+                    </tr>
+                    <tr>
+                        <td><bs:Label Text="Postal Code"></td>
+                        <td><dot:TextBox Text="{value: PostalCode}" /></td>
+                    </tr>
+                    
+                    
+                </table>
+                <dot:ValidationSummary/>
+                <bs:Button Text="Continue" style="text-align:center" Click="{command: CreateAddress()}"/>
+            </div>
+            <%--Payment DIV --%>
+            <div Visible="{value: EnabledPayment}">
+                <table>
+                    <tr>
+                        <td><bs:Label Text="CardNumber" /></td>
+                        <td><dot:TextBox Text="{value: CardNumber}" /></td>
+                    </tr>
+                    <tr>
+                        <td><bs:Label Text="Expiration Date" /></td>
+                        <td><dot:TextBox Text="{value: EMonth}" placeholder="Month es:08" /><span>/</span></td>
+                        
+                        <td><dot:TextBox Text="{value: EYear}" placeholder="Year" /></td>
+                    </tr>
+                    <tr>
+                        <td><bs:Label Text="CvC"/></td> <td><dot:TextBox Text="{value: CVC}"/></td>
+                    </tr>
+                </table>
+                <p StyleDecorator.TextColor="Danger">{{value: ErrorMessage}}</p>
+                <bs:Button Text="Make Payment" Click="{command: MakePayment()}"></bs:Button>
+            </div>
+        </ContentTemplate>
+
+    </bs:ModalDialog>
+
 </dot:Content>
+
+
+
+
+
+<!--<bs:Button Text="CheckOut" Type="Primary"></bs:Button>-->
+<%-- <bs:StyleDecorator TextColor="Danger">
+    <p>Type 4242424242424242 in the CardNumber</p>
+</bs:StyleDecorator>--%>
+<%--The Payment Model from stripe--%>
+<%-- <script src="https://checkout.stripe.com/checkout.js"></script>
+<form method="post">
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="pk_test_SpsxntotmFyohW6cgvd2lPPe"
+            data-image="../Images/e-commercelogo.png"
+            data-name="Dotvvm CheckOut"
+            data-description="DEMO PAYMENT"
+            data-amount="{value: total}"
+            data-billingAddress="true"
+            data-shippingAddress="true">
+    </script>
+</form>--%>

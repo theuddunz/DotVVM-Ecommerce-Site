@@ -12,7 +12,7 @@ using DotVVM.Framework.Hosting;
 using DotVVM.Framework.Storage;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.AspNet.Identity;
-
+using Stripe;
 
 [assembly: OwinStartup(typeof(EntityFrameworkCF.Startup))]
 namespace EntityFrameworkCF
@@ -36,7 +36,7 @@ namespace EntityFrameworkCF
             dotvvmConfiguration.Debug = true;
 #endif
 
-
+            StripeConfiguration.SetApiKey("sk_test_frifQUvVSO6cGgHvLHlEAYcr"); //is a TestAccount
 
             app.UseStaticFiles(new StaticFileOptions()
             {

@@ -23,6 +23,7 @@ namespace EntityFrameworkCF.ViewModels
 
         public bool Enabled { get; set; } = false;
         public bool mEnabled { get; set; } = true;
+        
 
         public void SetTrue()
         {
@@ -49,12 +50,21 @@ namespace EntityFrameworkCF.ViewModels
             }
         }
 
+        public  GridViewDataSet<Order> Orders { get; set; } = new GridViewDataSet<Order>()
+        {
+            SortExpression = nameof(Order.OrderDate),
+            SortDescending =true,
+            PageSize = 5
+            
+        };
+
         public override Task PreRender()
         {
             email = UserService.GetEmail();
             password = UserService.GetPassword();
             country = UserService.GetCountry();
             Username = UserService.GetUsername();
+            OrderService.LoadMyOrders(Orders);
             return base.PreRender();
         }
     }

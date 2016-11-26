@@ -17,7 +17,8 @@ namespace EntityFrameworkCF.ViewModels
         public DbSet<Address> ShippingAddress { get; set; }
 
         public DbSet<Order> Orders { get; set; }
-        
+        public DbSet<OrderItem> OrderItems { get; set; }
+
         public Database() : base("name=Connection") { }
     }
 }

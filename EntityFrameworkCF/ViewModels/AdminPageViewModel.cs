@@ -38,8 +38,35 @@ namespace EntityFrameworkCF.ViewModels
         public string pDesc { get; set; }
         public string imgUrl { get; set; }
 
+        //Variables For Orders
+
+        public bool ShowAddress { get; set; }
+        public string CustomerEmail { get; set; }
+        public string AL1 { get; set; }
+        public string AL2 { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string PostalCode { get; set; }
+
         
+
         //Show metodh Products
+        public void ShowShippingAddress(int id)
+        {
+            using (var db = new Database())
+            {
+                var order = db.Orders.Find(id);
+                var user = db.Users.Find(order.UserID);
+                CustomerEmail = user.Email;
+                AL1 = order.AddressLine1;
+                AL2 = order.AddressLine2;
+                City = order.City;
+                State = order.State;
+                PostalCode = order.PostalCode;
+                ShowAddress = true;
+                OrderService.LoadItemOrder(OrderItems,id);
+            }
+        }
         public void ShowEditProduct(int id)
         {
             using (var db = new Database())
@@ -185,10 +212,26 @@ namespace EntityFrameworkCF.ViewModels
             SortDescending = true,
             PageSize = 10
         };
+
+        public GridViewDataSet<Order> Orders { get; set; } = new GridViewDataSet<Order>
+        {
+            SortExpression = nameof(Order.OrderDate),
+            SortDescending = true,
+            PageSize = 5
+        };
+
+        public GridViewDataSet<OrderItem> OrderItems { get; set; } = new GridViewDataSet<OrderItem>
+        {
+            SortExpression = nameof(OrderItem.OrderID),
+            SortDescending = true,
+            PageSize = 100
+
+        };
         public override Task Load()
         {
             ProductService.LoadProduct(Products);
             UserService.LoadUser(Users);
+            OrderService.LoadOrders(Orders);
             return base.Load();
         }
     }

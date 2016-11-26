@@ -7,10 +7,67 @@
         <h1>Admin Commands</h1>
     </div>
 
+    <bs:Container style="border:solid;border-color:grey;border-radius:20px;margin-top:30px">
+        <h2 style="text-align:center">Order List</h2>
+        <bs:GridView DataSource="{value: Orders}">
+            <Columns>
+                <dot:GridViewTextColumn ValueBinding="{value: OrderID}" HeaderText="OrderID" />
+                <dot:GridViewTextColumn ValueBinding="{value: UserID}" HeaderText="UserID" />
+                <dot:GridViewTextColumn ValueBinding="{value: "$"+Total}" HeaderText="Total" />
+                <dot:GridViewTextColumn ValueBinding="{value: OrderDate}" HeaderText="OrderDate" />
+                <dot:GridViewTextColumn ValueBinding="{value: Status}" HeaderText="Status" />
+                <dot:GridViewTemplateColumn>
+                    <HeaderTemplate>Address</HeaderTemplate>
+                    <ContentTemplate>
+                        <dot:linkButton Click="{command: _root.ShowShippingAddress(OrderID) }">Show Item And Address</dot:linkButton>
+                    </ContentTemplate>
+                </dot:GridViewTemplateColumn>
+                <dot:GridViewTemplateColumn>
+                    <ContentTemplate>
+                        ChangeStatus
+                    </ContentTemplate>
+                </dot:GridViewTemplateColumn>
+            </Columns>
+        </bs:GridView>
+    </bs:Container>
 
-
-
-
+    <bs:ModalDialog IsDisplayed="{value: ShowAddress}">
+        <HeaderTemplate>
+            <h2>Items and ShippingAddress</h2>
+        </HeaderTemplate>
+        <ContentTemplate>
+            <table>
+                <tr>
+                    <td><h3>AddressLine1: {{value: AL1}}</h3></td>
+                </tr>
+                <tr>
+                    <td><h3>AddressLine2: <b>{{value: AL2}}</b></h3></td>
+                </tr>
+                <tr>
+                    <td><h3>City: {{value: City}}</h3></td>
+                </tr>
+                <tr>
+                    <td><h3>State: {{value: State}}</h3></td>
+                </tr>
+                <tr>
+                    <td><h3>PostalCode: {{value: PostalCode}}</h3></td>
+                </tr>               
+                <tr>
+                    <td><h2>Email: {{value: CustomerEmail}}</h2></td>
+                </tr>
+            </table>
+            <div >
+                <bs:GridView DataSource="{value: OrderItems}">
+                    <Columns>
+                        <dot:GridViewTextColumn ValueBinding="{value: Name}" HeaderText="Name" />
+                        <dot:GridViewTextColumn ValueBinding="{value: ProductID}" HeaderText="ProductID" />
+               
+                    </Columns>
+                </bs:GridView>
+               
+            </div>
+        </ContentTemplate>
+    </bs:ModalDialog>
     <!--USERSLIST-->
     <bs:Table>
         <h2 style="text-align:center">User List</h2>
@@ -39,7 +96,7 @@
             </Columns>
         </bs:GridView>
     </bs:Table>
-    <dot:DataPager DataSet="{value: Products}" class="pager" HideWhenOnlyOnePage="false" style="font-size:20px"/>
+    <dot:DataPager DataSet="{value: Products}" class="pager" HideWhenOnlyOnePage="false" style="font-size:20px" />
 
 
 
@@ -59,10 +116,10 @@
                 <dot:GridViewTextColumn ValueBinding="{value: Price}" HeaderText="Price" />
                 <dot:GridViewTemplateColumn>
                     <dot:LinkButton>
-                        <bs:GlyphIcon Icon="Edit" Events.Click="{command: _root.ShowEditProduct(ProductID)}"/>
+                        <bs:GlyphIcon Icon="Edit" Events.Click="{command: _root.ShowEditProduct(ProductID)}" />
                     </dot:LinkButton>
                     <dot:LinkButton>
-                        <bs:GlyphIcon Icon="Trash" StyleDecorator.TextColor="Danger" Events.Click="{command:_root.DeleteProduct(ProductID)}"/>
+                        <bs:GlyphIcon Icon="Trash" StyleDecorator.TextColor="Danger" Events.Click="{command:_root.DeleteProduct(ProductID)}" />
                     </dot:LinkButton>
                 </dot:GridViewTemplateColumn>
             </Columns>
@@ -171,7 +228,7 @@
                     <tr>
                         <td><bs:Label Text="Image URL" /></td>
                         <td><dot:TextBox style="margin:2.5px" Text="{value: imgUrl}"></dot:TextBox></td>
-                    </tr>                  
+                    </tr>
                 </table>
             </div>
         </ContentTemplate>
