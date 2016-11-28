@@ -198,7 +198,7 @@ namespace EntityFrameworkCF.ViewModels
             
             if (identity == null)
             {
-                MessageError = "Email or Password are incorrect.";
+                MessageError = "Email or Password is incorrect.";
             }
             else
             {

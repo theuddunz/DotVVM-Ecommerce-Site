@@ -21,22 +21,23 @@
 </head>
 <body class="body">
     <header ID="header">
-        <div Validation.Enabled="false" ID="login" >
+        <div Validation.Enabled="false" ID="login">
             <dot:AuthenticatedView>
-                    <AuthenticatedTemplate>
-                        <dot:LinkButton Click="{command: SignOut()}" Text="Sign Out" style="color:lightgray" />
-                    </AuthenticatedTemplate>
-                    <NotAuthenticatedTemplate>
-                        <dot:RouteLink RouteName="LoginPage" Text="Register now or login" style="color:lightgray" />
-                    </NotAuthenticatedTemplate>
+                <AuthenticatedTemplate>
+                    <dot:LinkButton Click="{command: SignOut()}" Text="Sign Out" class="logstatus" />
+                </AuthenticatedTemplate>
+                <NotAuthenticatedTemplate>
+                    <dot:RouteLink RouteName="LoginPage" Text="Register now or login" class="logstatus" />
+                </NotAuthenticatedTemplate>
             </dot:AuthenticatedView>
         </div>
-        <div style="text-align:center">
+        <div ID="divlogo">
             <a href="/"><img src="../Images/e-commercelogo.png" ID="dotlogo" /></a>
         </div>
     </header>
 
     <dot:ContentPlaceHolder ID="Main">
     </dot:ContentPlaceHolder>
+
 </body>
 </html>

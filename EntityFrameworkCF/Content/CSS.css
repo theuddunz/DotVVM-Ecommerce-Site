@@ -1,26 +1,6 @@
-﻿
-
-#jumbo {
-    text-align: center;
-    font-size: 30px;
-}
-
-.header {
-    height: 25px;
-}
-
-.content {
-    min-height: calc(100vh - 255px - 100px);
-}
-
-.content {
+﻿.content {
     min-height: 350px;
 }
-
-#footer {
-    background-color: rgb(144,142,136);
-}
-
 
 .cell {
     margin: 5px;

@@ -7,10 +7,18 @@ body {
     background-color: rgb(144,142,136);
 }
 
-#dotlogo{
-    height:200px;
-    margin-top:20px;
-    margin-bottom:10px;
+#divlogo {
+    text-align: center;
+}
+
+.logstatus {
+    color: lightgray;
+}
+
+#dotlogo {
+    height: 200px;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 #login {
@@ -32,6 +40,111 @@ body {
     height: 20px;
 }
 
+#userinfoandcart {
+    border: solid;
+    border-color: rgb(0,94,173);
+    min-width: 220px;
+    height: 60px;
+    top: 3px;
+    left: 5px;
+    position: fixed;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 15px;
+}
+
+#userinfoandcartinnerdiv {
+    margin-top: 20px;
+}
+
+.userinfoandcartinnerbutton {
+    margin: 10px;
+}
+
+#divcontainer {
+    margin-top: 35px;
+}
+
+#jumbo {
+    text-align: center;
+    font-size: 30px;
+}
+
+#p1 {
+    font-size: 30px;
+}
+
+#p2 {
+    text-align: left;
+}
+
+#p3 {
+    font-size: 20px;
+}
+
+#span1 {
+    color: rgb(0,94,173);
+}
+
+#githubpic {
+    float: right;
+    margin-right: 120px;
+}
+
+#list {
+    text-align: left;
+    margin-left: 50px;
+    font-size: 20px;
+}
+
+#container1 {
+    width: 70%;
+}
+
+.containercells {
+    padding-bottom: 10px;
+    text-align: center;
+    border: solid;
+    border-color: lightgrey;
+    border-radius: 10px;
+    margin-bottom: 2.5px;
+    margin-top: 5px;
+    max-height: 310px;
+}
+
+#trashbtn {
+    margin-right: 2px;
+}
+
+/*modal dialog shown when not logged*/
+#div1 {
+    text-align: center;
+}
+
+#table1 {
+    width: 250px;
+    text-align: center;
+    margin: 0 AUTO;
+}
+
+.largefontsize{
+    font-size:xx-large;
+}
+
+.marginleft10{
+    margin-left:10px;
+}
+
+#margintop5{
+    margin-top:5px;
+}
+
+#loading{
+    height:40px;
+    margin-top:20px;
+}
+
+/*object modal dialog*/
 #objectmodald {
     margin: 0 auto;
     text-align: center;
@@ -39,6 +152,11 @@ body {
 
 .objectmodaldcells {
     margin: 3px;
+}
+
+/*footer*/
+#footer {
+    background-color: rgb(144,142,136);
 }
 
 #culo {
