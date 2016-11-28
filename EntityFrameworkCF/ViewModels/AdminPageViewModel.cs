@@ -48,9 +48,42 @@ namespace EntityFrameworkCF.ViewModels
         public string State { get; set; }
         public string PostalCode { get; set; }
 
-        
+        // check status variables
+
+        public bool VisibleChangeStatus { get; set; } = false;
+
+        public string[] OrderStatus { get; set; } = { "Processing", "Sent", "Delivered", "Complete" };
+        public OrderStatus NewOrderStatus { get; set; }
+
+        public string LastOrderStatus { get; set; }
+        public int orderid { get; set; }
+
 
         //Show metodh Products
+
+        public void ShowChangeStatus(int id)
+        {
+            using (var db = new Database())
+            {
+                var order = db.Orders.Find(id);
+                LastOrderStatus = Convert.ToString(order.Status);
+                orderid = id;
+                VisibleChangeStatus = true;
+            }
+        }
+
+        public void SaveNewOrderStatus(int id)
+        {
+            using (var db = new Database())
+            {
+                var order = db.Orders.Find(id);
+                order.Status = NewOrderStatus;
+                db.SaveChanges();
+                OrderService.LoadOrders(Orders);
+                VisibleChangeStatus = false;
+            }
+        }
+
         public void ShowShippingAddress(int id)
         {
             using (var db = new Database())
@@ -64,7 +97,7 @@ namespace EntityFrameworkCF.ViewModels
                 State = order.State;
                 PostalCode = order.PostalCode;
                 ShowAddress = true;
-                OrderService.LoadItemOrder(OrderItems,id);
+                OrderService.LoadItemOrder(OrderItems, id);
             }
         }
         public void ShowEditProduct(int id)
