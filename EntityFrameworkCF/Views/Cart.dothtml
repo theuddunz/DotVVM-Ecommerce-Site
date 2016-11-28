@@ -72,16 +72,17 @@
                 <table>
                     <tr>
                         <td><bs:Label Text="CardNumber" /></td>
-                        <td><dot:TextBox Text="{value: CardNumber}" /></td>
+                        <td colspan="3"><dot:TextBox class="form-control" Text="{value: CardNumber}" /></td>
                     </tr>
                     <tr>
-                        <td><bs:Label Text="Expiration Date" /></td>
-                        <td><dot:TextBox Text="{value: EMonth}" placeholder="Month es:08" /><span>/</span></td>
-                        
-                        <td><dot:TextBox Text="{value: EYear}" placeholder="Year" /></td>
+                        <td><bs:Label Text="Expiry Date" /></td>
+                        <td><dot:TextBox class="form-control marginleft" Text="{value: EMonth}" placeholder="Month" /><span>  </span></td>
+                        <td><h3 style="color:darkgrey">/</h3></td>
+                        <td><dot:TextBox class="form-control marginleft" Text="{value: EYear}" placeholder="Year" /></td>
                     </tr>
                     <tr>
-                        <td><bs:Label Text="CvC"/></td> <td><dot:TextBox Text="{value: CVC}"/></td>
+                        <td><bs:Label Text="CvC"/></td> 
+                        <td><dot:TextBox class="form-control marginleft" Text="{value: CVC}"/></td>
                     </tr>
                 </table>
                 <p StyleDecorator.TextColor="Danger">{{value: ErrorMessage}}</p>
