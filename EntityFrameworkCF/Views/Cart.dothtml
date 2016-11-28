@@ -40,26 +40,26 @@
         <ContentTemplate>
             <%--Shipping Address DIV --%>
             <div Visible="{value: EnabledAddress}">
-                <table>
+                <table style="width:400px">
                     <tr>
-                        <td><bs:Label Text="AddressLine1"/></td>
-                        <td><dot:TextBox Text="{value: AddressL1}"/></td>
+                        <td><bs:Label  Text="AddressLine1"/></td>
+                        <td><dot:TextBox class="form-control" style="margin-top:2px;margin-bottom:2px" Text="{value: AddressL1}"/></td>
                     </tr>
                     <tr>
                         <td><bs:Label Text="AddressLine2"></td>
-                        <td><dot:TextBox Text="{value: AddressL2}"/></td>
+                        <td><dot:TextBox class="form-control" style="margin-top:2px;margin-bottom:2px" Text="{value: AddressL2}"/></td>
                     </tr>
                     <tr>
                         <td><bs:Label Text="City"></td>
-                        <td><dot:TextBox Text="{value: City}" /></td>
+                        <td><dot:TextBox class="form-control" style="margin-top:2px;margin-bottom:2px" Text="{value: City}" /></td>
                     </tr>
                     <tr>
                         <td><bs:Label Text="State"></td>
-                        <td><dot:TextBox Text="{value: State}" /></td>
+                        <td><dot:TextBox class="form-control"  style="margin-top:2px;margin-bottom:2px" Text="{value: State}" /></td>
                     </tr>
                     <tr>
                         <td><bs:Label Text="Postal Code"></td>
-                        <td><dot:TextBox Text="{value: PostalCode}" /></td>
+                        <td><dot:TextBox class="form-control" style="margin-top:2px;margin-bottom:2px" Text="{value: PostalCode}" /></td>
                     </tr>
                     
                     

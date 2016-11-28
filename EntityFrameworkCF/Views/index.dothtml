@@ -4,7 +4,7 @@
 
 <dot:Content ContentPlaceHolderID="Main">
     <%-- fixed user information and cart --%>
-    <div style="width:100%;height:20px" StyleDecorator.BackgroundColor="Primary"></div>
+    <div class="separationline" StyleDecorator.BackgroundColor="Primary"></div>
     <div StyleDecorator.BackgroundColor="Info" style="border:solid; border-color:rgb(0,94,173) ;min-width:200px; height:60px; top:3px; left:5px; position:fixed; border-radius:15px; text-align:center; font-size:15px">
         <div style="margin-top:7.8%">
             <dot:LinkButton style="margin-left:15px" Click="{command: Redirect()}">
@@ -110,22 +110,22 @@
             <bs:ModalDialog IsDisplayed="{value: _root.Displayed}">
                 <HeaderTemplate>Edit Product</HeaderTemplate>
                 <ContentTemplate>
-                    <table style="margin:0 auto; text-align:center">
+                    <table ID="objectmodald">
                         <tr>
                             <td><bs:Label Text="Name" /></td>
-                            <td><dot:TextBox class="form-control" style="margin:3px" Text="{value: _root.pName}" /></td>
+                            <td><dot:TextBox class="form-control objectmodaldcells" Text="{value: _root.pName}" /></td>
                         </tr>
                         <tr>
                             <td><bs:Label Text="Price" /></td>
-                            <td><dot:TextBox class="form-control" style="margin:3px" Text="{value: _root.pPrice}" /></td>
+                            <td><dot:TextBox class="form-control objectmodaldcells" Text="{value: _root.pPrice}" /></td>
                         </tr>
                         <tr>
                             <td><bs:Label Text="Description" /></td>
-                            <td><dot:TextBox class="form-control" style="margin:3px" Text="{value: _root.pDesc}" /></td>
+                            <td><dot:TextBox class="form-control objectmodaldcells" Text="{value: _root.pDesc}" /></td>
                         </tr>
                         <tr>
                             <td><bs:Label Text="Img url" /></td>
-                            <td><dot:TextBox class="form-control" style="margin:3px" Text="{value: _root.pIMG}" /></td>
+                            <td><dot:TextBox class="form-control objectmodaldcells"  Text="{value: _root.pIMG}" /></td>
                         </tr>
                     </table>
                 </ContentTemplate>

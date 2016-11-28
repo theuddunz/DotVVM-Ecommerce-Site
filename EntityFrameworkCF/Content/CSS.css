@@ -1,14 +1,4 @@
-﻿#login {
-    position: absolute;
-    border: solid;
-    border-radius: 10px;
-    border-color: #286090;
-    padding-left: 5px;
-    padding-right: 5px;
-    top: 5px;
-    right: 10px;
-    font-size: 20px;
-}
+﻿
 
 #jumbo {
     text-align: center;
@@ -19,7 +9,7 @@
     height: 25px;
 }
 
-.content1 {
+.content {
     min-height: calc(100vh - 255px - 100px);
 }
 
@@ -31,9 +21,6 @@
     background-color: rgb(144,142,136);
 }
 
-.body {
-    font-family: 'Open Sans', sans-serif;
-}
 
 .cell {
     margin: 5px;
@@ -45,4 +32,7 @@
 }
 
 
-
+#shippingaddresscell {
+    margin-bottom:5px;
+    margin-top:5px;
+}

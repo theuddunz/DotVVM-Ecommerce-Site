@@ -14,31 +14,14 @@
     <script src="../Scripts/jquery-1.9.1.js"></script>
     <script src="../Scripts/jquery-1.9.1.min.js"></script>
     <link href="../Content/CSS.css" rel="stylesheet" />
+    <link href="../Content/StyleSheet.css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <style>
-        #culo {
-            font-size: 100px;
-            border: solid;
-            border-color: lightgray;
-            border-radius: 50%;
-            width: 110px;
-            height: 110px;
-            padding-left: 6px;
-            transition-duration: 1s;
-            -webkit-transition: -webkit-transform .4s ease-in-out;
-            transition: transform .4s ease-in-out;
-        }
-
-            #culo:hover {
-                -webkit-transform: rotate(90deg);
-                transform: rotate(90deg);
-                background-color:lightblue;
-            }
     </style>
 </head>
 <body class="body">
-    <header style="background-color: rgb(144,142,136)">
-        <div Validation.Enabled="false" ID="login" style="border-color:#286090">
+    <header ID="header">
+        <div Validation.Enabled="false" ID="login" >
             <dot:AuthenticatedView>
                     <AuthenticatedTemplate>
                         <dot:LinkButton Click="{command: SignOut()}" Text="Sign Out" style="color:lightgray" />
@@ -49,7 +32,7 @@
             </dot:AuthenticatedView>
         </div>
         <div style="text-align:center">
-            <a href="/"><img src="../Images/e-commercelogo.png" style="height:200px;margin-top:20px;margin-bottom:10px" /></a>
+            <a href="/"><img src="../Images/e-commercelogo.png" ID="dotlogo" /></a>
         </div>
     </header>
 
