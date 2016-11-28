@@ -177,3 +177,8 @@ body {
         transform: rotate(90deg);
         background-color: lightblue;
     }
+
+    /*cart*/
+.marginleft {
+    margin-left: 10px;
+}

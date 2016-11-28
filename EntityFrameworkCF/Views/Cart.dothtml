@@ -72,21 +72,21 @@
                 <table>
                     <tr>
                         <td><bs:Label Text="CardNumber" /></td>
-                        <td colspan="3"><dot:TextBox class="form-control" Text="{value: CardNumber}" /></td>
+                        <td colspan="3"><dot:TextBox class="form-control marginleft" Text="{value: CardNumber}" placeholder="e.g. 1234 5678 9123 4567" /></td>
                     </tr>
                     <tr>
                         <td><bs:Label Text="Expiry Date" /></td>
-                        <td><dot:TextBox class="form-control marginleft" Text="{value: EMonth}" placeholder="Month" /><span>  </span></td>
-                        <td><h3 style="color:darkgrey">/</h3></td>
-                        <td><dot:TextBox class="form-control marginleft" Text="{value: EYear}" placeholder="Year" /></td>
+                        <td><dot:TextBox class="form-control marginleft" Text="{value: EMonth}" placeholder="e.g. Month" /></td>
+                        <td style="text-align:center"><h3  style="color:darkgrey; margin-left:20px">/</h3></td>
+                        <td><dot:TextBox class="form-control marginleft" Text="{value: EYear}" placeholder="e.g. Year" /></td>
                     </tr>
                     <tr>
                         <td><bs:Label Text="CvC"/></td> 
-                        <td><dot:TextBox class="form-control marginleft" Text="{value: CVC}"/></td>
+                        <td><dot:TextBox class="form-control marginleft" Text="{value: CVC}" placeholder="e.g. 123"/></td>
                     </tr>
                 </table>
                 <p StyleDecorator.TextColor="Danger">{{value: ErrorMessage}}</p>
-                <bs:Button Text="Make Payment" Click="{command: MakePayment()}"></bs:Button>
+                <bs:Button Text="Pay now" Click="{command: MakePayment()}"></bs:Button>
             </div>
         </ContentTemplate>
 

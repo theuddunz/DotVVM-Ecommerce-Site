@@ -77,9 +77,20 @@
     <bs:ModalDialog IsDisplayed="{value: VisibleChangeStatus}">
         <ContentTemplate>
             <div>
-                <h3>Last Order Status: {{value: LastOrderStatus}}</h3>
-                <dot:ComboBox DataSource="{value: OrderStatus}" SelectedValue="{value: NewOrderStatus}"></dot:ComboBox>
-                <bs:Button Text="Save Changes" Type="Warning" Click="{command: SaveNewOrderStatus(orderid)}" />
+                <table>
+                    <tr>
+                        <td><h4>Last Order Status: <span style="color:saddlebrown"> {{value: LastOrderStatus}}</span></h4></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h4>New status:<dot:ComboBox DataSource="{value: OrderStatus}" SelectedValue="{value: NewOrderStatus}"></dot:ComboBox>
+                            </h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><bs:Button Text="Save Changes" Type="Warning" Click="{command: SaveNewOrderStatus(orderid)}" /></td>
+                    </tr>
+                </table>
             </div>
         </ContentTemplate>
     </bs:ModalDialog>
