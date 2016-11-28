@@ -19,12 +19,17 @@
                 <dot:GridViewTemplateColumn>
                     <HeaderTemplate>Address</HeaderTemplate>
                     <ContentTemplate>
-                        <dot:linkButton Click="{command: _root.ShowShippingAddress(OrderID) }">Show Item And Address</dot:linkButton>
+                        <dot:linkButton Click="{command: _root.ShowShippingAddress(OrderID) }">
+                            Show Items And Address
+                        </dot:linkButton>
                     </ContentTemplate>
                 </dot:GridViewTemplateColumn>
                 <dot:GridViewTemplateColumn>
+                    <HeaderTemplate>Commands</HeaderTemplate>
                     <ContentTemplate>
-                        ChangeStatus
+                        <dot:linkbutton Click="{command: _root.ShowChangeStatus(OrderID)}">
+                            Change Status
+                        </dot:linkbutton>
                     </ContentTemplate>
                 </dot:GridViewTemplateColumn>
             </Columns>
@@ -51,20 +56,30 @@
                 </tr>
                 <tr>
                     <td><h3>PostalCode: {{value: PostalCode}}</h3></td>
-                </tr>               
+                </tr>
                 <tr>
                     <td><h2>Email: {{value: CustomerEmail}}</h2></td>
                 </tr>
             </table>
-            <div >
+            <div>
                 <bs:GridView DataSource="{value: OrderItems}">
                     <Columns>
                         <dot:GridViewTextColumn ValueBinding="{value: Name}" HeaderText="Name" />
                         <dot:GridViewTextColumn ValueBinding="{value: ProductID}" HeaderText="ProductID" />
-               
+
                     </Columns>
                 </bs:GridView>
-               
+
+            </div>
+        </ContentTemplate>
+    </bs:ModalDialog>
+
+    <bs:ModalDialog IsDisplayed="{value: VisibleChangeStatus}">
+        <ContentTemplate>
+            <div>
+                <h3>Last Order Status: {{value: LastOrderStatus}}</h3>
+                <dot:ComboBox DataSource="{value: OrderStatus}" SelectedValue="{value: NewOrderStatus}"></dot:ComboBox>
+                <bs:Button Text="Save Changes" Type="Warning" Click="{command: SaveNewOrderStatus(orderid)}" />
             </div>
         </ContentTemplate>
     </bs:ModalDialog>
