@@ -127,21 +127,21 @@ body {
     margin: 0 AUTO;
 }
 
-.largefontsize{
-    font-size:xx-large;
+.largefontsize {
+    font-size: xx-large;
 }
 
-.marginleft10{
-    margin-left:10px;
+.marginleft10 {
+    margin-left: 10px;
 }
 
-#margintop5{
-    margin-top:5px;
+#margintop5 {
+    margin-top: 5px;
 }
 
-#loading{
-    height:40px;
-    margin-top:20px;
+#loading {
+    height: 40px;
+    margin-top: 20px;
 }
 
 /*object modal dialog*/
@@ -178,7 +178,25 @@ body {
         background-color: lightblue;
     }
 
-    /*cart*/
+/*cart*/
 .marginleft {
     margin-left: 10px;
+}
+
+/*admin page*/
+#admincont {
+    border: solid;
+    border-color: grey;
+    border-radius: 20px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.glicon {
+    font-size: 20px;
+    margin-left: 3px;
+}
+
+.addcell{
+    margin:2.5px;
 }

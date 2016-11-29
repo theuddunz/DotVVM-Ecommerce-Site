@@ -7,8 +7,8 @@
         <h1>Admin Commands</h1>
     </div>
 
-    <bs:Container style="border:solid;border-color:grey;border-radius:20px;margin-top:30px">
-        <h2 style="text-align:center">Order List</h2>
+    <bs:Container ID="admincont">
+        <h2>Order List</h2>
         <bs:GridView DataSource="{value: Orders}">
             <Columns>
                 <dot:GridViewTextColumn ValueBinding="{value: OrderID}" HeaderText="OrderID" />
@@ -99,7 +99,7 @@
         <h2 style="text-align:center">User List</h2>
         <%--CommandADD--%>
         <dot:LinkButton Click="{command: ShowAddUser()}">
-            <bs:GlyphIcon Icon="Plus" StyleDecorator.TextColor="Primary" style="font-size:20px;margin-left:3px" /> New User
+            <bs:GlyphIcon Icon="Plus" StyleDecorator.TextColor="Primary" class="glicon" /> New User
         </dot:LinkButton>
         <bs:GridView DataSource="{value: Users}" ShowHeaderWhenNoData="true" class="table-bordered">
             <Columns>
@@ -131,7 +131,7 @@
     <h2 style="text-align:center">Product List</h2>
     <%--CommandADD--%>
     <dot:LinkButton Click="{command: ShowAddProduct()}">
-        <bs:GlyphIcon Icon="Plus" StyleDecorator.TextColor="Primary" style="font-size:20px;margin-left:3px" /> New Product
+        <bs:GlyphIcon Icon="Plus" StyleDecorator.TextColor="Primary" class="glicon" /> New Product
     </dot:LinkButton>
     <bs:Table Type="Bordered">
         <bs:GridView DataSource="{value: Products}" ShowHeaderWhenNoData="true" class="table-bordered">
@@ -165,23 +165,23 @@
                     </tr>
                     <tr>
                         <td><bs:Label Text="Name" /></td>
-                        <td><dot:TextBox style="margin:2.5px" Text="{value: uName}"></dot:TextBox></td>
+                        <td><dot:TextBox class="addcell" Text="{value: uName}"></dot:TextBox></td>
                     </tr>
                     <tr>
                         <td><bs:Label Text="Password" /></td>
-                        <td><dot:TextBox style="margin:2.5px" Text="{value: uPass}"></dot:TextBox></td>
+                        <td><dot:TextBox class="addcell" Text="{value: uPass}"></dot:TextBox></td>
                     </tr>
                     <tr>
                         <td><bs:Label Text="Email" /></td>
-                        <td><dot:TextBox style="margin:2.5px" Text="{value: uEmail}"></dot:TextBox></td>
+                        <td><dot:TextBox class="addcell" Text="{value: uEmail}"></dot:TextBox></td>
                     </tr>
                     <tr>
                         <td><bs:Label Text="Country" /></td>
-                        <td><dot:TextBox style="margin:2.5px" Text="{value: uCountry}"></dot:TextBox></td>
+                        <td><dot:TextBox class="addcell" Text="{value: uCountry}"></dot:TextBox></td>
                     </tr>
                     <tr>
                         <td><bs:Label Text="UserRole" /></td>
-                        <td><dot:TextBox style="margin:2.5px" Text="{value: us}"></dot:TextBox></td>
+                        <td><dot:TextBox class="addcell" Text="{value: us}"></dot:TextBox></td>
                     </tr>
                 </table>
             </div>
@@ -204,23 +204,23 @@
                 </tr>
                 <tr>
                     <td><bs:Label Text="Name" /></td>
-                    <td><dot:TextBox style="margin:2.5px" Text="{value: uName}" /></td>
+                    <td><dot:TextBox class="addcell" Text="{value: uName}" /></td>
                 </tr>
                 <tr>
                     <td><bs:Label Text="Password" /> </td>
-                    <td><dot:TextBox style="margin:2.5px" Text="{value: uPass}" /></td>
+                    <td><dot:TextBox class="addcell" Text="{value: uPass}" /></td>
                 </tr>
                 <tr>
                     <td><bs:Label Text="Email" /></td>
-                    <td><dot:TextBox style="margin:2.5px" Text="{value: uEmail}" /></td>
+                    <td><dot:TextBox class="addcell" Text="{value: uEmail}" /></td>
                 </tr>
                 <tr>
                     <td><bs:Label Text="Country" /></td>
-                    <td><dot:TextBox style="margin:2.5px" Text="{value: uCountry}" /></td>
+                    <td><dot:TextBox class="addcell" Text="{value: uCountry}" /></td>
                 </tr>
                 <tr>
                     <td><bs:Label Text="UserRole" /></td>
-                    <td><dot:TextBox style="margin:2.5px" Text="{value: us}" /></td>
+                    <td><dot:TextBox class="addcell" Text="{value: us}" /></td>
                 </tr>
             </table>
         </ContentTemplate>
@@ -241,19 +241,19 @@
                     </tr>
                     <tr>
                         <td><bs:Label Text="Name" /></td>
-                        <td><dot:TextBox style="margin:2.5px" Text="{value: pName}"></dot:TextBox></td>
+                        <td><dot:TextBox class="addcell" Text="{value: pName}"></dot:TextBox></td>
                     </tr>
                     <tr>
                         <td><bs:Label Text="Price" /></td>
-                        <td><dot:TextBox style="margin:2.5px" Text="{value: pPrice}"></dot:TextBox></td>
+                        <td><dot:TextBox class="addcell" Text="{value: pPrice}"></dot:TextBox></td>
                     </tr>
                     <tr>
                         <td><bs:Label Text="Description" /></td>
-                        <td><dot:TextBox style="margin:2.5px" Text="{value: pDesc}" Type="MultiLine"></dot:TextBox></td>
+                        <td><dot:TextBox class="addcell" Text="{value: pDesc}" Type="MultiLine"></dot:TextBox></td>
                     </tr>
                     <tr>
                         <td><bs:Label Text="Image URL" /></td>
-                        <td><dot:TextBox style="margin:2.5px" Text="{value: imgUrl}"></dot:TextBox></td>
+                        <td><dot:TextBox class="addcell" Text="{value: imgUrl}"></dot:TextBox></td>
                     </tr>
                 </table>
             </div>
@@ -274,19 +274,19 @@
                     </tr>
                     <tr>
                         <td><bs:Label Text="Name" /></td>
-                        <td><dot:TextBox style="margin:2.5px" Text="{value: pName}"></dot:TextBox></td>
+                        <td><dot:TextBox class="addcell" Text="{value: pName}"></dot:TextBox></td>
                     </tr>
                     <tr>
                         <td><bs:Label Text="Price" /></td>
-                        <td><dot:TextBox style="margin:2.5px" Text="{value: pPrice}"></dot:TextBox></td>
+                        <td><dot:TextBox class="addcell" Text="{value: pPrice}"></dot:TextBox></td>
                     </tr>
                     <tr>
                         <td><bs:Label Text="Description" /></td>
-                        <td><dot:TextBox style="margin:2.5px" Type="MultiLine" Text="{value: pDesc}"></dot:TextBox></td>
+                        <td><dot:TextBox class="addcell" Type="MultiLine" Text="{value: pDesc}"></dot:TextBox></td>
                     </tr>
                     <tr>
                         <td><bs:Label Text="Image URL" /></td>
-                        <td><dot:TextBox style="margin:2.5px" Text="{value: imgUrl}"></dot:TextBox></td>
+                        <td><dot:TextBox class="addcell" Text="{value: imgUrl}"></dot:TextBox></td>
                     </tr>
                 </table>
             </div>
